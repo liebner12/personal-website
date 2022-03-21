@@ -1,0 +1,13 @@
+.button {
+  padding: 0;
+}
+
+.textOnly {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #000;
+  }
+}
