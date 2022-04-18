@@ -1,18 +1,34 @@
 import Navbar from '../navbar';
 import { children } from '../../../utils/types/common';
+import { useRouter } from 'next/router';
+
+const currentTitle = (path: string) => {
+  switch (path) {
+    case '/contact':
+      return 'theme-contact';
+    case '/projects':
+      return 'theme-projects';
+    default:
+      return 'theme-about';
+  }
+};
 
 const Main = ({ children }: children) => {
+  const router = useRouter();
+
   return (
-    <div className="flex h-screen relative">
-      <Navbar />
-      <div className="mainGradient w-full flex flex-col h-full pl-10 pr-20 py-10">
-        <header className="flex flex-col items-end">
-          <h1 className="font-bold text-white text-3xl mb-2">Projects</h1>
-          <p className="text-grey">Some things that I&apos;ve built</p>
-        </header>
-        <main className="w-full flex-1">{children}</main>
+    <>
+      <div
+        className={`w-full h-full grid place-items-center xl:overflow-y-hidden ${currentTitle(
+          router.pathname
+        )}`}
+      >
+        <div className="flex h-full relative w-full max-w-screen-2xl">
+          <Navbar.Nav />
+          {children}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

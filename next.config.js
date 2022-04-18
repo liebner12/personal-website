@@ -12,6 +12,9 @@ const nextConfig = withPWA({
     buildExcludes: [/middleware-manifest.json$/],
   },
   experimental: {
+    images: {
+      layoutRaw: true,
+    },
     outputStandalone: true,
     concurrentFeatures: true,
   },

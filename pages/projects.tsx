@@ -1,22 +1,26 @@
 import Head from 'next/head';
 import { createContext, useState } from 'react';
+import Container from '../components/containers/container';
 import Modal from '../components/containers/modal';
 import ProjectsLayout from '../components/layouts/projects';
+import Background from '../components/units/background';
+import Header from '../components/containers/header';
+import { ModalType } from '../utils/types/project';
 
 interface ProjectContext {
-  openModal: boolean;
-  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  openModal: ModalType;
+  setOpenModal: React.Dispatch<React.SetStateAction<ModalType>>;
 }
 
 export const ProjectsContext = createContext<ProjectContext>({
-  openModal: false,
+  openModal: null,
   setOpenModal: () => {
     // do nothing
   },
 });
 
 const Projects = () => {
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState<ModalType>(null);
   return (
     <ProjectsContext.Provider value={{ setOpenModal, openModal }}>
       <Head>
@@ -24,8 +28,12 @@ const Projects = () => {
         <meta name="description" content="My projects :)" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ProjectsLayout />
-      <Modal />
+      <Background background="projectsBg" />
+      <Container>
+        <Header title="Projects" desc="Selected work" />
+        <ProjectsLayout />
+        <Modal />
+      </Container>
     </ProjectsContext.Provider>
   );
 };

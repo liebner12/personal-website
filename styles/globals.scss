@@ -2,15 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
+$color-projectsBg: hsl(160, 55%, 19%);
+$color-aboutBg: hsl(42, 51%, 31%);
+$color-contactBg: hsl(210, 55%, 19%);
+
+.theme-projects {
+  --color-primary: 160 95% 50%;
+  --color-primaryLight: 160 84% 39%;
+  --color-primaryDark: 160 84% 29%;
+}
+
+.theme-about {
+  --color-primary: 40 95% 50%;
+  --color-primaryLight: 40 84% 39%;
+  --color-primaryDark: 40 84% 29%;
+}
+
+.theme-contact {
+  --color-primary: 210 95% 50%;
+  --color-primaryLight: 210 84% 39%;
+  --color-primaryDark: 210 84% 29%;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  height: 100%;
+  width: 100%;
 }
+
+#__next {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   background: #000000;
+  height: 100%;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 a {
@@ -22,12 +73,36 @@ a {
   box-sizing: border-box;
 }
 
-.mainGradient {
+.projectsBg {
   background: radial-gradient(
     100% 120% at 100% 0%,
-    hsl(160, 54%, 19%) 0%,
+    $color-projectsBg 0%,
     rgba(0, 0, 0, 0) 100%
   );
+}
+
+.aboutBg {
+  background: radial-gradient(
+    100% 120% at 100% 0%,
+    $color-aboutBg 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.contactBg {
+  background: radial-gradient(
+    100% 120% at 100% 0%,
+    $color-contactBg 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.transColor {
+  transition: color 1s 1s;
+}
+
+.tapHighlight {
+  -webkit-tap-highlight-color: transparent;
 }
 
 @layer components {
@@ -38,13 +113,12 @@ a {
       top: -0.5rem;
       left: -1rem;
       border-radius: 0.75rem;
-      background-color: #ffffff11;
       width: 100%;
       height: 100%;
       padding: 1.5rem 4.5rem;
     }
     display: inline-block;
-    @apply relative text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-opacity-75;
+    @apply relative text-white font-semibold focus:outline-none;
   }
   .btn-text {
     @apply;

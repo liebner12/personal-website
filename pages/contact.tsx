@@ -1,11 +1,14 @@
+import Contact from '../components/layouts/contact';
+import Background from '../components/units/background';
+import Header from '../components/containers/header';
+
 const Projects = () => {
   return (
-    <div className="grid grid-rows-2 grid-cols-2 gap-14 gap-y-20 my-8 w-full h-full">
-      <div className="w-full h-full bg-blockBg rounded-lg"></div>
-      <div className="w-full h-full bg-blockBg rounded-lg"></div>
-      <div className="w-full h-full bg-blockBg rounded-lg"></div>
-      <div className="w-full h-full bg-blockBg rounded-lg"></div>
-    </div>
+    <>
+      <Header title="Contact" desc="Let's talk" />
+      <Background background="contactBg" />
+      <Contact />
+    </>
   );
 };
 
