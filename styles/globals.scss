@@ -2,14 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-$color-projectsBg: hsl(160, 55%, 19%);
+$color-projectsBg: hsl(160, 55%, 20%);
 $color-aboutBg: hsl(42, 51%, 31%);
-$color-contactBg: hsl(210, 55%, 19%);
+$color-contactBg: hsl(210, 55%, 20%);
+$color-projectsSecondBg: hsl(188, 55%, 20%);
 
 .theme-projects {
   --color-primary: 160 95% 50%;
   --color-primaryLight: 160 84% 39%;
   --color-primaryDark: 160 84% 29%;
+  --color-primarySecondary: 188 95% 50%;
 }
 
 .theme-about {
@@ -40,7 +42,7 @@ body {
 }
 
 body {
-  background: #000000;
+  background: rgb(10, 10, 10);
   height: 100%;
   width: 100%;
 }
@@ -75,8 +77,9 @@ a {
 
 .projectsBg {
   background: radial-gradient(
-    100% 120% at 100% 0%,
-    $color-projectsBg 0%,
+    45% 75% at 100% 0%,
+    hsl(188, 55%, 20%) 20%,
+    hsl(160, 55%, 19%) 50%,
     rgba(0, 0, 0, 0) 100%
   );
 }
@@ -105,6 +108,14 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+.shadowAround {
+  box-shadow: 0px 0px 4px 1px hsla(160, 20%, 50%, 0.25);
+}
+
+.animateChild {
+  transition: background 1s ease-out;
+}
+
 @layer components {
   .btn-primary {
     &::before {
@@ -118,15 +129,14 @@ a {
       padding: 1.5rem 4.5rem;
     }
     display: inline-block;
-    @apply relative text-white font-semibold focus:outline-none;
+    @apply relative focus:outline-none;
   }
   .btn-text {
     @apply;
   }
 
-  .hoverOnParent:hover img,
-  .hoverOnParent:focus img {
-    mix-blend-mode: normal;
-    filter: none;
+  .hoverOnParent:hover .animateChild,
+  .hoverOnParent:focus .animateChild {
+    background-position: 200%;
   }
 }

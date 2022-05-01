@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
 import { useContext } from 'react';
 import { ProjectsContext } from '../../../pages/projects';
-import StyczneTury from '../../../assets/images/smallguide.png';
-import PollWorld from '../../../assets/images/pollworld.png';
-import Centrum from '../../../assets/images/centrumRozwojuDesktop.png';
+import StyczneTury from '../../../assets/images/smallGuide.webp';
+import PollWorld from '../../../assets/images/poll.webp';
+import Centrum from '../../../assets/images/centrum.webp';
 import CreateNextStarter from '../../../assets/images/createNextStarter.png';
 import { FaGithub } from 'react-icons/fa';
 import { MdOutlineClose, MdOutlineOpenInNew } from 'react-icons/md';
@@ -23,7 +23,7 @@ const Modal = () => {
         onClick={() => setOpenModal(null)}
       />
       <div className="absolute top-0 left-0 w-full h-screen grid place-items-center">
-        <div className="w-full h-full md:w-4/5 md:h-4/5 rounded-xl z-40 fixed p-4">
+        <div className="w-full h-full md:w-4/5 md:h-4/5 rounded-xl z-40 fixed p-4 max-w-screen-2xl">
           <motion.div
             layoutId={selectedData.title}
             className="bg-projectBg rounded-xl w-full h-full backdrop-blur-md flex flex-col lg:flex-row justify-between gap-4"

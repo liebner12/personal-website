@@ -29,8 +29,8 @@ const Header = ({ title, desc }: Header) => {
       <div ref={ref} className="flex justify-between items-start">
         {!matches && <Toggle />}
         <div className="flex flex-col items-end ml-auto">
-          <h1 className="font-bold text-white text-3xl mb-2">{title}</h1>
-          <p className="text-grey">{desc}</p>
+          <h1 className="font-bold text-white text-5xl mb-2">{title}</h1>
+          <p className="text-grey text-right">{desc}</p>
         </div>
       </div>
       <AnimatePresence>

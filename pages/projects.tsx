@@ -30,7 +30,10 @@ const Projects = () => {
       </Head>
       <Background background="projectsBg" />
       <Container>
-        <Header title="Projects" desc="Selected work" />
+        <Header
+          title="Projects"
+          desc="Showcase of my works on frontend development."
+        />
         <ProjectsLayout />
         <Modal />
       </Container>

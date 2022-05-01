@@ -80,7 +80,7 @@ const Nav = () => {
         duration: 0.4,
         type: 'tween',
       }}
-      className="lg:flex bg-black lg:bg-transparent z-30 h-screen w-full lg:w-auto lg:px-20 overflow-y-auto lg:relative fixed flex flex-col justify-between text-white py-8 px-4 lg:pr-10 flex-shrink-0"
+      className="lg:flex bg-black lg:bg-transparent z-30 h-screen w-full lg:w-auto lg:px-20 overflow-y-auto top-0 left-0 lg:sticky fixed flex flex-col justify-between text-white py-8 px-4 lg:pr-10 flex-shrink-0"
     >
       {!matches && open && (
         <Background background={currentBackground(router.pathname)} />

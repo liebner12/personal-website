@@ -11,7 +11,7 @@ const NavbarButtons = () => {
   const matches = useMediaQuery(1024);
   const router = useRouter();
   return (
-    <ul className="flex flex-col justify-around font-semibold text-3xl md:text-2xl gap-20">
+    <ul className="flex flex-col justify-around text-3xl md:text-2xl font-semibold gap-20">
       <li className="btn-primary flex items-center">
         <Link href="/" passHref>
           <Button

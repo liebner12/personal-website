@@ -19,11 +19,11 @@ const Main = ({ children }: children) => {
   return (
     <>
       <div
-        className={`w-full h-full grid place-items-center xl:overflow-y-hidden ${currentTitle(
+        className={`w-full h-full grid place-items-center ${currentTitle(
           router.pathname
         )}`}
       >
-        <div className="flex h-full relative w-full max-w-screen-2xl">
+        <div className="flex h-full w-full max-w-screen-2xl">
           <Navbar.Nav />
           {children}
         </div>

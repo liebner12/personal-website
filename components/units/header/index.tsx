@@ -9,7 +9,7 @@ const HeaderUnit = ({ title }: Header) => {
   return (
     <motion.div
       className={
-        'fixed left-0 top-0 z-20 w-screen bg-[rgba(30,30,30,0.85)] backdrop-blur-lg flex items-center justify-between px-4 py-1 border-b-[hsl(0,0%,15%)] border-b-2 shadow-lg'
+        'fixed left-0 top-0 z-20 w-screen bg-dark backdrop-blur-lg flex items-center justify-between px-4 py-1 border-b-[hsl(0,0%,15%)] border-b-2 shadow-lg'
       }
       initial={{ y: '-50px', opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
