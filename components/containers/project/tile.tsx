@@ -15,10 +15,12 @@ const Tile = ({ image, title, subtitle, onClick }: Tile) => {
   return (
     <motion.div
       role="button"
-      className="w-full h-full text-left outline-none tapHighlight relative hoverOnParent"
-      whileHover={{ scale: 1.02 }}
+      className="w-full h-full text-left outline-none tapHighlight relative hoverOnParent will-change-auto"
+      whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.96 }}
-      whileFocus={{ scale: 1.02 }}
+      whileFocus={{ scale: 1.03 }}
+      initial={{ y: '20px', opacity: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
       layoutId={title}
       onClick={onClick}
     >
@@ -56,10 +58,14 @@ const Tile = ({ image, title, subtitle, onClick }: Tile) => {
           </motion.button>
         </div>
         <div className="flex flex-col h-full flex-1 m-4 mb-2 mt-0 flex-shrink-0">
-          <motion.div className="rounded-md relative" layoutId={`${title}-img`}>
+          <motion.div
+            className="rounded-md relative mt-auto"
+            layoutId={`${title}-img`}
+          >
             <Image
               src={image}
               alt={title}
+              layout="responsive"
               className="rounded object-top lg:transition-all lg:ease-in-out"
             />
           </motion.div>

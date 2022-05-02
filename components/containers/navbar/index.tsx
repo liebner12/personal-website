@@ -1,90 +1,18 @@
 import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import NavbarButtons from './buttons';
-import { HiOutlineX, HiOutlineMenu } from 'react-icons/hi';
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
-import { children } from '../../../utils/types/common';
-import useOnScreen from '../../../utils/hooks/useOnScreen';
-import { motion } from 'framer-motion';
-import Background from '../../units/background';
-import { useRouter } from 'next/router';
-import useMediaQuery from '../../../utils/hooks/useMediaQuery';
+import { Dispatch, SetStateAction } from 'react';
+import { motion, useTransform, useViewportScroll } from 'framer-motion';
 
 type Navbar = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>> | (() => void);
 };
 
-export const NavbarContext = createContext<Navbar>({
-  open: false,
-  setOpen: () => {
-    // empty
-  },
-});
-
 const currentYear = new Date().getFullYear().toString();
 
-export const Toggle = () => {
-  const { setOpen } = useContext(NavbarContext);
-
+const Navbar = () => {
   return (
-    <motion.button
-      className="py-1"
-      whileTap={{ scale: 0.95 }}
-      whileFocus={{ scale: 1.1 }}
-      whileHover={{ scale: 1.1 }}
-      onClick={() => setOpen((prev) => !prev)}
-    >
-      <HiOutlineMenu className="w-10 h-10 text-white" />
-    </motion.button>
-  );
-};
-
-const currentBackground = (path: string) => {
-  switch (path) {
-    case '/contact':
-      return 'contactBg';
-    case '/projects':
-      return 'projectsBg';
-    default:
-      return 'aboutBg';
-  }
-};
-
-const Nav = () => {
-  const router = useRouter();
-  const { open, setOpen } = useContext(NavbarContext);
-  const matches = useMediaQuery(1024);
-
-  useEffect(() => {
-    setOpen(matches ? true : false);
-  }, [matches, setOpen]);
-
-  const variants = {
-    open: { opacity: 1, x: 0 },
-    closed: { opacity: 1, x: '-100%' },
-  };
-  return (
-    <motion.nav
-      initial={{ opacity: 1, x: '-100%' }}
-      animate={open ? 'open' : 'closed'}
-      variants={variants}
-      transition={{
-        duration: 0.4,
-        type: 'tween',
-      }}
-      className="lg:flex bg-black lg:bg-transparent z-30 h-screen w-full lg:w-auto lg:px-20 overflow-y-auto top-0 left-0 lg:sticky fixed flex flex-col justify-between text-white py-8 px-4 lg:pr-10 flex-shrink-0"
-    >
-      {!matches && open && (
-        <Background background={currentBackground(router.pathname)} />
-      )}
+    <motion.nav className="lg:flex lg:bg-transparent z-30 h-screen lg:px-12 xl:px-20 overflow-y-auto top-0 left-0 lg:sticky fixed flex flex-col justify-between text-white py-8 px-4 flex-shrink-0">
       <div className="flex justify-between items-start">
         <div>
           <h1 className="text-primary transition-colors duration-1000">
@@ -92,17 +20,6 @@ const Nav = () => {
           </h1>
           <h2 className="font-bold text-2xl">Michał Liebner</h2>
         </div>
-        {!matches && (
-          <motion.button
-            className="p-2"
-            whileTap={{ scale: 0.95 }}
-            whileFocus={{ scale: 1.1 }}
-            whileHover={{ scale: 1.1 }}
-            onClick={() => setOpen(false)}
-          >
-            <HiOutlineX className="w-7 h-7 text-white" />
-          </motion.button>
-        )}
       </div>
       <NavbarButtons />
       <footer>
@@ -133,16 +50,40 @@ const Nav = () => {
   );
 };
 
-const Navbar = ({ children }: children) => {
-  const [open, setOpen] = useState(false);
+export default Navbar;
 
-  const value = useMemo(() => ({ open, setOpen }), [open, setOpen]);
+export const MobileNavbar = () => {
+  const { scrollY } = useViewportScroll();
+  const opacity = useTransform(scrollY, [0, 50], [0, 1]);
+
   return (
-    <NavbarContext.Provider value={value}>{children}</NavbarContext.Provider>
+    <nav className="sticky top-0 left-0 w-full z-40">
+      <div className="bg-gradient-to-r from-primary to-primarySecondary h-1 w-full rounded-b-lg bg-[length:200%_1px] animateChild ease-linear" />
+      <div className="flex items-center justify-between p-4 md:px-12 flex-wrap">
+        <NavbarButtons />
+        <div className="flex gap-3 text-white">
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/in/micha%C5%82-liebner-352034229/"
+            rel="noreferrer"
+            aria-label="Linkedin account"
+          >
+            <FiLinkedin className="h-6 w-6" />
+          </a>
+          <a
+            target="_blank"
+            href="https://github.com/liebner12"
+            rel="noreferrer"
+            aria-label="Github account"
+          >
+            <FiGithub className="h-6 w-6" />
+          </a>
+        </div>
+      </div>
+      <motion.div
+        className="h-full w-full absolute top-0 bg-dark -z-10"
+        style={{ opacity: opacity }}
+      />
+    </nav>
   );
 };
-
-Navbar.Toggle = Toggle;
-Navbar.Nav = Nav;
-
-export default Navbar;

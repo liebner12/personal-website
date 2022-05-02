@@ -1,22 +1,11 @@
-import { AnimatePresence, motion } from 'framer-motion';
-import useMediaQuery from '../../../utils/hooks/useMediaQuery';
-import useOnScreen from '../../../utils/hooks/useOnScreen';
-import { Toggle } from '../../containers/navbar';
-import HeaderUnit from '../../units/header';
+import { motion } from 'framer-motion';
+
 type Header = {
   title: string;
   desc: string;
 };
 
 const Header = ({ title, desc }: Header) => {
-  const matches = useMediaQuery(1024);
-  const options = {
-    root: null,
-    rootMargin: '-8px',
-    threshold: 0.5,
-  };
-  const { ref, isIntersecting } = useOnScreen(true, options);
-
   return (
     <motion.header
       initial={{ x: 100, opacity: 0 }}
@@ -26,16 +15,14 @@ const Header = ({ title, desc }: Header) => {
         duration: 0.5,
       }}
     >
-      <div ref={ref} className="flex justify-between items-start">
-        {!matches && <Toggle />}
-        <div className="flex flex-col items-end ml-auto">
-          <h1 className="font-bold text-white text-5xl mb-2">{title}</h1>
-          <p className="text-grey text-right">{desc}</p>
+      <div className="flex justify-between items-start py-6 lg:pb-0">
+        <div className="flex flex-col lg:items-end lg:ml-auto text-left lg:text-right">
+          <h1 className="font-bold text-white text-3xl xl:text-5xl mb-1 lg:mb-2">
+            {title}
+          </h1>
+          <p className="text-grey">{desc}</p>
         </div>
       </div>
-      <AnimatePresence>
-        {!isIntersecting && !matches && <HeaderUnit title={title} />}
-      </AnimatePresence>
     </motion.header>
   );
 };

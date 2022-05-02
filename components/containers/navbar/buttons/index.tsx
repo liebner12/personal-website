@@ -2,23 +2,14 @@ import Link from 'next/link';
 import Button from '../../../units/button';
 
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
-import { NavbarContext } from '..';
-import useMediaQuery from '../../../../utils/hooks/useMediaQuery';
 
 const NavbarButtons = () => {
-  const { setOpen } = useContext(NavbarContext);
-  const matches = useMediaQuery(1024);
   const router = useRouter();
   return (
-    <ul className="flex flex-col justify-around text-3xl md:text-2xl font-semibold gap-20">
+    <ul className="flex font-semibold text-lg gap-4 lg:flex-col lg:justify-around md:text-xl lg:text-2xl md:gap-8 lg:gap-16 xl:gap-20 lg:py-8">
       <li className="btn-primary flex items-center">
         <Link href="/" passHref>
-          <Button
-            isActive={router.pathname === '/'}
-            color="text-about"
-            onClick={() => !matches && setOpen(false)}
-          >
+          <Button isActive={router.pathname === '/'} color="text-about">
             About me
           </Button>
         </Link>
@@ -28,7 +19,6 @@ const NavbarButtons = () => {
           <Button
             isActive={router.pathname === '/projects'}
             color="text-projects"
-            onClick={() => !matches && setOpen(false)}
           >
             Projects
           </Button>
@@ -39,7 +29,6 @@ const NavbarButtons = () => {
           <Button
             isActive={router.pathname === '/contact'}
             color="text-contact"
-            onClick={() => !matches && setOpen(false)}
           >
             Contact
           </Button>

@@ -5,7 +5,6 @@ import Main from '../components/containers/main';
 import { AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
 import '../styles/globals.scss';
-import NavbarContext from '../components/containers/navbar';
 import NextNProgress from 'nextjs-progressbar';
 import { theme } from '../tailwind.config';
 
@@ -41,14 +40,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router]);
 
   return (
-    <NavbarContext>
+    <>
       <NextNProgress color={currentColor} />
       <Main>
         <AnimatePresence exitBeforeEnter>
           <Component {...pageProps} key={router.pathname} />
         </AnimatePresence>
       </Main>
-    </NavbarContext>
+    </>
   );
 }
 

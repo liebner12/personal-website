@@ -1,6 +1,7 @@
-import Navbar from '../navbar';
+import Navbar, { MobileNavbar } from '../navbar';
 import { children } from '../../../utils/types/common';
 import { useRouter } from 'next/router';
+import useMediaQuery from '../../../utils/hooks/useMediaQuery';
 
 const currentTitle = (path: string) => {
   switch (path) {
@@ -15,6 +16,7 @@ const currentTitle = (path: string) => {
 
 const Main = ({ children }: children) => {
   const router = useRouter();
+  const isNotMobile = useMediaQuery(1024);
 
   return (
     <>
@@ -23,8 +25,8 @@ const Main = ({ children }: children) => {
           router.pathname
         )}`}
       >
-        <div className="flex h-full w-full max-w-screen-2xl">
-          <Navbar.Nav />
+        <div className="flex flex-col lg:flex-row h-full w-full max-w-screen-2xl">
+          {isNotMobile ? <Navbar /> : <MobileNavbar />}
           {children}
         </div>
       </div>

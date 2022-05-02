@@ -20,7 +20,7 @@ const Projects = () => {
           duration: 0.5,
         }}
       >
-        <div className="grid h-full md:grid-cols-3 xl:grid-cols-3 gap-10 py-10 w-full xl:h-full lg:grid-cols-3">
+        <div className="grid h-full xl:grid-cols-3 gap-10 lg:py-10 w-full xl:h-full md:grid-cols-2">
           <Tile
             title="Small Guide"
             subtitle="Travel app"
