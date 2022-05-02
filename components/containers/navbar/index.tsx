@@ -12,7 +12,7 @@ const currentYear = new Date().getFullYear().toString();
 
 const Navbar = () => {
   return (
-    <motion.nav className="lg:flex lg:bg-transparent z-30 h-screen lg:px-12 xl:px-20 overflow-y-auto top-0 left-0 lg:sticky fixed flex flex-col justify-between text-white py-8 px-4 flex-shrink-0">
+    <motion.nav className="lg:flex lg:bg-transparent z-30 h-screen lg:pl-12 xl:pl-20 overflow-y-auto top-0 left-0 lg:sticky fixed flex flex-col justify-between text-white py-8 px-4 flex-shrink-0">
       <div className="flex justify-between items-start">
         <div>
           <h1 className="text-primary transition-colors duration-1000">
