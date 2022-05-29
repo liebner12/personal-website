@@ -1,7 +1,12 @@
 import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import NavbarButtons from './buttons';
-import { Dispatch, SetStateAction } from 'react';
-import { motion, useTransform, useViewportScroll } from 'framer-motion';
+import { Dispatch, SetStateAction, useEffect } from 'react';
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  useViewportScroll,
+} from 'framer-motion';
 
 type Navbar = {
   open: boolean;
@@ -54,22 +59,18 @@ export default Navbar;
 
 export const MobileNavbar = () => {
   const { scrollY } = useViewportScroll();
-  const opacity = useTransform(scrollY, [0, 50], [0, 1]);
+  const opacity = useTransform(scrollY, [0, 100], [0, 1]);
+
+  useEffect(() => {
+    opacity.set(scrollY.get());
+  }, [opacity, scrollY]);
 
   return (
     <nav className="sticky top-0 left-0 w-full z-40">
       <div className="bg-gradient-to-r from-primary to-primarySecondary h-1 w-full rounded-b-lg bg-[length:200%_1px] animateChild ease-linear" />
-      <div className="flex items-center justify-between p-4 md:px-12 flex-wrap">
+      <div className="flex items-center justify-between p-4 md:px-12 flex-wrap gap-2">
         <NavbarButtons />
         <div className="flex gap-3 text-white">
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/in/micha%C5%82-liebner-352034229/"
-            rel="noreferrer"
-            aria-label="Linkedin account"
-          >
-            <FiLinkedin className="h-6 w-6" />
-          </a>
           <a
             target="_blank"
             href="https://github.com/liebner12"

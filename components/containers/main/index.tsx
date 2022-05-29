@@ -19,18 +19,16 @@ const Main = ({ children }: children) => {
   const isNotMobile = useMediaQuery(1024);
 
   return (
-    <>
-      <div
-        className={`w-full h-full grid place-items-center ${currentTitle(
-          router.pathname
-        )}`}
-      >
-        <div className="flex flex-col lg:flex-row h-full w-full max-w-screen-2xl">
-          {isNotMobile ? <Navbar /> : <MobileNavbar />}
-          {children}
-        </div>
+    <div
+      className={`w-full h-full grid place-items-center ${currentTitle(
+        router.pathname
+      )}`}
+    >
+      <div className="flex flex-col lg:flex-row h-full w-full max-w-screen-2xl">
+        {isNotMobile ? <Navbar /> : <MobileNavbar />}
+        {children}
       </div>
-    </>
+    </div>
   );
 };
 

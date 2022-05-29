@@ -26,6 +26,10 @@ $color-projectsSecondBg: hsl(188, 55%, 20%);
   --color-primaryDark: 210 84% 29%;
 }
 
+:root {
+  color-scheme: dark;
+}
+
 html,
 body {
   padding: 0;
@@ -42,29 +46,9 @@ body {
 }
 
 body {
-  background: rgb(12, 12, 12);
+  background: rgb(16, 16, 16);
   height: 100%;
   width: 100%;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #313131;
-  border-radius: 0 5px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: rgb(166, 166, 166);
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #666;
 }
 
 a {

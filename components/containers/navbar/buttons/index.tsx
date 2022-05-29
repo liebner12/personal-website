@@ -6,11 +6,11 @@ import { useRouter } from 'next/router';
 const NavbarButtons = () => {
   const router = useRouter();
   return (
-    <ul className="flex font-semibold text-lg gap-4 lg:flex-col lg:justify-around md:text-xl lg:text-2xl md:gap-8 lg:gap-16 xl:gap-20 lg:py-8">
+    <ul className="flex font-semibold gap-4 lg:flex-col lg:justify-around md:text-xl md:gap-8 lg:gap-16 xl:gap-20 lg:py-8">
       <li className="btn-primary flex items-center">
         <Link href="/" passHref>
           <Button isActive={router.pathname === '/'} color="text-about">
-            About me
+            About
           </Button>
         </Link>
       </li>

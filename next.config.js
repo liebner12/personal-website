@@ -1,23 +1,30 @@
-/** @type {import('next').NextConfig} */
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+});
+
 const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
 
-const nextConfig = withPWA({
-  reactStrictMode: true,
-  pwa: {
-    dest: 'public',
-    register: true,
-    skipWaiting: true,
-    runtimeCaching,
-    buildExcludes: [/middleware-manifest.json$/],
-  },
-  experimental: {
-    images: {
-      layoutRaw: true,
+const nextConfig = withMDX(
+  withPWA({
+    reactStrictMode: true,
+    pwa: {
+      dest: 'public',
+      register: true,
+      skipWaiting: true,
+      runtimeCaching,
+      buildExcludes: [/middleware-manifest.json$/],
     },
-    outputStandalone: true,
-    concurrentFeatures: true,
-  },
-});
+    experimental: {
+      outputStandalone: true,
+      concurrentFeatures: true,
+    },
+    pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  })
+);
 
 module.exports = nextConfig;

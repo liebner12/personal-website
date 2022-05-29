@@ -3,26 +3,27 @@ import { BiFullscreen } from 'react-icons/bi';
 import { SiTailwindcss, SiNextdotjs, SiReact } from 'react-icons/si';
 import { ImArrowRight2 } from 'react-icons/im';
 import { motion } from 'framer-motion';
+import React from 'react';
 
 type Tile = {
-  image: string | StaticImageData;
+  image: string;
   title: string;
   subtitle: string;
-  onClick: () => void;
+  desc: string;
+  technologies: Array<string>;
 };
 
-const Tile = ({ image, title, subtitle, onClick }: Tile) => {
+const Tile = ({ image, title, subtitle, desc }: Tile) => {
   return (
-    <motion.div
-      role="button"
+    <motion.a
       className="w-full h-full text-left outline-none tapHighlight relative hoverOnParent will-change-auto"
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.96 }}
       whileFocus={{ scale: 1.03 }}
-      initial={{ y: '20px', opacity: 0 }}
+      initial={{ y: '40px', opacity: 0 }}
       whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
       layoutId={title}
-      onClick={onClick}
     >
       <div className={`h-full bg-blockBg rounded-lg flex flex-col `}>
         <div className="m-4 flex flex-col relative">
@@ -38,10 +39,7 @@ const Tile = ({ image, title, subtitle, onClick }: Tile) => {
           >
             {title}
           </motion.h3>
-          <p className=" text-grey mt-1">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod.
-          </p>
+          <p className=" text-grey mt-1">{desc}</p>
           <div className="flex gap-3 pt-2 text-primary">
             <SiTailwindcss className=" w-6 h-6" />
             <SiReact className=" w-6 h-6" />
@@ -65,7 +63,7 @@ const Tile = ({ image, title, subtitle, onClick }: Tile) => {
             <Image
               src={image}
               alt={title}
-              layout="responsive"
+              layout="fill"
               className="rounded object-top lg:transition-all lg:ease-in-out"
             />
           </motion.div>
@@ -82,7 +80,7 @@ const Tile = ({ image, title, subtitle, onClick }: Tile) => {
         </div>
       </div>
       <div className="bg-gradient-to-r from-primary to-primarySecondary absolute bottom-0 left-0 h-1 w-full rounded-b-lg bg-[length:200%_1px] animateChild ease-linear" />
-    </motion.div>
+    </motion.a>
   );
 };
 
