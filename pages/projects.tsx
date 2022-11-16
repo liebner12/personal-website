@@ -1,44 +1,76 @@
 import Head from 'next/head';
-import { createContext, useState } from 'react';
-import Container from '../components/containers/container';
-import Modal from '../components/containers/modal';
-import ProjectsLayout from '../components/layouts/projects';
-import Background from '../components/units/background';
-import Header from '../components/containers/header';
-import { ModalType } from '../utils/types/project';
+import {
+  Header,
+  Container,
+  Background,
+  ProjectTile,
+  List,
+  SearchContainer,
+} from 'components';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { BACKGROUNDS } from 'data';
+import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
+import { sortByDate } from 'utils';
+import { useSelectedPosts } from 'hooks';
+import { getTechnologies } from 'lib';
 
-interface ProjectContext {
-  openModal: ModalType;
-  setOpenModal: React.Dispatch<React.SetStateAction<ModalType>>;
-}
+const Projects = ({
+  projects,
+  technologies,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { filteredPosts, search, setSearch, toggleTag } = useSelectedPosts(
+    projects,
+    'projects'
+  );
 
-export const ProjectsContext = createContext<ProjectContext>({
-  openModal: null,
-  setOpenModal: () => {
-    // do nothing
-  },
-});
-
-const Projects = () => {
-  const [openModal, setOpenModal] = useState<ModalType>(null);
   return (
-    <ProjectsContext.Provider value={{ setOpenModal, openModal }}>
+    <>
       <Head>
         <title>Projects</title>
         <meta name="description" content="My projects :)" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Background background="projectsBg" />
-      <Container>
+      <Background background={BACKGROUNDS.projects} />
+      <Container isGrid>
         <Header
           title="Projects"
           desc="Showcase of my works on frontend development."
         />
-        <ProjectsLayout />
-        <Modal />
+        <SearchContainer
+          toggleTag={toggleTag}
+          tags={technologies}
+          search={search}
+          setSearch={setSearch}
+        />
+        <List isEmpty={filteredPosts.length === 0}>
+          {filteredPosts.map(
+            ({ title, technologies, subtitle, desc, image, slug }) => (
+              <ProjectTile
+                title={title}
+                subtitle={subtitle}
+                image={image}
+                desc={desc}
+                slug={slug}
+                key={slug}
+                technologies={technologies}
+              />
+            )
+          )}
+        </List>
       </Container>
-    </ProjectsContext.Provider>
+    </>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const files = await getAllFilesFrontmatter('projects');
+
+  return {
+    props: {
+      technologies: getTechnologies(files),
+      projects: files.sort(sortByDate),
+    },
+  };
 };
 
 export default Projects;
