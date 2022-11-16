@@ -21,7 +21,8 @@
     "strict": true,
     "target": "es2018",
     "incremental": true,
-    "noEmit": true
+    "noEmit": true,
+    "baseUrl": "."
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

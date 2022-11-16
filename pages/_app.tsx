@@ -1,53 +1,57 @@
+import axios from 'axios';
+import 'styles/globals.scss';
+import 'styles/dracula.css';
 import type { AppProps } from 'next/app';
-import { useEffect, useState } from 'react';
-import setDarkMode from '../utils/utils';
-import Main from '../components/containers/main';
-import { AnimatePresence } from 'framer-motion';
+import { useEffect } from 'react';
+import { getCurrentTheme, setDarkMode } from 'utils';
+import { Layout } from 'components/containers';
 import { useRouter } from 'next/router';
-import '../styles/globals.scss';
 import NextNProgress from 'nextjs-progressbar';
-import { theme } from '../tailwind.config';
-
-const currentBackground = (path: string) => {
-  switch (path) {
-    case '/contact':
-      return theme.colors.contact;
-    case '/projects':
-      return theme.colors.projects;
-    default:
-      return theme.colors.about;
-  }
-};
+import { SWRConfig } from 'swr';
+import { FiFacebook, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const [currentColor, setCurrentColor] = useState('');
+  const { color, theme } = getCurrentTheme(router.pathname);
 
   useEffect(() => {
     setDarkMode();
   }, []);
 
-  useEffect(() => {
-    const handleStart = (url: string) => {
-      console.log(url, currentBackground(url));
-      setCurrentColor(currentBackground(url));
-    };
-    router.events.on('routeChangeStart', handleStart);
-
-    return () => {
-      router.events.off('routeChangeStart', handleStart);
-    };
-  }, [router]);
-
   return (
-    <>
-      <NextNProgress color={currentColor} />
-      <Main>
-        <AnimatePresence exitBeforeEnter>
-          <Component {...pageProps} key={router.pathname} />
-        </AnimatePresence>
-      </Main>
-    </>
+    <SWRConfig
+      value={{
+        fetcher: (url) => axios.get(url).then((res) => res.data),
+      }}
+    >
+      <NextNProgress color={color} />
+      <Layout theme={theme}>
+        <Component {...pageProps} key={router.pathname} />
+      </Layout>
+
+      {false && (
+        <footer className="mb-2 flex w-full flex-col items-center gap-6 text-grey">
+          <div className="flex flex-col gap-2 text-center">
+            <h4 className="font-medium">Reach me out</h4>
+            <ul className="flex gap-4">
+              <li>
+                <FiMail className="h-6 w-6" />
+              </li>
+              <li>
+                <FiGithub className="h-6 w-6" />
+              </li>
+              <li>
+                <FiLinkedin className="h-6 w-6" />
+              </li>
+              <li>
+                <FiFacebook className="h-6 w-6" />
+              </li>
+            </ul>
+          </div>
+          <p>&copy; Michał Liebner 2022</p>
+        </footer>
+      )}
+    </SWRConfig>
   );
 }
 

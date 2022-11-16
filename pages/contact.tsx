@@ -1,15 +1,62 @@
-import Contact from '../components/layouts/contact';
-import Background from '../components/units/background';
-import Header from '../components/containers/header';
+import { Container, Background, ContactBlog } from 'components';
+import { BACKGROUNDS, FADE_IN_FIRST, FADE_IN_SECOND } from 'data';
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import { FiFacebook, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import { motion } from 'framer-motion';
 
-const Projects = () => {
+const Contact: NextPage = () => {
   return (
     <>
-      <Header title="Contact" desc="Let's talk" />
-      <Background background="contactBg" />
-      <Contact />
+      <Head>
+        <title>Contact</title>
+        <meta name="description" content="I am young developer :)" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Background background={BACKGROUNDS.contact} />
+      <Container>
+        <div className="my-auto">
+          <motion.div className="prose prose-invert" {...FADE_IN_FIRST}>
+            <h1 className="text-primary">GET IN TOUCH</h1>
+            <p>
+              Do contact me if you need my opinion about web development,
+              especially frontend works. I’ll be happy to help! (find my email
+              in the footer)
+            </p>
+          </motion.div>
+          <motion.ul
+            className="mt-8 grid max-w-screen-lg grid-cols-1 gap-8 pl-0 text-primary md:grid-cols-2 md:grid-rows-2"
+            {...FADE_IN_SECOND}
+          >
+            <ContactBlog
+              Icon={FiGithub}
+              text="Github"
+              showedLink="https://github.com/liebner12"
+              link="https://github.com/liebner12"
+            />
+            <ContactBlog
+              Icon={FiMail}
+              text="Email"
+              showedLink="mailto:liebner.michal@outlook.com"
+              link="liebner.michal@outlook.com"
+            />
+            <ContactBlog
+              Icon={FiLinkedin}
+              text="Linkedin"
+              showedLink="Michał Liebner"
+              link="https://www.linkedin.com/in/micha%C5%82-liebner-352034229"
+            />
+            <ContactBlog
+              Icon={FiFacebook}
+              text="Facebook"
+              showedLink="Michał Liebner"
+              link="https://www.facebook.com/liebner12"
+            />
+          </motion.ul>
+        </div>
+      </Container>
     </>
   );
 };
 
-export default Projects;
+export default Contact;
