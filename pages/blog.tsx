@@ -5,8 +5,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { BACKGROUNDS } from 'data';
 import { SearchContainer } from 'components/search';
 import { getTags } from 'lib';
-import useInjectContent from 'hooks/useInjectContent';
-import { useSelectedPosts } from 'hooks';
+import { useSelectedPosts, useInjectContent } from 'hooks';
 import { checkTagged, sortByDate } from 'utils';
 import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
 

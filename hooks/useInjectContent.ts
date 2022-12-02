@@ -5,7 +5,7 @@ import { BlogWithMeta } from 'types/blogs';
 import { ViewCount } from 'lib';
 import { BlogFrontmatter } from 'types/frontmatters';
 
-export default function useInjectContent(frontmatter: Array<BlogFrontmatter>) {
+export function useInjectContent(frontmatter: Array<BlogFrontmatter>) {
   const { data } = useSWR<Array<ViewCount>>('/api/views');
   const [populatedContent, setPopulatedContent] = useState<Array<BlogWithMeta>>(
     frontmatter as Array<BlogWithMeta>

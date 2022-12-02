@@ -9,14 +9,10 @@ import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { BsArrowDownCircle, BsArrowRight } from 'react-icons/bs';
 import { getAllFilesFrontmatter, getTags, getTechnologies } from 'lib';
 import { sortByDate } from 'utils';
-import useInjectContent from 'hooks/useInjectContent';
+import { useInjectContent } from 'hooks';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
 import Image from 'next/image';
 import Blog from 'assets/images/blog.jpg';
-import Centrum from 'assets/images/centrum.webp';
-import CreateNextStarter from 'assets/images/createNextStarter.png';
-import SmallGuide from 'assets/images/smallGuide.webp';
-import Poll from 'assets/images/poll.webp';
 
 const MotionLink = motion(Link);
 
