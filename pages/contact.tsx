@@ -19,9 +19,9 @@ const Contact: NextPage = () => {
           <motion.div className="prose prose-invert" {...FADE_IN_FIRST}>
             <h1 className="text-primary">GET IN TOUCH</h1>
             <p>
-              Do contact me if you need my opinion about web development,
-              especially frontend works. I’ll be happy to help! (find my email
-              in the footer)
+              Do contact me if you want to talk about programming and especially
+              if it&#39;s connected with Javascript ecosystem. I&#39;ll be happy
+              to get to know each other!
             </p>
           </motion.div>
           <motion.ul
@@ -37,8 +37,8 @@ const Contact: NextPage = () => {
             <ContactBlog
               Icon={FiMail}
               text="Email"
-              showedLink="mailto:liebner.michal@outlook.com"
-              link="liebner.michal@outlook.com"
+              showedLink="liebner.michal@outlook.com"
+              link="mailto:liebner.michal@outlook.com"
             />
             <ContactBlog
               Icon={FiLinkedin}

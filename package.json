@@ -22,6 +22,7 @@
     "@mdx-js/loader": "^2.1.1",
     "@react-three/fiber": "^7.0.26",
     "@supabase/supabase-js": "^2.0.0-rc.10",
+    "@vercel/og": "^0.0.21",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "framer-motion": "^7.6.1",

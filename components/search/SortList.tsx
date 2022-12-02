@@ -25,7 +25,7 @@ export const SortList = ({ sortBy, setSortBy, sortByList }: SortListType) => {
             whileTap={{ scale: 0.99 }}
             whileFocus={{ scale: 1.02 }}
             whileHover={{ scale: 1.02 }}
-            className="relative h-full w-full rounded-xl bg-darkBlockBg py-1.5 pl-3 pr-10 text-left focus:outline-none focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-grey focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-primary sm:text-sm"
+            className="tap-highlight relative h-full w-full rounded-xl bg-darkBlockBg py-1.5 pl-3 pr-10 text-left focus:outline-none focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-grey focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-primary sm:text-sm"
           >
             <span className="flex h-7 items-center gap-2 truncate">
               {sortBy === 'date' ? (

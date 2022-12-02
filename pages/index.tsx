@@ -37,7 +37,7 @@ function HomePage({
       <Container className="!mt-0 overflow-hidden !pt-0 md:overflow-auto">
         <section className="flex h-screen flex-col justify-center">
           <div className="flex flex-col lg:flex-row lg:items-center">
-            <div className="prose prose-invert pt-8">
+            <div className="prose prose-invert mb-14">
               <motion.h1
                 className="mb-0 text-2xl font-bold text-primary"
                 {...FADE_IN_FIRST}
@@ -48,8 +48,8 @@ function HomePage({
                 I am <span className="text-primary">Michał Liebner</span>
               </motion.h2>
               <motion.p className="text-xl" {...FADE_IN_SECOND}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                I work with Javascript Ecosystem, especially in front-end but
+                also I can do some backend stuff too!
               </motion.p>
               <motion.div className="flex gap-4" {...FADE_IN_SECOND}>
                 <MotionLink
@@ -174,8 +174,8 @@ function HomePage({
                 </ul>
               </motion.li>
               <motion.li
-                className="absolute top-8 -right-24 z-10 w-80 opacity-70"
-                initial={{ rotate: 12 }}
+                className="absolute top-4 -right-24 z-10 w-80 opacity-70"
+                initial={{ rotate: 6 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.96 }}
                 whileFocus={{ scale: 1.05 }}
@@ -195,8 +195,8 @@ function HomePage({
                 </ul>
               </motion.li>
               <motion.li
-                className="absolute top-8 -left-24 z-0 w-80 opacity-70"
-                initial={{ rotate: -12 }}
+                className="absolute top-4 -left-24 z-0 w-80 opacity-70"
+                initial={{ rotate: -6 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.96 }}
                 whileFocus={{ scale: 1.05 }}
@@ -218,7 +218,7 @@ function HomePage({
             </ul>
           </div>
         </section>
-        <section className="mx-auto grid max-w-6xl items-center gap-20 py-40 lg:grid-cols-2 lg:gap-10 xl:gap-20 xl:gap-20">
+        <section className="mx-auto grid max-w-6xl items-center gap-20 py-40 lg:grid-cols-2 lg:gap-10 xl:gap-20">
           <div className="relative mx-auto grid grid-cols-12 grid-rows-3 items-end gap-4">
             <Image
               src={Blog}

@@ -9,10 +9,13 @@ type Props = {
 export const Tooltip = ({ children, content }: Props) => {
   const [isVisible, setIsVisible] = useState(false);
   return (
-    <motion.div
+    <motion.li
       onHoverStart={() => setIsVisible(true)}
       onHoverEnd={() => setIsVisible(false)}
-      className="relative flex justify-center"
+      onFocus={() => setIsVisible(true)}
+      onBlur={() => setIsVisible(false)}
+      className="relative flex justify-center focus:outline-0"
+      tabIndex={0}
     >
       <AnimatePresence>
         {isVisible && (
@@ -31,6 +34,6 @@ export const Tooltip = ({ children, content }: Props) => {
         )}
       </AnimatePresence>
       {children}
-    </motion.div>
+    </motion.li>
   );
 };

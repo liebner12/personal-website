@@ -16,7 +16,7 @@ export const useScrollSpy = () => {
 
       const currentSectionBox = section.getBoundingClientRect();
       const prevHeight = prevBox ? currentSectionBox.top - prevBox.bottom : 0;
-      const offset = Math.max(100, prevHeight / 4);
+      const offset = Math.max(200, prevHeight / 8);
 
       if (currentSectionBox.top - offset < 0) {
         currentSectionId = currentId;

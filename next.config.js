@@ -7,6 +7,10 @@ const nextConfig = {
     buildExcludes: [/middleware-manifest.json$/],
   },
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en',
+  },
 };
 
 module.exports = nextConfig;

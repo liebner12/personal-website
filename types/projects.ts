@@ -10,6 +10,7 @@ export type Project = {
   publishedAt: string;
   lastUpdated?: string;
   repository: string;
+  url?: string;
 };
 
 export type ProjectWithMeta = ProjectFrontmatter;

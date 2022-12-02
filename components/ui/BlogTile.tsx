@@ -39,7 +39,7 @@ export const BlogTile = ({
       <MotionLink
         {...hoverConfig}
         href={`/blog/${slug}`}
-        className="focus-state rounded-corners-gradient-borders relative block h-full rounded-xl rounded-b-sm bg-blockBg"
+        className="tap-highlight focus-state relative block h-full rounded-xl rounded-b-sm bg-blockBg"
       >
         <div className="flex flex-col">
           <div className="relative overflow-hidden rounded-t-xl">
@@ -64,7 +64,7 @@ export const BlogTile = ({
             </ul>
           </div>
           <div className="mx-4 mt-2 mb-4 flex flex-col gap-1">
-            <h3 className="text-xl font-bold text-white">{title}</h3>
+            <h2 className="text-xl font-bold text-white">{title}</h2>
             <div className="mb-1 flex items-center gap-2">
               <div className="flex items-center gap-1 text-sm">
                 <HiClock className="h-4 w-4 text-primary" />

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { NavbarLinks } from 'components/ui';
-import { useMediaQuery, useMaxWidthPosition } from 'hooks';
+import { useMaxWidthPosition } from 'hooks';
 import {
   HiOutlineChevronDoubleRight,
   HiOutlineHashtag,

@@ -21,11 +21,11 @@ export function CustomImage({
 }: CloudinaryImgType) {
   return (
     <figure
-      className={`overflow-hidden rounded ${
+      className={`mx-auto flex w-full overflow-hidden rounded-lg ${
         width <= 800 && 'mx-auto w-full'
       } ${className}`}
       style={{
-        ...(width <= 800 && { maxWidth: width }),
+        ...(width <= 800 && { maxWidth: `${width}px` }),
         ...style,
       }}
       {...rest}

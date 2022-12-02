@@ -3,6 +3,7 @@ import {
   SiNextdotjs,
   SiNodedotjs,
   SiReact,
+  SiStyledcomponents,
   SiSupabase,
   SiTailwindcss,
   SiTypescript,
@@ -16,15 +17,31 @@ export type IconsProps = {
   icons: Array<IconsList>;
   className: string;
   technologyClassName?: string;
+  size?: 'lg' | 'md' | 'sm';
 } & React.ComponentPropsWithoutRef<'ul'>;
 
 export const Icons = ({
   className,
   icons,
   technologyClassName,
+  size = 'md',
 }: IconsProps) => {
+  const getSize = () => {
+    switch (size) {
+      case 'lg': {
+        return 'h-8 w-8';
+      }
+      case 'md': {
+        return 'h-4 w-4';
+      }
+      default: {
+        return 'h-6 w-6';
+      }
+    }
+  };
+
   return (
-    <ul className={className}>
+    <ul className={`${className} flex list-none flex-wrap gap-4 pl-0`}>
       {icons.map((icon) => {
         if (!iconsList[icon]) return;
 
@@ -33,9 +50,9 @@ export const Icons = ({
         return (
           <AnimatePresence key={current.name}>
             <Tooltip content={current.name}>
-              <li className="text-gray-700 dark:text-gray-200 text-xl">
-                <current.icon className={technologyClassName} />
-              </li>
+              <current.icon
+                className={`${getSize()} ${technologyClassName} hover:text-primary`}
+              />
             </Tooltip>
           </AnimatePresence>
         );
@@ -72,5 +89,9 @@ const iconsList = {
   supabase: {
     icon: SiSupabase,
     name: 'Supabase',
+  },
+  styledcomponents: {
+    icon: SiStyledcomponents,
+    name: 'styled components',
   },
 };

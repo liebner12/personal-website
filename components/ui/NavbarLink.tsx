@@ -20,6 +20,7 @@ export const NavbarLinks = ({ path, text, isExact, icon }: Props) => {
     <li className="btn-primary flex h-10 items-center">
       <Button
         href={path}
+        aria-label={text}
         color="text-primary"
         isActive={isActive}
         startIconProp={icon}

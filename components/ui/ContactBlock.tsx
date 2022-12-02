@@ -34,7 +34,7 @@ export const ContactBlog = ({
             delay: 0.4,
           }}
         >
-          <h3 className="mb-1 text-2xl font-bold text-white">{text}</h3>
+          <h2 className="mb-1 text-2xl font-bold text-white">{text}</h2>
           <p className="break-all text-grey">{showedLink}</p>
         </motion.div>
       </motion.a>

@@ -45,7 +45,7 @@ export const Button = forwardRef(
         href={href}
         className={`${classes} ${
           isActive ? `${color} font-bold` : 'text-grey'
-        } focus-state relative rounded-md py-2 transition-colors ease-in-out after:absolute after:-left-full after:-bottom-1 after:z-[-1] after:box-content after:block after:h-0.5 after:rounded-md after:transition-all after:duration-300 hover:after:left-0 hover:after:w-full hover:after:bg-primary`}
+        } tap-highlight focus-state relative rounded-md py-2 transition-colors ease-in-out after:absolute after:-left-full after:-bottom-1 after:z-[-1] after:box-content after:block after:h-0.5 after:rounded-md after:transition-all after:duration-300 hover:after:left-0 hover:after:w-full hover:after:bg-primary`}
         whileTap={{ scale: 0.96 }}
         whileFocus={{ scale: 1.02 }}
         whileHover={{ scale: 1.02 }}
