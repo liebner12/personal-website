@@ -13,6 +13,7 @@ import { useInjectContent } from 'hooks';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
 import Image from 'next/image';
 import Blog from 'assets/images/blog.jpg';
+import Seo from 'components/Seo';
 
 const MotionLink = motion(Link);
 
@@ -24,11 +25,7 @@ function HomePage({
 
   return (
     <>
-      <Head>
-        <title>Home</title>
-        <meta name="description" content="I am young developer :)" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Seo templateTitle="Home" />
       <Background background={BACKGROUNDS.home} />
       <Container className="!mt-0 overflow-hidden !pt-0 md:overflow-auto">
         <section className="flex h-screen flex-col justify-center">

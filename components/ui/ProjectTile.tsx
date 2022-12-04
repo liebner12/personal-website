@@ -1,30 +1,19 @@
 import Image from 'next/image';
-import { BiFullscreen } from 'react-icons/bi';
+// import { BiFullscreen } from 'react-icons/bi';
 import { motion } from 'framer-motion';
 import React from 'react';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
-import { Icons, IconsList } from './Icons';
-
-type Tile = {
-  image: string;
-  title: string;
-  subtitle: string;
-  desc: string;
-  slug: string;
-  technologies: Array<IconsList>;
-};
+import { Icons } from './Icons';
+import { ProjectFrontmatter } from 'types';
 
 const MotionLink = motion(Link);
 
 export const ProjectTile = ({
-  image,
-  title,
-  subtitle,
-  desc,
-  slug,
-  technologies,
-}: Tile) => {
+  project: { image, title, subtitle, desc, slug, technologies, blurDataURL },
+}: {
+  project: ProjectFrontmatter;
+}) => {
   return (
     <motion.li
       layoutId={slug}
@@ -49,7 +38,7 @@ export const ProjectTile = ({
               icons={technologies}
               className="mt-1 flex gap-3 text-primary"
             />
-            <motion.button
+            {/*<motion.button
               className="absolute top-0 right-0 z-10 rounded-md bg-blockBg p-1.5"
               aria-label="Open details"
               whileTap={{ scale: 0.95 }}
@@ -58,11 +47,13 @@ export const ProjectTile = ({
               tabIndex={-1}
             >
               <BiFullscreen className="h-5 w-5 text-white" />
-            </motion.button>
+            </motion.button>*/}
           </div>
           <div className="mx-4 flex h-full flex-1 flex-shrink-0 flex-col">
             <div className="relative my-auto rounded-md">
               <Image
+                placeholder="blur"
+                blurDataURL={blurDataURL}
                 src={image}
                 alt={title}
                 width={640}

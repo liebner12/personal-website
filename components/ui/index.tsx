@@ -6,3 +6,4 @@ export * from './Icons';
 export * from './BlogTile';
 export * from './SkipToContent';
 export * from './ContactBlock';
+export * from './PostHeader';

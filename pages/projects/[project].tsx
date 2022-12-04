@@ -4,21 +4,16 @@ import type {
   InferGetStaticPropsType,
 } from 'next';
 import Head from 'next/head';
-import { Background, Icons } from 'components/ui';
+import { Background, PostHeader } from 'components/ui';
 import { Container } from 'components/containers';
-import Image from 'next/image';
-import { FaGithub } from 'react-icons/fa';
 import { getFileBySlugFrontmatter, getFiles } from 'lib';
 import { ParsedUrlQuery } from 'querystring';
 import { TableOfContents } from 'components/content/TableOfContents';
 import readingTime from 'reading-time';
-import { MdTimer } from 'react-icons/md';
-import { MDXRemote } from 'next-mdx-remote';
-import { CustomCode, CustomImage } from 'components/content';
-import { BiLink } from 'react-icons/bi';
+import { PostBody } from 'components/ui/PostBody';
 
 const Project = ({
-  frontmatter: { title, desc, subtitle, repository, image, url },
+  frontmatter: { title, desc, subtitle, repository, image, url, blurDataURL },
   mdxSource,
   readingTime,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -33,59 +28,19 @@ const Project = ({
       <Container>
         <div className="relative w-full pb-40 lg:grid lg:grid-cols-[auto,300px] lg:gap-12">
           <div>
-            <div className="mb-6">
-              <p className="text-primary">{subtitle}</p>
-              <h1 className="text-4xl font-bold text-white">{title}</h1>
-              <p className="mt-2 text-grey">{desc}</p>
-              <div className="mt-3 flex items-center gap-2">
-                <a
-                  className="flex items-center gap-1 text-primary"
-                  href={repository}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <FaGithub /> Repository
-                </a>
-                -
-                <div className="flex items-center gap-0.5 text-grey">
-                  <MdTimer />
-                  <span>{readingTime.text}</span>
-                </div>
-                {url && (
-                  <>
-                    -
-                    <a
-                      className="flex items-center gap-1 text-primary"
-                      href={url}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <BiLink />
-                      Open Live Site
-                    </a>
-                  </>
-                )}
-              </div>
-            </div>
-            <Image
-              src={image}
-              alt={title}
-              width={1280}
-              height={720}
-              className="max-w-full rounded-lg"
+            <PostHeader
+              title={title}
+              desc={desc}
+              url={url}
+              readingTime={readingTime}
+              repository={repository}
+              subtitle={subtitle}
             />
-            <section>
-              <article className="mdx prose prose-invert mx-auto mt-4 w-full">
-                <MDXRemote
-                  {...mdxSource}
-                  components={{
-                    CustomImage,
-                    code: (props) => <CustomCode {...props} />,
-                    Icons: Icons,
-                  }}
-                />
-              </article>
-            </section>
+            <PostBody
+              mdxSource={mdxSource}
+              image={image}
+              blurDataURL={blurDataURL}
+            />
           </div>
           <TableOfContents />
         </div>

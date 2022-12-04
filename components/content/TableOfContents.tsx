@@ -1,5 +1,7 @@
 import { useScrollSpy } from 'hooks';
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { FADE_IN_X } from 'data';
 
 export function TableOfContents() {
   const [toc, setToc] = useState([{ id: '', level: 0, text: '' }]);
@@ -24,7 +26,10 @@ export function TableOfContents() {
   }, []);
 
   return (
-    <div className="relative hidden h-full pl-10 xl:block">
+    <motion.div
+      className="relative hidden h-full pl-10 xl:block"
+      {...FADE_IN_X}
+    >
       <div className="sticky top-16 h-screen overflow-auto pb-16">
         <div
           id="toc-container"
@@ -51,6 +56,6 @@ export function TableOfContents() {
           </ul>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

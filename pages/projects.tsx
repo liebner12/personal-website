@@ -43,19 +43,9 @@ const Projects = ({
           setSearch={setSearch}
         />
         <List isEmpty={filteredPosts.length === 0}>
-          {filteredPosts.map(
-            ({ title, technologies, subtitle, desc, image, slug }) => (
-              <ProjectTile
-                title={title}
-                subtitle={subtitle}
-                image={image}
-                desc={desc}
-                slug={slug}
-                key={slug}
-                technologies={technologies}
-              />
-            )
-          )}
+          {filteredPosts.map((project) => (
+            <ProjectTile project={project} key={project.slug} />
+          ))}
         </List>
       </Container>
     </>

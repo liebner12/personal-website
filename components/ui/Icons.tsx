@@ -31,7 +31,7 @@ export const Icons = ({
       case 'lg': {
         return 'h-8 w-8';
       }
-      case 'md': {
+      case 'sm': {
         return 'h-4 w-4';
       }
       default: {

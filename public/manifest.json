@@ -1,10 +1,8 @@
 {
-  "name": "APP_NAME",
-  "short_name": "APP_NAME",
+  "name": "Michał Liebner",
+  "short_name": "ML",
   "start_url": "/",
-  "display": "standalone",
-  "background_color": "#2196f3",
-  "theme_color": "#2196f3",
+  "background_color": "#0d1117",
   "orientation": "portrait-primary",
-  "description": "APP_DESC"
+  "description": "Showcase of my projects, and some of my thoughts about web development."
 }

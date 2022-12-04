@@ -1,4 +1,5 @@
 import { serialize } from 'next-mdx-remote/serialize';
+import { getPlaiceholder } from 'plaiceholder';
 import readingTime from 'reading-time';
 import { ContentType, PickFrontmatter } from 'types/frontmatters';
 import { getFileByName } from './getFile';
@@ -13,10 +14,16 @@ export async function getAllFilesFrontmatter<T extends ContentType>(type: T) {
       parseFrontmatter: true,
     });
 
+    const { base64 } = await getPlaiceholder(
+      (frontmatter as unknown as PickFrontmatter<T>).image,
+      { size: 10 }
+    );
+
     return {
       ...(frontmatter as unknown as PickFrontmatter<T>),
       slug: filename.replace('.mdx', ''),
       readingTime: readingTime(compiledSource),
+      blurDataURL: base64,
     };
   });
 

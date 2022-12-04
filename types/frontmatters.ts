@@ -4,18 +4,16 @@ import { Project, ProjectWithMeta } from './projects';
 
 export type ContentType = 'blog' | 'projects';
 
-export type PickFrontmatterByObject<
-  T extends Array<ProjectWithMeta | BlogWithMeta>
-> = T extends BlogWithMeta ? BlogFrontmatter : ProjectFrontmatter;
-
 export type BlogFrontmatter = Blog & {
   slug: string;
   readingTime: ReadTimeResults;
   views?: number;
+  blurDataURL: string;
 };
 
 export type ProjectFrontmatter = Project & {
   slug: string;
+  blurDataURL: string;
 };
 
 export type InjectedViews = { views?: number };

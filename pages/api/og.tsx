@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-server-import-in-page */
-/* eslint-disable @next/next/no-img-element */
+
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
 
@@ -11,11 +11,12 @@ export default function handler(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
 
-    // ?title=<title>
-    const hasTitle = searchParams.has('title');
-    const title = hasTitle
+    const title = searchParams.has('title')
       ? searchParams.get('title')?.slice(0, 100)
-      : 'My default title';
+      : 'Michał Liebner';
+    const description = searchParams.has('description')
+      ? searchParams.get('description')?.slice(0, 100)
+      : '';
 
     return new ImageResponse(
       (
@@ -28,51 +29,43 @@ export default function handler(req: NextRequest) {
             justifyContent: 'center',
             flexDirection: 'column',
             backgroundImage: 'linear-gradient(to bottom, #091a21, #1c1a1a)',
-            fontSize: 60,
             letterSpacing: -2,
             fontWeight: 700,
           }}
         >
-          <div
-            style={{
-              display: 'flex',
-              padding: '5px 40px',
-              width: 'auto',
-              textAlign: 'center',
-              backgroundImage:
-                'linear-gradient(90deg, rgb(0, 124, 240), rgb(0, 223, 216))',
-              backgroundClip: 'text',
-              color: 'transparent',
-            }}
-          >
-            {title}
-          </div>
-          <div
-            style={{
-              padding: '5px 40px',
-              width: 'auto',
-              textAlign: 'center',
-              backgroundImage:
-                'linear-gradient(90deg, rgb(121, 40, 202), rgb(255, 0, 128))',
-              backgroundClip: 'text',
-              color: 'transparent',
-            }}
-          >
-            Preview
-          </div>
-          <div
-            style={{
-              padding: '5px 40px',
-              width: 'auto',
-              textAlign: 'center',
-              backgroundImage:
-                'linear-gradient(90deg, rgb(255, 77, 77), rgb(249, 203, 40))',
-              backgroundClip: 'text',
-              color: 'transparent',
-            }}
-          >
-            Ship
-          </div>
+          {title && (
+            <div
+              style={{
+                display: 'flex',
+                padding: '5px 40px',
+                width: 'auto',
+                textAlign: 'center',
+                backgroundImage:
+                  'linear-gradient(90deg, rgb(0, 124, 240), rgb(0, 223, 216))',
+                backgroundClip: 'text',
+                color: 'transparent',
+                fontSize: 60,
+              }}
+            >
+              {title}
+            </div>
+          )}
+          {description && (
+            <div
+              style={{
+                padding: '5px 40px',
+                width: 'auto',
+                textAlign: 'center',
+                backgroundImage:
+                  'linear-gradient(90deg, rgb(121, 40, 202), rgb(255, 0, 128))',
+                backgroundClip: 'text',
+                color: 'transparent',
+                fontSize: 30,
+              }}
+            >
+              {description}
+            </div>
+          )}
         </div>
       ),
       {

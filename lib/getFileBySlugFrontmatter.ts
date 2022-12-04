@@ -5,9 +5,10 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+import { getPlaiceholder } from 'plaiceholder';
 
-export async function getFileBySlugFrontmatter(
-  type: ContentType,
+export async function getFileBySlugFrontmatter<T extends ContentType>(
+  type: T,
   slug: string
 ) {
   const markdown = getFileBySlug(type, slug);
@@ -31,9 +32,16 @@ export async function getFileBySlugFrontmatter(
     },
   });
 
+  const { base64 } = await getPlaiceholder(
+    (mdxSource.frontmatter as unknown as PickFrontmatter<T>).image,
+    { size: 10 }
+  );
+
   return {
-    frontmatter:
-      mdxSource.frontmatter as unknown as PickFrontmatter<ContentType>,
+    frontmatter: {
+      ...mdxSource.frontmatter,
+      blurDataURL: base64,
+    } as unknown as PickFrontmatter<T>,
     mdxSource,
   };
 }

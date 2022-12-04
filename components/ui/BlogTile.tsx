@@ -17,7 +17,16 @@ type Blog = {
 const MotionLink = motion(Link);
 
 export const BlogTile = ({
-  blog: { image, title, desc, slug, tags, publishedAt, readingTime },
+  blog: {
+    image,
+    title,
+    desc,
+    slug,
+    tags,
+    publishedAt,
+    readingTime,
+    blurDataURL,
+  },
   checkTagged,
   withHover = true,
 }: Blog) => {
@@ -44,6 +53,8 @@ export const BlogTile = ({
         <div className="flex flex-col">
           <div className="relative overflow-hidden rounded-t-xl">
             <Image
+              placeholder="blur"
+              blurDataURL={blurDataURL}
               src={image}
               alt={title}
               width={640}
