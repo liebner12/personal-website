@@ -13,6 +13,7 @@ import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
 import { sortByDate } from 'utils';
 import { useSelectedPosts } from 'hooks';
 import { getTechnologies } from 'lib';
+import Seo from 'components/Seo';
 
 const Projects = ({
   projects,
@@ -25,16 +26,12 @@ const Projects = ({
 
   return (
     <>
-      <Head>
-        <title>Projects</title>
-        <meta name="description" content="My projects :)" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Seo templateTitle="Projects" description="" />
       <Background background={BACKGROUNDS.projects} />
       <Container isGrid>
         <Header
           title="Projects"
-          desc="Showcase of my works on frontend development."
+          desc="Showcase of my works on Javascript/Typescript development."
         />
         <SearchContainer
           toggleTag={toggleTag}

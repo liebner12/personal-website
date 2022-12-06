@@ -7,16 +7,16 @@ import Me from 'assets/images/me.png';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { useMaxWidthPosition } from 'hooks';
 import { motion } from 'framer-motion';
+import Seo from 'components/Seo';
 
 const About: NextPage = () => {
   const x = useMaxWidthPosition();
   return (
     <>
-      <Head>
-        <title>About me</title>
-        <meta name="description" content="I am young developer :)" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Seo
+        templateTitle="About"
+        description="Some words about me and technologies that I am most familiar with."
+      />
       <Background background={BACKGROUNDS.about} />
       <Container>
         <div className="prose prose-invert my-auto lg:max-w-full">

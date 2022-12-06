@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { Background, BlogTile } from 'components/ui';
 import { Header, Container, List } from 'components/containers';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
@@ -8,6 +7,7 @@ import { getTags } from 'lib';
 import { useSelectedPosts, useInjectContent } from 'hooks';
 import { checkTagged, sortByDate } from 'utils';
 import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
+import Seo from 'components/Seo';
 
 const Blog = ({
   blogs,
@@ -17,19 +17,14 @@ const Blog = ({
   const { filteredPosts, search, setSearch, sortBy, setSortBy, toggleTag } =
     useSelectedPosts(populatedPosts, 'blog');
 
+  const description = 'Thoughts about overall development and tutorials.';
+
   return (
     <>
-      <Head>
-        <title>Blog</title>
-        <meta name="description" content="My Blog :)" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Seo templateTitle="Blog" description={description} />
       <Background background={BACKGROUNDS.blog} />
       <Container isGrid>
-        <Header
-          title="Blog"
-          desc="Thoughts, mental models, and tutorials about front-end development."
-        />
+        <Header title="Blog" desc={description} />
         <SearchContainer
           toggleTag={toggleTag}
           tags={tags}

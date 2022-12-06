@@ -25,7 +25,10 @@ function HomePage({
 
   return (
     <>
-      <Seo templateTitle="Home" />
+      <Seo
+        templateTitle="Home"
+        description="On this website I showcase my projects and write blog posts connected with Javascript ecosystem"
+      />
       <Background background={BACKGROUNDS.home} />
       <Container className="!mt-0 overflow-hidden !pt-0 md:overflow-auto">
         <section className="flex h-screen flex-col justify-center">

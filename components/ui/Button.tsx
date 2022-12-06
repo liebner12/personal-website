@@ -12,6 +12,7 @@ interface Button {
   href?: string;
   isActive?: boolean;
   color?: string;
+  ariaLabel?: string;
 }
 
 const ButtonIcon = ({ children }: children) => {
@@ -31,6 +32,7 @@ export const Button = forwardRef(
       classes,
       isActive,
       color,
+      ariaLabel,
     }: Button,
     ref: Ref<HTMLAnchorElement> | undefined
   ) => {
@@ -49,6 +51,7 @@ export const Button = forwardRef(
         whileTap={{ scale: 0.96 }}
         whileFocus={{ scale: 1.02 }}
         whileHover={{ scale: 1.02 }}
+        aria-label={ariaLabel}
       >
         {startIcon}
         {children}

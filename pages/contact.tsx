@@ -4,6 +4,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { FiFacebook, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import Seo from 'components/Seo';
 
 const Contact: NextPage = () => {
   return (
@@ -13,6 +14,10 @@ const Contact: NextPage = () => {
         <meta name="description" content="I am young developer :)" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Seo
+        templateTitle="Contact"
+        description="Do contact me if you want to talk about programming and especially if it's connected with Javascript ecosystem. I'll be happy to get to know each other!"
+      />
       <Background background={BACKGROUNDS.contact} />
       <Container>
         <div className="my-auto">

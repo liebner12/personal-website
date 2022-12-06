@@ -30,7 +30,9 @@ export default function Seo(props: SeoProps) {
     ? `${props.templateTitle} | ${meta.title}`
     : meta.title;
 
-  meta.image = `https://michal-liebner.vercel.app/api/og?title=${props.templateTitle}&description=${props.description}`;
+  meta.image = `https://michal-liebner.vercel.app/api/og?title=${
+    props.templateTitle
+  }&description=${props.description ? props.description : ''}`;
 
   return (
     <Head>
@@ -77,7 +79,7 @@ export default function Seo(props: SeoProps) {
         content="/favicon/windows-icon-light-70x70.png"
         media="(prefers-color-scheme: light)"
       />
-      <link rel="manifest" href="/favicon/manifest.json" />
+      <link rel="manifest" href="/manifest.json" />
     </Head>
   );
 }
@@ -98,11 +100,38 @@ const favicons: Array<Favicons> = [
     media: '(prefers-color-scheme: light)',
   },
   {
+    rel: 'apple-touch-icon',
+    sizes: '76x76',
+    href: '/favicon/apple-icon-dark-76x76.png',
+    media: '(prefers-color-scheme: dark)',
+  },
+  {
     rel: 'icon',
     type: 'image/png',
-    sizes: '192x192',
-    href: '/favicon/android-icon-light-192x192.png',
+    sizes: '72x72',
+    href: '/favicon/android-icon-light-72x72.png',
     media: '(prefers-color-scheme: light)',
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '96x96',
+    href: '/favicon/android-icon-dark-72x72.png',
+    media: '(prefers-color-scheme: dark)',
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '96x96',
+    href: '/favicon/android-icon-light-96x96.png',
+    media: '(prefers-color-scheme: light)',
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '96x96',
+    href: '/favicon/android-icon-dark-96x96.png',
+    media: '(prefers-color-scheme: dark)',
   },
   {
     rel: 'icon',
