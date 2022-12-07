@@ -11,17 +11,17 @@ export const Tag = ({
 }) => {
   return (
     <motion.li
-      className="flex-1 rounded-full bg-darkBlockBg text-center"
+      className="rounded-full border-2 border-darkBlockBg bg-blockBg text-center"
       whileTap={{ scale: 0.98 }}
       whileFocus={{ scale: 1.03 }}
       whileHover={{ scale: 1.03 }}
     >
       <button
-        className={`tap-highlight prose prose-invert relative rounded-full py-1.5 px-4 text-center text-sm ${
+        className={`tap-highlight prose prose-invert relative w-full rounded-full py-2.5 px-6 text-center ring-primary ring-offset-primary ${
           checkTagged(name)
-            ? 'border-primary text-primary ring-1 ring-opacity-75 ring-offset-2 ring-offset-primary'
-            : ' text-grey'
-        } w-full focus:outline-none focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-primary`}
+            ? 'text-primary ring-0 ring-offset-2'
+            : ' text-white ring-0 ring-offset-0'
+        }`}
         type="button"
         onClick={onClick}
       >

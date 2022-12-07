@@ -15,7 +15,7 @@ export type IconsList = keyof typeof iconsList;
 
 export type IconsProps = {
   icons: Array<IconsList>;
-  className: string;
+  className?: string;
   technologyClassName?: string;
   size?: 'lg' | 'md' | 'sm';
 } & React.ComponentPropsWithoutRef<'ul'>;

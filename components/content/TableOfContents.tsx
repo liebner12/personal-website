@@ -27,7 +27,7 @@ export function TableOfContents() {
 
   return (
     <motion.div
-      className="relative hidden h-full pl-10 xl:block"
+      className="relative hidden h-full pl-10 lg:block"
       {...FADE_IN_X}
     >
       <div className="sticky top-16 h-screen overflow-auto pb-16">

@@ -1,4 +1,4 @@
-import { Background, BlogTile } from 'components/ui';
+import { Background, Tile } from 'components/ui';
 import { Header, Container, List } from 'components/containers';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { BACKGROUNDS } from 'data';
@@ -17,7 +17,8 @@ const Blog = ({
   const { filteredPosts, search, setSearch, sortBy, setSortBy, toggleTag } =
     useSelectedPosts(populatedPosts, 'blog');
 
-  const description = 'Thoughts about overall development and tutorials.';
+  const description =
+    'Learn development with great articles. Find the latest of my writing here.';
 
   return (
     <>
@@ -35,8 +36,8 @@ const Blog = ({
         />
         <List isEmpty={filteredPosts.length === 0}>
           {filteredPosts.map((blog) => (
-            <BlogTile
-              blog={blog}
+            <Tile
+              post={blog}
               key={blog.slug}
               checkTagged={(tag) => checkTagged(tags, tag, search)}
             />

@@ -11,7 +11,7 @@ export const List = ({ children, isEmpty }: ListType) => {
   return (
     <>
       <motion.ul
-        className="grid w-full gap-6 sm:grid-cols-2 lg:col-span-12 lg:grid-cols-3 xl:col-span-9"
+        className="grid w-full gap-20 sm:grid-cols-2 sm:gap-6 lg:col-span-12 lg:grid-cols-3 xl:col-span-9"
         {...FADE_IN_SECOND}
       >
         {children}

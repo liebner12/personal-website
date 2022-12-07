@@ -1,13 +1,12 @@
-import { BlogTile, Container, IconsList } from 'components';
+import { Tile, Container, IconsList } from 'components';
 import { BACKGROUNDS, FADE_IN_FIRST, FADE_IN_SECOND } from 'data';
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import Head from 'next/head';
 import { Background } from 'components';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { BsArrowDownCircle, BsArrowRight } from 'react-icons/bs';
-import { getAllFilesFrontmatter, getTags, getTechnologies } from 'lib';
+import { getAllFilesFrontmatter, getTags } from 'lib';
 import { sortByDate } from 'utils';
 import { useInjectContent } from 'hooks';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
@@ -160,10 +159,9 @@ function HomePage({
                   bounce: 0.2,
                 }}
               >
-                <div className="absolute top-0 h-full w-full rounded-xl rounded-b-sm bg-background" />
-                <ul className="h-full">
-                  <BlogTile
-                    blog={populatedPosts[0]}
+                <ul>
+                  <Tile
+                    post={populatedPosts[0]}
                     key={populatedPosts[0].slug}
                     withHover={false}
                   />
@@ -183,8 +181,8 @@ function HomePage({
               >
                 <div className="absolute top-0 h-full w-full rounded-xl rounded-b-sm bg-background" />
                 <ul>
-                  <BlogTile
-                    blog={populatedPosts[1]}
+                  <Tile
+                    post={populatedPosts[1]}
                     key={populatedPosts[1].slug}
                     withHover={false}
                   />
@@ -204,8 +202,8 @@ function HomePage({
               >
                 <div className="absolute top-0 h-full w-full rounded-xl rounded-b-sm bg-background" />
                 <ul>
-                  <BlogTile
-                    blog={populatedPosts[2]}
+                  <Tile
+                    post={populatedPosts[2]}
                     key={populatedPosts[2].slug}
                     withHover={false}
                   />
@@ -291,14 +289,14 @@ export const getStaticProps: GetStaticProps<{
   technologies: IconsList[];
   projects: ProjectFrontmatter[];
   blogs: BlogFrontmatter[];
-  tags: string[];
+  tags: IconsList[];
 }> = async () => {
   const projects = await getAllFilesFrontmatter('projects');
   const blogs = await getAllFilesFrontmatter('blog');
 
   return {
     props: {
-      technologies: getTechnologies(projects),
+      technologies: getTags(projects),
       projects: projects.sort(sortByDate),
       tags: getTags(blogs),
       blogs: blogs.sort(sortByDate),

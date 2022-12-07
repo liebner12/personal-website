@@ -19,7 +19,7 @@ export const Container = ({
 
   return (
     <main
-      className={`mt-[10%] flex w-full flex-1 flex-col px-4 pt-[5%] pb-24 md:ml-28 md:mt-8 md:px-12 md:pr-10 md:pl-4 lg:mt-6 lg:ml-44 lg:pr-12 xl:pr-20 ${className}`}
+      className={`mt-[15%] flex w-full flex-1 flex-col px-8 pt-[5%] pb-24 md:ml-28 md:mt-8 md:px-12 md:pr-10 md:pl-4 lg:mt-6 lg:ml-44 lg:pr-12 xl:pr-20 ${className}`}
     >
       {isGrid ? withGrid(children) : children}
     </main>

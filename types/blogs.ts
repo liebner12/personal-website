@@ -1,3 +1,4 @@
+import { IconsList } from 'components';
 import { BlogFrontmatter, InjectedViews } from './frontmatters';
 
 export type Blog = {
@@ -5,7 +6,7 @@ export type Blog = {
   subtitle: string;
   image: string;
   desc: string;
-  tags: Array<string>;
+  tags: Array<IconsList>;
   publishedAt: string;
   lastUpdated?: string;
 };

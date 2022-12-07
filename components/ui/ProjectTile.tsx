@@ -1,16 +1,14 @@
 import Image from 'next/image';
-// import { BiFullscreen } from 'react-icons/bi';
 import { motion } from 'framer-motion';
 import React from 'react';
 import Link from 'next/link';
-import { FaArrowRight } from 'react-icons/fa';
 import { Icons } from './Icons';
 import { ProjectFrontmatter } from 'types';
 
 const MotionLink = motion(Link);
 
 export const ProjectTile = ({
-  project: { image, title, subtitle, desc, slug, technologies, blurDataURL },
+  project: { image, title, subtitle, desc, slug, tags, blurDataURL },
 }: {
   project: ProjectFrontmatter;
 }) => {
@@ -34,44 +32,18 @@ export const ProjectTile = ({
             <h2 className="transColor text-sm text-primary">{subtitle}</h2>
             <h3 className="text-xl font-bold text-white">{title}</h3>
             <p className="my-2 text-grey">{desc}</p>
-            <Icons
-              icons={technologies}
-              className="mt-1 flex gap-3 text-primary"
+            <Icons icons={tags} className="mt-1 flex gap-3 text-primary" />
+          </div>
+          <div className="relative my-auto mx-4 mb-6 rounded-md">
+            <Image
+              placeholder="blur"
+              blurDataURL={blurDataURL}
+              src={image}
+              alt={title}
+              width={640}
+              height={360}
+              className="rounded object-top lg:transition-all lg:ease-in-out"
             />
-            {/*<motion.button
-              className="absolute top-0 right-0 z-10 rounded-md bg-blockBg p-1.5"
-              aria-label="Open details"
-              whileTap={{ scale: 0.95 }}
-              whileFocus={{ scale: 1.1 }}
-              whileHover={{ scale: 1.1 }}
-              tabIndex={-1}
-            >
-              <BiFullscreen className="h-5 w-5 text-white" />
-            </motion.button>*/}
-          </div>
-          <div className="mx-4 flex h-full flex-1 flex-shrink-0 flex-col">
-            <div className="relative my-auto rounded-md">
-              <Image
-                placeholder="blur"
-                blurDataURL={blurDataURL}
-                src={image}
-                alt={title}
-                width={640}
-                height={360}
-                className="rounded object-top lg:transition-all lg:ease-in-out"
-              />
-            </div>
-          </div>
-          <div className="mx-4 mt-2 pb-4">
-            <motion.button
-              className="flex items-center gap-1 font-semibold text-primary"
-              whileTap={{ scale: 0.95 }}
-              whileFocus={{ scale: 1.02 }}
-              whileHover={{ scale: 1.02 }}
-              tabIndex={-1}
-            >
-              See more <FaArrowRight />
-            </motion.button>
           </div>
         </div>
         <div className="bg-[length:200%_1px absolute bottom-0 left-0 h-1 w-full rounded-b-xl bg-gradient-to-r from-primary to-secondary " />

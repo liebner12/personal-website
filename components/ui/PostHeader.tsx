@@ -2,10 +2,11 @@ import { FaGithub } from 'react-icons/fa';
 import { MdRemoveRedEye, MdTimer } from 'react-icons/md';
 import { motion } from 'framer-motion';
 import { FADE_IN_FIRST } from 'data';
-import { BiLink } from 'react-icons/bi';
+import { BiArrowBack, BiLink } from 'react-icons/bi';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
+import Link from 'next/link';
 
-export type PostHeader = Partial<
+export type PostHeader = { endpoint: string } & Partial<
   Pick<BlogFrontmatter, 'title' | 'readingTime' | 'desc' | 'views'> &
     Pick<
       ProjectFrontmatter,
@@ -21,9 +22,18 @@ export function PostHeader({
   readingTime,
   url,
   views,
+  endpoint,
 }: PostHeader) {
   return (
     <motion.div className="mb-6" {...FADE_IN_FIRST}>
+      <Link
+        className="mb-8 flex items-center gap-4 font-semibold md:hidden"
+        href={`/${endpoint}`}
+        passHref
+      >
+        <BiArrowBack />
+        Back to overview
+      </Link>
       {subtitle && <p className="text-primary">{subtitle}</p>}
       <h1 className="text-4xl font-bold text-white">{title}</h1>
       <p className="mt-2 text-grey">{desc}</p>

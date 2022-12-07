@@ -32,16 +32,11 @@ export const useSelectedPosts = <T extends ContentType>(
       return (
         post.title.toLowerCase().includes(formattedSearch) ||
         post.desc.toLowerCase().includes(formattedSearch) ||
-        formattedSearch.split(' ').every((tag) => {
-          if ('technologies' in post) {
-            return post.technologies
-              .join(' ')
-              .toLowerCase()
-              .includes(tag.toLowerCase());
-          }
-
-          return post.tags.join(' ').toLowerCase().includes(tag.toLowerCase());
-        })
+        formattedSearch
+          .split(' ')
+          .every((tag) =>
+            post.tags.join(' ').toLowerCase().includes(tag.toLowerCase())
+          )
       );
     });
 

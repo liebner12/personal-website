@@ -3,7 +3,7 @@ export * from './ProjectTile';
 export * from './Button';
 export * from './NavbarLink';
 export * from './Icons';
-export * from './BlogTile';
+export * from './Tile';
 export * from './SkipToContent';
 export * from './ContactBlock';
 export * from './PostHeader';

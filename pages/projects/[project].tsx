@@ -3,7 +3,6 @@ import type {
   GetStaticProps,
   InferGetStaticPropsType,
 } from 'next';
-import Head from 'next/head';
 import { Background, PostHeader } from 'components/ui';
 import { Container } from 'components/containers';
 import { getFileBySlugFrontmatter, getFiles } from 'lib';
@@ -11,6 +10,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { TableOfContents } from 'components/content/TableOfContents';
 import readingTime from 'reading-time';
 import { PostBody } from 'components/ui/PostBody';
+import Seo from 'components/Seo';
 
 const Project = ({
   frontmatter: { title, desc, subtitle, repository, image, url, blurDataURL },
@@ -19,16 +19,13 @@ const Project = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={desc} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Seo templateTitle={title} description={desc} />
       <Background background="projects-bg" />
       <Container>
         <div className="relative w-full pb-40 lg:grid lg:grid-cols-[auto,300px] lg:gap-12">
           <div>
             <PostHeader
+              endpoint="projects"
               title={title}
               desc={desc}
               url={url}

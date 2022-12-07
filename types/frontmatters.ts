@@ -13,6 +13,8 @@ export type BlogFrontmatter = Blog & {
 
 export type ProjectFrontmatter = Project & {
   slug: string;
+  readingTime: ReadTimeResults;
+  views?: number;
   blurDataURL: string;
 };
 

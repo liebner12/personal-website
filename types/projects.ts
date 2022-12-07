@@ -6,7 +6,7 @@ export type Project = {
   subtitle: string;
   image: string;
   desc: string;
-  technologies: Array<IconsList>;
+  tags: Array<IconsList>;
   publishedAt: string;
   lastUpdated?: string;
   repository: string;

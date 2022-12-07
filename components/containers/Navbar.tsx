@@ -13,7 +13,7 @@ import {
 export const Navbar = () => {
   const x = useMaxWidthPosition();
   return (
-    <nav
+    <motion.nav
       initial="collapsed"
       animate="open"
       exit="collapsed"
@@ -58,6 +58,6 @@ export const Navbar = () => {
           />
         </ul>
       </div>
-    </nav>
+    </motion.nav>
   );
 };

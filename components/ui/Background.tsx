@@ -8,10 +8,10 @@ type Props = {
 export const Background = ({ background }: Props) => {
   return (
     <div
-      className="absolute top-0 right-0 h-full w-full lg:w-3/5"
+      className="fixed top-0 right-0 h-full w-full overflow-hidden lg:w-4/5"
       style={{ zIndex: '-1' }}
     >
-      <div className="h-3/5 lg:h-full">
+      <div className="h-3/5 opacity-50 lg:h-full">
         <motion.div
           key="modal"
           className={`h-full ${background} blur-3xl`}

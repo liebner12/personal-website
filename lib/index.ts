@@ -6,4 +6,3 @@ export * from './getAllFilesFrontmatter';
 export * from './getFiles';
 export * from './getFile';
 export * from './getFileBySlugFrontmatter';
-export * from './getTechnologies';

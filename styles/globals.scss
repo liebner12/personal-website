@@ -90,7 +90,7 @@ html {
 }
 
 body {
-  background: rgb(13, 17, 23);
+  background: rgb(18, 24, 27);
 }
 
 .home-bg {
@@ -285,7 +285,7 @@ pre {
 }
 
 .nav-bg {
-  background: rgba(13, 17, 23, 0.9);
+  background: rgba(18, 24, 27, 0.9);
   backdrop-filter: blur(0.25rem);
 
   @media (min-width: 768px) and (max-width: 1024px) {
@@ -320,8 +320,8 @@ pre {
 
     .navbar:hover {
       width: 16rem;
-      box-shadow: 5px 0px 20px 0px rgba(13, 17, 23, 1);
-      background: rgba(13, 17, 23, 0.9);
+      box-shadow: 5px 0px 20px 0px rgba(18, 24, 27, 0.9);
+      background: rgb(18, 24, 27);
       backdrop-filter: blur(0.25rem);
     }
   }
@@ -433,4 +433,7 @@ pre {
   pointer-events: none;
   color: #d0d0db;
   display: block;
+}
+
+.search .input {
 }

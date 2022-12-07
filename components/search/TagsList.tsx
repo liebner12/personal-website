@@ -12,7 +12,7 @@ export const TagsList = ({
   checkTagged: (tag: string) => boolean;
 }) => {
   return (
-    <ul className="relative flex flex-wrap gap-2 gap-y-3">
+    <ul className="relative flex flex-wrap gap-4 gap-y-4">
       <SkipToContent id="Skip tags">
         {tags.map((item) => (
           <Tag

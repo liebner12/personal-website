@@ -3,7 +3,6 @@ import type {
   GetStaticProps,
   InferGetStaticPropsType,
 } from 'next';
-import Head from 'next/head';
 import { Background } from 'components/ui/Background';
 import { Container } from 'components/containers/Container';
 import useSWR from 'swr';
@@ -14,6 +13,7 @@ import { TableOfContents } from 'components/content/TableOfContents';
 import readingTime from 'reading-time';
 import { PostHeader } from 'components';
 import { PostBody } from 'components/ui/PostBody';
+import Seo from 'components/Seo';
 
 const Blog = ({
   frontmatter: { title, desc, subtitle, image, blurDataURL },
@@ -31,16 +31,13 @@ const Blog = ({
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={desc} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Seo templateTitle={title} description={desc} />
       <Background background="blog-bg" />
       <Container>
         <div className="relative w-full xl:grid xl:grid-cols-[auto,300px] xl:gap-12">
           <div>
             <PostHeader
+              endpoint="blog"
               title={title}
               subtitle={subtitle}
               desc={desc}

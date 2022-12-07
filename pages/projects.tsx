@@ -1,23 +1,22 @@
-import Head from 'next/head';
 import {
   Header,
   Container,
   Background,
-  ProjectTile,
   List,
   SearchContainer,
+  Tile,
 } from 'components';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { BACKGROUNDS } from 'data';
 import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
 import { sortByDate } from 'utils';
 import { useSelectedPosts } from 'hooks';
-import { getTechnologies } from 'lib';
+import { getTags } from 'lib';
 import Seo from 'components/Seo';
 
 const Projects = ({
   projects,
-  technologies,
+  tags,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { filteredPosts, search, setSearch, toggleTag } = useSelectedPosts(
     projects,
@@ -35,13 +34,13 @@ const Projects = ({
         />
         <SearchContainer
           toggleTag={toggleTag}
-          tags={technologies}
+          tags={tags}
           search={search}
           setSearch={setSearch}
         />
         <List isEmpty={filteredPosts.length === 0}>
           {filteredPosts.map((project) => (
-            <ProjectTile project={project} key={project.slug} />
+            <Tile endpoint="projects" post={project} key={project.slug} />
           ))}
         </List>
       </Container>
@@ -54,7 +53,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      technologies: getTechnologies(files),
+      tags: getTags(files),
       projects: files.sort(sortByDate),
     },
   };
