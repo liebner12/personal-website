@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { FADE_IN_VIEW } from 'data';
 
 type Props = {
   images: Array<{ image: string; alt: string }>;
@@ -6,7 +8,10 @@ type Props = {
 
 export const ImagesGrid = ({ images }: Props) => {
   return (
-    <ul className="images-grid relative mx-auto grid grid-cols-12 grid-rows-3 items-end gap-4">
+    <motion.ul
+      className="images-grid relative mx-auto grid grid-cols-12 grid-rows-3 items-end gap-4"
+      {...FADE_IN_VIEW}
+    >
       {images.slice(0, 6).map(({ image, alt }) => (
         <li key={alt}>
           <Image
@@ -19,6 +24,6 @@ export const ImagesGrid = ({ images }: Props) => {
           />
         </li>
       ))}
-    </ul>
+    </motion.ul>
   );
 };

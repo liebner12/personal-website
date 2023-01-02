@@ -19,7 +19,7 @@ const nextConfig = {
   },
 };
 
-// eslint-disable-next-line no-undef
+// eslint-disable-next-line no-undef, @typescript-eslint/no-unused-vars
 module.exports = buildConfig = (_phase) => {
   const plugins = [withPWA];
   const config = plugins.reduce((acc, plugin) => plugin(acc), {

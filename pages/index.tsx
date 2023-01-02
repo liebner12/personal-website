@@ -11,7 +11,7 @@ import {
   Button,
   ArrowLink,
 } from 'components';
-import { BACKGROUNDS, FADE_IN_FIRST, FADE_IN_SECOND } from 'data';
+import { BACKGROUNDS, FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_VIEW } from 'data';
 import { getAllFilesFrontmatter, getTags } from 'lib';
 import { sortByDate } from 'utils';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
@@ -97,7 +97,7 @@ function HomePage({
           id="intro"
           className="mx-auto grid max-w-6xl items-center gap-20 py-20 pt-60 lg:grid-cols-2 lg:gap-36 lg:pt-40 xl:gap-20"
         >
-          <div>
+          <motion.div {...FADE_IN_VIEW}>
             <h2 className="text-4xl font-bold text-primary-main md:text-6xl lg:text-5xl xl:text-6xl">
               Checkout my developer journey through my projects
             </h2>
@@ -108,9 +108,9 @@ function HomePage({
               found intresting.
             </p>
             <div className="mt-12 flex">
-              <ArrowLink>See more projects</ArrowLink>
+              <ArrowLink href="/projects">See more projects</ArrowLink>
             </div>
-          </div>
+          </motion.div>
           <CardsRange posts={projects} />
         </section>
         <section className="mx-auto grid max-w-6xl items-center gap-20 py-40 lg:grid-cols-2 lg:gap-10 xl:gap-20">
@@ -119,7 +119,7 @@ function HomePage({
               ...blogs.map(({ image, title }) => ({ image, alt: title })),
             ]}
           />
-          <div>
+          <motion.div {...FADE_IN_VIEW}>
             <h2 className="text-4xl font-bold text-primary-main md:text-6xl lg:text-5xl xl:text-6xl">
               Posts that share my knowledge
             </h2>
@@ -132,7 +132,7 @@ function HomePage({
             <div className="mt-8 flex">
               <ArrowLink href="/blog">Start reading the blog</ArrowLink>
             </div>
-          </div>
+          </motion.div>
         </section>
       </Container>
     </>

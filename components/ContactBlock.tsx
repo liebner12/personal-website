@@ -21,7 +21,7 @@ export const ContactButton = ({
         target="_blank"
         size="xl"
         variant="secondary"
-        className="flex items-center gap-6 bg-grey-900"
+        className="flex flex-col items-center gap-4 bg-grey-900 text-center sm:flex-row sm:gap-6 sm:text-left"
       >
         <Icon className="h-12 w-12 flex-shrink-0 text-primary-main md:h-10 md:w-10 lg:h-12 lg:w-12" />
         <div>

@@ -61,3 +61,9 @@ export const HOVER_SCALE = {
   whileTap: { scale: 0.96 },
   whileFocus: { scale: 1.03 },
 };
+
+export const FADE_IN_VIEW = {
+  initial: { y: '40px', opacity: 0 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-50px' },
+};

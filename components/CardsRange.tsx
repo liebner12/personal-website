@@ -1,9 +1,14 @@
+import { motion } from 'framer-motion';
 import { Card } from './Card';
 import { ProjectFrontmatter } from 'types';
+import { FADE_IN_VIEW } from 'data';
 
 export const CardsRange = ({ posts }: { posts: Array<ProjectFrontmatter> }) => {
   return (
-    <div className="relative mx-auto w-11/12 max-w-sm md:w-80">
+    <motion.div
+      className="relative mx-auto w-11/12 max-w-sm md:w-80"
+      {...FADE_IN_VIEW}
+    >
       <div className="h-[26rem] w-full"></div>
       <ul className="cards-range">
         {posts
@@ -35,6 +40,6 @@ export const CardsRange = ({ posts }: { posts: Array<ProjectFrontmatter> }) => {
             )
           )}
       </ul>
-    </div>
+    </motion.div>
   );
 };

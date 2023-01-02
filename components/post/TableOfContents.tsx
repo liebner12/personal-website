@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import clsx from 'clsx';
 import { FADE_IN_X } from 'data';
 import { useScrollSpy } from 'hooks';
 import { StyledLink } from 'components/StyledLink';
