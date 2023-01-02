@@ -1,5 +1,5 @@
 import { ReactNode, useCallback } from 'react';
-
+import { clsx } from 'clsx';
 export const Container = ({
   children,
   isGrid,
@@ -11,7 +11,7 @@ export const Container = ({
 }): JSX.Element => {
   const withGrid = useCallback((children: ReactNode) => {
     return (
-      <div className="mb-auto grid gap-6 lg:grid-cols-12 lg:gap-8 xl:gap-y-6">
+      <div className="mb-auto grid gap-6 lg:grid-cols-12 lg:gap-10 xl:gap-y-6">
         {children}
       </div>
     );
@@ -19,7 +19,10 @@ export const Container = ({
 
   return (
     <main
-      className={`mt-[15%] flex w-full flex-1 flex-col px-8 pt-[5%] pb-24 md:ml-28 md:mt-8 md:px-12 md:pr-10 md:pl-4 lg:mt-6 lg:ml-44 lg:pr-12 xl:pr-20 ${className}`}
+      className={clsx(
+        'mt-[15%] flex w-full flex-1 flex-col px-8 pt-[5%] pb-24 md:ml-28 md:mt-8 md:px-12 md:pr-10 md:pl-4 lg:mt-6 lg:ml-44 lg:pr-20',
+        className
+      )}
     >
       {isGrid ? withGrid(children) : children}
     </main>

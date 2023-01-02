@@ -12,9 +12,11 @@ module.exports = {
     'prettier',
     'plugin:@typescript-eslint/recommended',
     'plugin:testing-library/react',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['react', 'jsx-a11y', 'prettier', 'testing-library'],
+  plugins: ['react', 'jsx-a11y', 'prettier', 'testing-library', 'import'],
   rules: {
     'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 'off',
@@ -22,6 +24,7 @@ module.exports = {
     'no-empty-function': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
+    'import/order': 'error',
   },
   globals: {
     React: true,

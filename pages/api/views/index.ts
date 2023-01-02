@@ -1,5 +1,5 @@
-import { getAllViews, ViewCount } from 'lib';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { getAllViews, ViewCount } from 'lib';
 
 export default async function handler(
   req: NextApiRequest,

@@ -1,5 +1,5 @@
-import { BLOG_SORT_LIST } from 'data';
 import { useEffect, useState } from 'react';
+import { BLOG_SORT_LIST } from 'data';
 import { ContentType, PickFrontmatter } from 'types/frontmatters';
 import { sortByDate } from 'utils';
 
@@ -9,9 +9,7 @@ const sortPosts = <T extends ContentType>(
 ) => {
   switch (sortBy) {
     case 'views':
-      return results.sort(
-        (a: any, b: any) => (b?.views ?? 0) - (a?.views ?? 0)
-      );
+      return results.sort((a, b) => (b?.views ?? 0) - (a?.views ?? 0));
     default:
       return results.sort(sortByDate);
   }
@@ -31,7 +29,7 @@ export const useSelectedPosts = <T extends ContentType>(
       const formattedSearch = search.toLowerCase();
       return (
         post.title.toLowerCase().includes(formattedSearch) ||
-        post.desc.toLowerCase().includes(formattedSearch) ||
+        ('desc' in post && post.desc.toLowerCase().includes(formattedSearch)) ||
         formattedSearch
           .split(' ')
           .every((tag) =>

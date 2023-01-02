@@ -2,6 +2,4 @@ export * from './useInjectContent';
 export * from './useSelectedPosts';
 export * from './useScrollspy';
 export * from './useMediaQuery';
-export * from './useIsNotNested';
 export * from './useMaxWidthPosition';
-export * from './useSmoothTransform';

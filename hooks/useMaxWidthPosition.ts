@@ -1,6 +1,6 @@
-import { MAX_WIDTH } from 'data';
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from './useMediaQuery';
+import { MAX_WIDTH } from 'data';
 
 export const useMaxWidthPosition = () => {
   const [x, setX] = useState(0);

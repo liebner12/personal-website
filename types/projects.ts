@@ -1,9 +1,8 @@
-import { IconsList } from 'components';
 import { ProjectFrontmatter } from './frontmatters';
+import { IconsList } from 'components';
 
 export type Project = {
   title: string;
-  subtitle: string;
   image: string;
   desc: string;
   tags: Array<IconsList>;

@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-server-import-in-page */
-
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
 
@@ -10,13 +8,14 @@ export const config = {
 export default function handler(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
+    const sliceParams = (id: string, fallback = '') => {
+      return searchParams.has(id)
+        ? searchParams.get(id)?.slice(0, 100)
+        : fallback;
+    };
 
-    const title = searchParams.has('title')
-      ? searchParams.get('title')?.slice(0, 100)
-      : 'Michał Liebner';
-    const description = searchParams.has('description')
-      ? searchParams.get('description')?.slice(0, 100)
-      : '';
+    const title = sliceParams('title', 'Michał Liebner');
+    const description = sliceParams('description');
 
     return new ImageResponse(
       (

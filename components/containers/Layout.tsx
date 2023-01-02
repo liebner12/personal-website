@@ -1,4 +1,4 @@
-import { SkipToContent } from 'components/ui';
+import clsx from 'clsx';
 import { Navbar } from './Navbar';
 
 type Props = {
@@ -8,11 +8,9 @@ type Props = {
 
 export const Layout = ({ children, theme }: Props) => {
   return (
-    <div className={`flex min-h-screen w-full justify-center ${theme}`}>
+    <div className={clsx('flex min-h-screen w-full justify-center', theme)}>
       <div className="flex min-h-full w-full max-w-screen-2xl flex-col md:flex-row">
-        <SkipToContent id="Skip navbar">
-          <Navbar />
-        </SkipToContent>
+        <Navbar />
         {children}
       </div>
     </div>

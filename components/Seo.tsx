@@ -20,7 +20,7 @@ type SeoProps = {
   description?: string;
 } & Partial<typeof defaultMeta>;
 
-export default function Seo(props: SeoProps) {
+export function Seo(props: SeoProps) {
   const router = useRouter();
   const meta = {
     ...defaultMeta,
@@ -30,9 +30,11 @@ export default function Seo(props: SeoProps) {
     ? `${props.templateTitle} | ${meta.title}`
     : meta.title;
 
-  meta.image = `https://michal-liebner.vercel.app/api/og?title=${
-    props.templateTitle
-  }&description=${props.description ? props.description : ''}`;
+  if (meta.image === defaultMeta.image && props.templateTitle) {
+    meta.image = `https://michal-liebner.vercel.app/api/og?title=${
+      props.templateTitle
+    }&description=${props.description ? props.description : ''}`;
+  }
 
   return (
     <Head>

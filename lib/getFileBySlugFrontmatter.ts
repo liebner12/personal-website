@@ -1,11 +1,11 @@
 import { serialize } from 'next-mdx-remote/serialize';
-import { ContentType, PickFrontmatter } from 'types/frontmatters';
-import { getFileBySlug } from './getFile';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { getPlaiceholder } from 'plaiceholder';
+import { getFileBySlug } from './getFile';
+import { ContentType, PickFrontmatter } from 'types/frontmatters';
 
 export async function getFileBySlugFrontmatter<T extends ContentType>(
   type: T,
@@ -16,6 +16,7 @@ export async function getFileBySlugFrontmatter<T extends ContentType>(
   const mdxSource = await serialize(markdown, {
     parseFrontmatter: true,
     mdxOptions: {
+      development: false,
       remarkPlugins: [remarkGfm],
       rehypePlugins: [
         rehypeSlug,

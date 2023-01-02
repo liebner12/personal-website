@@ -1,18 +1,17 @@
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import {
   Header,
   Container,
   Background,
   List,
   SearchContainer,
-  Tile,
+  Card,
+  Seo,
 } from 'components';
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { BACKGROUNDS } from 'data';
-import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
-import { sortByDate } from 'utils';
+import { getAllFilesFrontmatter, getTags } from 'lib';
+import { checkTagged, sortByDate } from 'utils';
 import { useSelectedPosts } from 'hooks';
-import { getTags } from 'lib';
-import Seo from 'components/Seo';
 
 const Projects = ({
   projects,
@@ -39,9 +38,36 @@ const Projects = ({
           setSearch={setSearch}
         />
         <List isEmpty={filteredPosts.length === 0}>
-          {filteredPosts.map((project) => (
-            <Tile endpoint="projects" post={project} key={project.slug} />
-          ))}
+          {filteredPosts.map(
+            ({
+              slug,
+              title,
+              image,
+              blurDataURL,
+              publishedAt,
+              readingTime,
+              desc,
+              tags,
+            }) => (
+              <Card endpoint="projects" slug={slug} key={slug}>
+                <Card.Image
+                  title={title}
+                  image={image}
+                  blurDataURL={blurDataURL}
+                />
+                <Card.Date
+                  publishedAt={publishedAt}
+                  readingTime={readingTime}
+                />
+                <Card.Text title={title} desc={desc} />
+                <Card.Footer
+                  slug={slug}
+                  tags={tags}
+                  checkTagged={(tag) => checkTagged(tags, tag, search)}
+                />
+              </Card>
+            )
+          )}
         </List>
       </Container>
     </>

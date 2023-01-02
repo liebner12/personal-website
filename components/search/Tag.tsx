@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import clsx from 'clsx';
 
 export const Tag = ({
   name,
@@ -10,23 +10,17 @@ export const Tag = ({
   checkTagged: (tag: string) => boolean;
 }) => {
   return (
-    <motion.li
-      className="rounded-full border-2 border-darkBlockBg bg-blockBg text-center"
-      whileTap={{ scale: 0.98 }}
-      whileFocus={{ scale: 1.03 }}
-      whileHover={{ scale: 1.03 }}
-    >
+    <li className="rounded-full border-2 border-grey-800 bg-grey-900 text-center hover:bg-grey-800">
       <button
-        className={`tap-highlight prose prose-invert relative w-full rounded-full py-2.5 px-6 text-center ring-primary ring-offset-primary ${
-          checkTagged(name)
-            ? 'text-primary ring-0 ring-offset-2'
-            : ' text-white ring-0 ring-offset-0'
-        }`}
+        className={clsx('focus-state rounded-full py-3 px-6', {
+          'text-primary-main ring-0 ring-offset-2': checkTagged(name),
+          'text-grey-300 ring-0 ring-offset-0': !checkTagged(name),
+        })}
         type="button"
         onClick={onClick}
       >
         {name}
       </button>
-    </motion.li>
+    </li>
   );
 };

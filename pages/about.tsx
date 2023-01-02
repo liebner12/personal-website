@@ -1,15 +1,12 @@
-import { Container, Background, Icons } from 'components';
-import { BACKGROUNDS, FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_X } from 'data';
-import type { NextPage } from 'next';
-import Head from 'next/head';
 import Image from 'next/image';
-import Me from 'assets/images/me.png';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
-import { useMaxWidthPosition } from 'hooks';
 import { motion } from 'framer-motion';
-import Seo from 'components/Seo';
+import { Container, Background, Icons, Seo, StyledLink } from 'components';
+import { BACKGROUNDS, FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_X } from 'data';
+import Me from 'assets/images/me.png';
+import { useMaxWidthPosition } from 'hooks';
 
-const About: NextPage = () => {
+const About = () => {
   const x = useMaxWidthPosition();
   return (
     <>
@@ -19,8 +16,8 @@ const About: NextPage = () => {
       />
       <Background background={BACKGROUNDS.about} />
       <Container>
-        <div className="prose prose-invert my-auto lg:max-w-full">
-          <motion.h1 className="text-primary" {...FADE_IN_FIRST}>
+        <div className="prose prose-invert my-auto lg:!max-w-full">
+          <motion.h1 className="text-primary-main" {...FADE_IN_FIRST}>
             About
           </motion.h1>
           <motion.div className="float-right" {...FADE_IN_X}>
@@ -56,7 +53,6 @@ const About: NextPage = () => {
               help me consolidate things I&#39;ve learned. So feel free to
               contact me and I will be glad to help!
             </p>
-
             <h2>Currently used stack</h2>
             <Icons
               icons={[
@@ -68,38 +64,30 @@ const About: NextPage = () => {
                 'typescript',
                 'supabase',
               ]}
-              className="flex list-none flex-wrap gap-5 pl-0"
-              technologyClassName="h-8 w-8 hover:text-primary"
+              size="lg"
+              className="flex list-none flex-wrap gap-x-10 gap-y-4 pl-0 sm:gap-x-4"
             />
             <h3>Links:</h3>
             <ul className="mt-4 flex list-none items-center gap-8 pl-0">
               <li className="pl-0">
-                <motion.a
+                <StyledLink
                   target="_blank"
-                  whileTap={{ scale: 0.95 }}
-                  whileFocus={{ scale: 1.02 }}
-                  whileHover={{ scale: 1.02 }}
-                  tabIndex={-1}
                   href="https://github.com/liebner12"
-                  className="flex items-center gap-2 text-primary"
-                  rel="noreferrer"
+                  StartIcon={SiGithub}
+                  color="text-primary-main"
                 >
-                  <SiGithub className="h-6 w-6" /> Github
-                </motion.a>
+                  Github
+                </StyledLink>
               </li>
               <li className="flex items-center gap-2">
-                <motion.a
-                  whileTap={{ scale: 0.95 }}
-                  whileFocus={{ scale: 1.02 }}
-                  whileHover={{ scale: 1.02 }}
-                  tabIndex={-1}
+                <StyledLink
                   target="_blank"
-                  href="https://www.linkedin.com/in/micha%C5%82-liebner-352034229"
-                  className="flex items-center gap-2 text-primary"
-                  rel="noreferrer"
+                  href="https://github.com/liebner12"
+                  StartIcon={SiLinkedin}
+                  color="text-primary-main"
                 >
-                  <SiLinkedin className="h-6 w-6" /> Linkedin
-                </motion.a>
+                  Linkedin
+                </StyledLink>
               </li>
             </ul>
           </motion.div>

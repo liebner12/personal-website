@@ -1,5 +1,4 @@
 import useSWR from 'swr';
-
 import { useEffect, useState } from 'react';
 import { BlogWithMeta } from 'types/blogs';
 import { ViewCount } from 'lib';
@@ -14,7 +13,7 @@ export function useInjectContent(frontmatter: Array<BlogFrontmatter>) {
   useEffect(() => {
     if (data) {
       const mapped = frontmatter.map((fm) => {
-        const views = data.find((meta) => meta.slug === fm.slug)?.count;
+        const views = data.find(({ slug }) => slug === fm.slug)?.count;
 
         return { ...fm, views };
       });

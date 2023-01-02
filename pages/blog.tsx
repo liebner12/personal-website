@@ -1,13 +1,20 @@
-import { Background, Tile } from 'components/ui';
-import { Header, Container, List } from 'components/containers';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import {
+  Background,
+  Seo,
+  Header,
+  Container,
+  List,
+  SearchContainer,
+  Card,
+} from 'components';
 import { BACKGROUNDS } from 'data';
-import { SearchContainer } from 'components/search';
-import { getTags } from 'lib';
+import { getTags, getAllFilesFrontmatter } from 'lib';
 import { useSelectedPosts, useInjectContent } from 'hooks';
 import { checkTagged, sortByDate } from 'utils';
-import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
-import Seo from 'components/Seo';
+
+const description =
+  'Learn development with great articles. Find the latest of my writing here.';
 
 const Blog = ({
   blogs,
@@ -16,9 +23,6 @@ const Blog = ({
   const populatedPosts = useInjectContent(blogs);
   const { filteredPosts, search, setSearch, sortBy, setSortBy, toggleTag } =
     useSelectedPosts(populatedPosts, 'blog');
-
-  const description =
-    'Learn development with great articles. Find the latest of my writing here.';
 
   return (
     <>
@@ -35,13 +39,38 @@ const Blog = ({
           setSearch={setSearch}
         />
         <List isEmpty={filteredPosts.length === 0}>
-          {filteredPosts.map((blog) => (
-            <Tile
-              post={blog}
-              key={blog.slug}
-              checkTagged={(tag) => checkTagged(tags, tag, search)}
-            />
-          ))}
+          {filteredPosts.map(
+            ({
+              slug,
+              title,
+              desc,
+              image,
+              blurDataURL,
+              publishedAt,
+              readingTime,
+              tags,
+            }) => (
+              <Card slug={slug} key={slug}>
+                <Card.Image
+                  title={title}
+                  image={image}
+                  blurDataURL={blurDataURL}
+                  overlay={
+                    <Card.Overlay
+                      slug={slug}
+                      tags={tags}
+                      checkTagged={(tag) => checkTagged(tags, tag, search)}
+                    />
+                  }
+                />
+                <Card.Date
+                  publishedAt={publishedAt}
+                  readingTime={readingTime}
+                />
+                <Card.Text title={title} desc={desc} />
+              </Card>
+            )
+          )}
         </List>
       </Container>
     </>

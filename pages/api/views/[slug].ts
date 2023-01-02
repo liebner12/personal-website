@@ -1,5 +1,5 @@
-import { getViews, registerView } from 'lib/getViews';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { getViews, registerView } from 'lib/getViews';
 
 interface Data {
   message?: string;

@@ -46,3 +46,18 @@ export const FADE_IN_X = {
     delay: 0.4,
   },
 };
+
+export const FADE_IN_X_REVERSE = {
+  initial: { x: -200, opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+  transition: {
+    delay: 0.25,
+    duration: 0.3,
+  },
+};
+
+export const HOVER_SCALE = {
+  whileHover: { scale: 1.03 },
+  whileTap: { scale: 0.96 },
+  whileFocus: { scale: 1.03 },
+};

@@ -1,0 +1,137 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import type { Variant } from 'framer-motion';
+import {
+  BsArrowDown,
+  BsArrowLeft,
+  BsArrowRight,
+  BsArrowUp,
+} from 'react-icons/bs';
+import clsx from 'clsx';
+import { StyledLink } from './StyledLink';
+
+type ArrowDirections = 'down' | 'up' | 'left' | 'right';
+type ElementState = 'tap' | 'hover' | 'initial';
+type ArrowVariants = Record<ArrowDirections, Record<ElementState, Variant>>;
+
+const arrowVariants: ArrowVariants = {
+  down: {
+    initial: { y: 0 },
+    hover: { y: 2 },
+    tap: { y: 6 },
+  },
+  up: {
+    initial: { y: 0 },
+    hover: { y: -2 },
+    tap: { y: -6 },
+  },
+  left: {
+    initial: { x: 0 },
+    hover: { x: -2 },
+    tap: { x: -6 },
+  },
+  right: {
+    initial: { x: 0 },
+    hover: { x: 2 },
+    tap: { x: 6 },
+  },
+};
+
+type Props = {
+  direction?: ArrowDirections;
+  className?: string;
+  isCircle?: boolean;
+};
+
+const ArrowIcon = ({ direction, className }: Props) => {
+  switch (direction) {
+    case 'down':
+      return <BsArrowDown className={className} />;
+    case 'up':
+      return <BsArrowUp className={className} />;
+    case 'left':
+      return <BsArrowLeft className={className} />;
+    default:
+      return <BsArrowRight className={className} />;
+  }
+};
+
+const MotionStyledLink = motion(StyledLink);
+
+export const ArrowLink = ({
+  children,
+  direction = 'right',
+  isCircle = true,
+  ...props
+}: StyledLink & Props) => {
+  const pathLength = 22 * 2 * Math.PI;
+
+  return (
+    <MotionStyledLink
+      focusState=""
+      className={clsx(
+        'inline-flex items-center text-xl font-semibold focus:outline-none',
+        { 'gap-6': isCircle },
+        { 'gap-4': !isCircle }
+      )}
+      whileTap="tap"
+      whileHover="hover"
+      whileFocus="hover"
+      initial="initial"
+      {...props}
+    >
+      {(direction === 'right' || direction === 'up') && children}
+      <div
+        className={clsx(
+          'relative inline-flex flex-none items-center justify-center',
+          { 'h-14 w-14 p-1': isCircle }
+        )}
+      >
+        {isCircle && (
+          <div className="absolute text-grey-800">
+            <svg width="48" height="48">
+              <circle
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="transparent"
+                r="22"
+                cx="24"
+                cy="24"
+              />
+
+              <motion.circle
+                className="text-primary-main"
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="transparent"
+                r="22"
+                cx="24"
+                cy="24"
+                style={{
+                  strokeDasharray: `${pathLength} ${pathLength}`,
+                  rotate: -90,
+                }}
+                variants={{
+                  initial: { strokeDashoffset: pathLength },
+                  hover: { strokeDashoffset: 0 },
+                  tap: { strokeDashoffset: 0 },
+                  focus: { strokeDashoffset: 0 },
+                }}
+                transition={{
+                  damping: 0,
+                }}
+              />
+            </svg>
+          </div>
+        )}
+        <motion.span
+          variants={arrowVariants[direction]}
+          className="m-auto inline-block"
+        >
+          <ArrowIcon direction={direction} className="h-6 w-6" />
+        </motion.span>
+      </div>
+      {(direction === 'left' || direction === 'down') && children}
+    </MotionStyledLink>
+  );
+};

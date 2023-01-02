@@ -7,6 +7,7 @@ import {
   IoMdEye,
 } from 'react-icons/io';
 import { motion } from 'framer-motion';
+import clsx from 'clsx';
 
 const MotionButton = motion(Listbox.Button);
 
@@ -21,23 +22,18 @@ export const SortList = ({ sortBy, setSortBy, sortByList }: SortListType) => {
     <div className="h-full w-full min-w-[12rem]">
       <Listbox value={sortBy} onChange={setSortBy}>
         <div className="relative h-full">
-          <MotionButton
-            whileTap={{ scale: 0.99 }}
-            whileFocus={{ scale: 1.02 }}
-            whileHover={{ scale: 1.02 }}
-            className="tap-highlight relative h-full w-full rounded-xl bg-darkBlockBg py-3 px-4 pr-10 text-left focus:outline-none focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-grey focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-primary sm:text-sm"
-          >
-            <span className="flex h-7 items-center gap-2 truncate">
+          <MotionButton className="focus-state relative h-full w-full rounded-xl border-2 border-grey-800 bg-grey-800 py-4 px-4 transition-colors hover:bg-grey-900">
+            <span className="flex items-center gap-2 text-grey-300">
               {sortBy === 'date' ? (
-                <IoMdCalendar className="text-gray-400 h-6 w-6" />
+                <IoMdCalendar className="h-6 w-6" />
               ) : (
-                <IoMdEye className="text-gray-400 h-6 w-6" />
+                <IoMdEye className="h-6 w-6" />
               )}
               Sort by {sortBy}
             </span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
               <IoMdArrowDropdown
-                className="h-6 w-6 text-grey"
+                className="h-6 w-6 text-grey-300"
                 aria-hidden="true"
               />
             </span>
@@ -48,13 +44,13 @@ export const SortList = ({ sortBy, setSortBy, sortByList }: SortListType) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-blockBg py-1 shadow-xl ring-1 ring-black ring-opacity-5 backdrop-blur-lg focus:outline-none sm:text-sm">
+            <Listbox.Options className="absolute z-20 mt-2 max-h-60 w-full overflow-auto rounded-xl bg-grey-900 ring-1 ring-grey-800 focus:outline-none">
               {sortByList.map((sortItem, index) => (
                 <Listbox.Option
                   key={index}
                   className={({ active }) =>
-                    `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                      active && 'bg-primaryDark'
+                    `relative cursor-default select-none py-3.5 pl-10 pr-4 ${
+                      active && 'bg-primary-dark'
                     }`
                   }
                   value={sortItem}
@@ -62,14 +58,14 @@ export const SortList = ({ sortBy, setSortBy, sortByList }: SortListType) => {
                   {({ selected }) => (
                     <>
                       <span
-                        className={`block truncate ${
-                          selected && 'text-primary'
-                        }`}
+                        className={clsx('block truncate', {
+                          'text-primary-main': selected,
+                        })}
                       >
                         Sort by {sortItem}
                       </span>
                       {selected ? (
-                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-primary">
+                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-primary-main">
                           <IoMdCheckmark
                             className="h-5 w-5"
                             aria-hidden="true"
