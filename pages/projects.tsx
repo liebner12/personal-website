@@ -11,31 +11,31 @@ import {
 import { BACKGROUNDS } from 'data';
 import { getAllFilesFrontmatter, getTags } from 'lib';
 import { checkTagged, sortByDate } from 'utils';
-import { useSelectedPosts } from 'hooks';
+import { useInjectContent, useSelectedPosts } from 'hooks';
+
+const description = 'My personal journey as a frontend developer.';
 
 const Projects = ({
   projects,
   tags,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { filteredPosts, search, setSearch, toggleTag } = useSelectedPosts(
-    projects,
-    'projects'
-  );
+  const populatedPosts = useInjectContent(projects);
+  const { filteredPosts, search, setSearch, sortBy, setSortBy, toggleTag } =
+    useSelectedPosts(populatedPosts, 'projects');
 
   return (
     <>
-      <Seo templateTitle="Projects" description="" />
+      <Seo templateTitle="Projects" description={description} />
       <Background background={BACKGROUNDS.projects} />
       <Container isGrid>
-        <Header
-          title="Projects"
-          desc="Showcase of my works on Javascript/Typescript development."
-        />
+        <Header title="Projects" desc={description} />
         <SearchContainer
           toggleTag={toggleTag}
           tags={tags}
           search={search}
           setSearch={setSearch}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
         />
         <List isEmpty={filteredPosts.length === 0}>
           {filteredPosts.map(

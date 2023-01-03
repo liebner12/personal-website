@@ -4,6 +4,8 @@ import type {
   InferGetStaticPropsType,
 } from 'next';
 import readingTime from 'reading-time';
+import { useEffect } from 'react';
+import useSWR from 'swr';
 import { getFileBySlugFrontmatter, getFiles, getPaths } from 'lib';
 import {
   TableOfContents,
@@ -16,6 +18,7 @@ import {
 import { StaticParams } from 'types';
 
 const Project = ({
+  slug,
   frontmatter: {
     title,
     desc,
@@ -28,6 +31,14 @@ const Project = ({
   mdxSource,
   readingTime,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { data } = useSWR(`/api/views/${slug}`);
+
+  useEffect(() => {
+    fetch(`/api/views/${slug}`, {
+      method: 'POST',
+    });
+  }, [slug]);
+
   return (
     <>
       <Seo templateTitle={title} description={desc} />
@@ -43,6 +54,7 @@ const Project = ({
               readingTime={readingTime}
               repository={repository}
               publishedAt={publishedAt}
+              views={data?.views}
             />
             <PostBody
               mdxSource={mdxSource}

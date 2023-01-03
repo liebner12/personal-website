@@ -5,20 +5,23 @@ import { StyledLink } from './StyledLink';
 import { HOVER_SCALE } from 'data';
 
 const sizeVariants = {
-  xl: 'px-10 py-8',
+  xl: 'px-6 lg:px-10 py-8',
   lg: 'px-10 py-4',
   md: 'px-6 py-2',
   sm: 'px-4 py-1',
 };
 
 type Props = {
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'filled';
   rounded?: 'full' | 'xl' | 'lg';
   containerClassName?: string;
 };
 
-const getVariant = (variant: 'primary' | 'secondary' | 'icon') => {
+const getVariant = (variant: 'primary' | 'secondary' | 'filled') => {
   switch (variant) {
+    case 'filled': {
+      return 'border-2 border-grey-700 bg-grey-800 font-semibold';
+    }
     case 'secondary': {
       return 'border-2 border-grey-700 font-semibold';
     }
@@ -35,10 +38,17 @@ export const Button = ({
   size = 'md',
   containerClassName = '',
   className = '',
+  StartIcon,
+  EndIcon,
   ...props
 }: StyledLink & Props) => {
   return (
-    <motion.div {...HOVER_SCALE} className={containerClassName}>
+    <motion.div
+      {...HOVER_SCALE}
+      className={clsx(containerClassName, {
+        'flex items-center gap-2': StartIcon || EndIcon,
+      })}
+    >
       <StyledLink
         focusState="focus-state"
         className={clsx(
@@ -47,6 +57,8 @@ export const Button = ({
           `rounded-${rounded}`,
           className
         )}
+        StartIcon={StartIcon}
+        EndIcon={EndIcon}
         {...props}
       >
         {children}

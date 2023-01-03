@@ -13,8 +13,7 @@ import { getTags, getAllFilesFrontmatter } from 'lib';
 import { useSelectedPosts, useInjectContent } from 'hooks';
 import { checkTagged, sortByDate } from 'utils';
 
-const description =
-  'Learn development with great articles. Find the latest of my writing here.';
+const description = 'My thoughts, implementations in Javascript ecosystem.';
 
 const Blog = ({
   blogs,

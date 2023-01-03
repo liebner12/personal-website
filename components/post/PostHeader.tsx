@@ -7,6 +7,7 @@ import { FADE_IN_FIRST } from 'data';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
 import { StyledLink } from 'components/StyledLink';
 import { ArrowLink } from 'components/ArrowLink';
+import { Button } from 'components/Button';
 
 export type PostHeader = { endpoint: string } & Partial<
   Pick<BlogFrontmatter, 'title' | 'readingTime' | 'views' | 'publishedAt'> &
@@ -31,58 +32,48 @@ export function PostHeader({
       <ArrowLink direction="left" href={`/${endpoint}`} isCircle={false}>
         Back to overview
       </ArrowLink>
-      <h1 className="mt-10 text-4xl font-bold text-white">{title}</h1>
+      <h1 className="mt-16 text-4xl font-bold text-white">{title}</h1>
       {desc && <p className="mt-4 text-lg text-grey-300">{desc}</p>}
       <div className="mt-3 flex flex-wrap items-center gap-2 text-lg">
-        {views && (
-          <>
-            <div className="flex items-center gap-1 text-primary-main">
-              <MdRemoveRedEye /> {views} views
-            </div>
-          </>
-        )}
-        {repository && (
-          <StyledLink
-            StartIcon={FaGithub}
-            href={repository}
-            target="_blank"
-            color="text-primary-main"
-          >
-            Repository
-          </StyledLink>
-        )}
-        {readingTime && (
-          <>
-            -
-            <div className="flex items-center gap-2 text-grey-300">
-              <MdTimer />
-              <span>{readingTime.text}</span>
-            </div>
-          </>
-        )}
-        {url && (
-          <>
-            -
-            <StyledLink
-              href={url}
-              target="_blank"
-              StartIcon={BiLink}
-              color="text-primary-main"
-            >
-              Open Live Site
-            </StyledLink>
-          </>
-        )}
         {publishedAt && (
           <>
-            -
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 text-primary-main">
               <MdCalendarToday />
               <p>{format(new Date(publishedAt), 'dd MMM yyyy')}</p>
             </div>
           </>
         )}
+        {readingTime && (
+          <>
+            -
+            <div className="flex items-center gap-2">
+              <MdTimer />
+              <span>{readingTime.text}</span>
+            </div>
+          </>
+        )}
+        {views && (
+          <>
+            -
+            <div className="flex items-center gap-1">
+              <MdRemoveRedEye /> {views} views
+            </div>
+          </>
+        )}
       </div>
+      {(url || repository) && (
+        <div className="mt-10 flex items-center gap-4">
+          {url && <Button href={url} target="_blank" StartIcon={BiLink} />}
+          {repository && (
+            <Button
+              variant="filled"
+              StartIcon={FaGithub}
+              href={repository}
+              target="_blank"
+            />
+          )}
+        </div>
+      )}
     </motion.div>
   );
 }

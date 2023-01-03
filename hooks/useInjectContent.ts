@@ -2,13 +2,15 @@ import useSWR from 'swr';
 import { useEffect, useState } from 'react';
 import { BlogWithMeta } from 'types/blogs';
 import { ViewCount } from 'lib';
-import { BlogFrontmatter } from 'types/frontmatters';
+import { BlogFrontmatter, ProjectFrontmatter } from 'types/frontmatters';
+import { ProjectWithMeta } from 'types';
 
-export function useInjectContent(frontmatter: Array<BlogFrontmatter>) {
+export function useInjectContent(
+  frontmatter: Array<BlogFrontmatter & ProjectFrontmatter>
+) {
   const { data } = useSWR<Array<ViewCount>>('/api/views');
-  const [populatedContent, setPopulatedContent] = useState<Array<BlogWithMeta>>(
-    frontmatter as Array<BlogWithMeta>
-  );
+  const [populatedContent, setPopulatedContent] =
+    useState<Array<BlogWithMeta & ProjectWithMeta>>(frontmatter);
 
   useEffect(() => {
     if (data) {

@@ -19,17 +19,17 @@ import { StaticParams } from 'types';
 
 const Blog = ({
   frontmatter: { title, desc, image, blurDataURL, publishedAt },
-  blog,
+  slug,
   mdxSource,
   readingTime,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { data } = useSWR(`/api/views/${blog}`);
+  const { data } = useSWR(`/api/views/${slug}`);
 
   useEffect(() => {
-    fetch(`/api/views/${blog}`, {
+    fetch(`/api/views/${slug}`, {
       method: 'POST',
     });
-  }, [blog]);
+  }, [slug]);
 
   return (
     <>

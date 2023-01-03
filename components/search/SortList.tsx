@@ -44,14 +44,15 @@ export const SortList = ({ sortBy, setSortBy, sortByList }: SortListType) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute z-20 mt-2 max-h-60 w-full overflow-auto rounded-xl bg-grey-900 ring-1 ring-grey-800 focus:outline-none">
+            <Listbox.Options className="absolute z-20 mt-2 max-h-60 w-full overflow-auto rounded-xl bg-grey-800 ring-1 ring-grey-800 focus:outline-none">
               {sortByList.map((sortItem, index) => (
                 <Listbox.Option
                   key={index}
                   className={({ active }) =>
-                    `relative cursor-default select-none py-3.5 pl-10 pr-4 ${
-                      active && 'bg-primary-dark'
-                    }`
+                    clsx(
+                      'relative cursor-default select-none py-3.5 pl-10 pr-4',
+                      { 'bg-primary-dark': active }
+                    )
                   }
                   value={sortItem}
                 >

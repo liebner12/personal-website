@@ -25,3 +25,7 @@ export type PostMeta = ProjectWithMeta | BlogWithMeta;
 export type PickFrontmatter<T extends ContentType> = T extends 'blog'
   ? BlogFrontmatter
   : ProjectFrontmatter;
+
+export type PickFrontmatterWithMeta<T extends ContentType> = T extends 'blog'
+  ? BlogWithMeta
+  : ProjectWithMeta;
