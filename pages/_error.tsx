@@ -381,7 +381,7 @@ const Error = ({ statusCode }: Props) => {
             </svg>
           </div>
           <div>
-            <h1 className="text-4xl font-bold text-primary-main lg:text-[6rem]">
+            <h1 className="text-4xl font-bold leading-tight text-primary-main lg:text-[6rem]">
               Error {statusCode}
             </h1>
             <p className="mt-2 mb-8 text-lg text-grey-300">
