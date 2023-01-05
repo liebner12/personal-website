@@ -3,6 +3,8 @@ import { theme } from 'tailwind.config';
 
 export const getCurrentTheme = (path: string) => {
   switch (true) {
+    case /^(?=.{1,1}$)[/]*$/.test(path):
+      return { color: theme.colors.home, theme: THEMES.home };
     case /\/about.*/.test(path):
       return { color: theme.colors.about, theme: THEMES.about };
     case /\/blog.*/.test(path):
@@ -12,6 +14,6 @@ export const getCurrentTheme = (path: string) => {
     case /\/projects.*/.test(path):
       return { color: theme.colors.projects, theme: THEMES.projects };
     default:
-      return { color: theme.colors.home, theme: THEMES.home };
+      return { color: theme.colors.error, theme: THEMES.error };
   }
 };

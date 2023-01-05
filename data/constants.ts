@@ -4,14 +4,7 @@ export const THEMES = {
   contact: 'theme-contact',
   projects: 'theme-projects',
   home: 'theme-home',
-};
-
-export const BACKGROUNDS = {
-  about: 'about-bg',
-  blog: 'blog-bg',
-  contact: 'contact-bg',
-  projects: 'projects-bg',
-  home: 'home-bg',
+  error: 'theme-error',
 };
 
 export const BLOG_SORT_LIST = ['date', 'views'];

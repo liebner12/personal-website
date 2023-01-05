@@ -11,7 +11,7 @@ import {
   Button,
   ArrowLink,
 } from 'components';
-import { BACKGROUNDS, FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_VIEW } from 'data';
+import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_VIEW } from 'data';
 import { getAllFilesFrontmatter, getTags } from 'lib';
 import { sortByDate } from 'utils';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
@@ -29,8 +29,8 @@ function HomePage({
         templateTitle="Home"
         description="On this website I showcase my projects and write blog posts connected with Javascript ecosystem"
       />
-      <Background background={BACKGROUNDS.home} />
-      <Container className="mt-0 overflow-hidden py-10 !pt-0 md:overflow-auto">
+      <Background />
+      <Container className="overflow-hidden py-10 md:mt-0 md:overflow-auto md:!pt-0">
         <section className="flex min-h-screen flex-col justify-center">
           <div className="flex flex-col gap-20 lg:flex-row lg:items-center">
             <div className="prose prose-invert my-auto">

@@ -43,6 +43,7 @@ module.exports = {
       projects: combineHsl('--color-projects'),
       blog: combineHsl('--color-blog'),
       contact: combineHsl('--color-contact'),
+      error: combineHsl('--color-error'),
     },
   },
   plugins: [

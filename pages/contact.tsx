@@ -1,7 +1,7 @@
 import { FiGithub, FiLinkedin, FiMail, FiTwitter } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { Container, Background, ContactButton, Header, Seo } from 'components';
-import { BACKGROUNDS, FADE_IN_SECOND } from 'data';
+import { FADE_IN_SECOND } from 'data';
 
 const Contact = () => {
   return (
@@ -10,7 +10,7 @@ const Contact = () => {
         templateTitle="Contact"
         description="Do contact me if you want to talk about programming and especially if it's connected with Javascript ecosystem. I'll be happy to get to know each other!"
       />
-      <Background background={BACKGROUNDS.contact} />
+      <Background />
       <Container>
         <div className="my-auto">
           <Header

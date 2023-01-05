@@ -8,7 +8,6 @@ import {
   Card,
   Seo,
 } from 'components';
-import { BACKGROUNDS } from 'data';
 import { getAllFilesFrontmatter, getTags } from 'lib';
 import { checkTagged, sortByDate } from 'utils';
 import { useInjectContent, useSelectedPosts } from 'hooks';
@@ -26,7 +25,7 @@ const Projects = ({
   return (
     <>
       <Seo templateTitle="Projects" description={description} />
-      <Background background={BACKGROUNDS.projects} />
+      <Background />
       <Container isGrid>
         <Header title="Projects" desc={description} />
         <SearchContainer

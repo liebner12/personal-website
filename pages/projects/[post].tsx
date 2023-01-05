@@ -42,7 +42,7 @@ const Project = ({
   return (
     <>
       <Seo templateTitle={title} description={desc} />
-      <Background background="projects-bg" />
+      <Background />
       <Container>
         <div className="relative w-full pb-40 lg:grid lg:grid-cols-[auto,300px] lg:gap-12">
           <div>

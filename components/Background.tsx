@@ -2,15 +2,14 @@ import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { FADE_IN_X } from 'data';
 
-type Props = {
-  background: string;
-};
-
-export const Background = ({ background }: Props) => {
+export const Background = () => {
   return (
-    <div className="absolute top-0 right-0 -z-10 h-full w-full overflow-hidden lg:w-4/5">
-      <div className="h-3/5 opacity-30 lg:h-full">
-        <motion.div className={clsx('h-full', background)} {...FADE_IN_X} />
+    <div className="absolute top-0 right-0 -z-10 h-full w-full overflow-hidden">
+      <div className="h-3/5 opacity-40 lg:h-full">
+        <motion.div
+          className={clsx('background-gradient h-full')}
+          {...FADE_IN_X}
+        />
       </div>
     </div>
   );

@@ -2,13 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+$color-error: 0 100% 70%;
 $color-home: 30 100% 70%;
 $color-about: 60 100% 70%;
 $color-projects: 160 100% 50%;
 $color-blog: 190 100% 70%;
-$color-contact: 290 100% 70%;
-$colors-list: (color-home), (color-about), (color-projects), (color-blog),
-  (color-contact);
+$color-contact: 250 100% 70%;
 
 @function calculateHsl($hsl, $lightness) {
   $result: ();
@@ -19,6 +18,7 @@ $colors-list: (color-home), (color-about), (color-projects), (color-blog),
 }
 
 :root {
+  --color-error: #{$color-error};
   --color-home: #{$color-home};
   --color-about: #{$color-about};
   --color-projects: #{$color-projects};
@@ -40,6 +40,16 @@ $colors-list: (color-home), (color-about), (color-projects), (color-blog),
   --color-background-opacity: rgba(18, 24, 27, 0.95);
   --color-transparent: transparent;
   color-scheme: dark;
+}
+
+.theme-error {
+  --color-primary: #{$color-error};
+  --color-primary-light: #{calculateHsl($color-error, 40%)};
+  --color-primary-dark: #{calculateHsl($color-error, 20%)};
+  --color-primary-background: #{calculateHsl($color-error, 10%)};
+  --color-primary-main: 0 100% 70%;
+  --color-secondary: 20 100% 50%;
+  --color-secondary-dark: 20 100% 20%;
 }
 
 .theme-home {
@@ -87,9 +97,9 @@ $colors-list: (color-home), (color-about), (color-projects), (color-blog),
   --color-primary-light: #{calculateHsl($color-contact, 40%)};
   --color-primary-dark: #{calculateHsl($color-contact, 20%)};
   --color-primary-background: #{calculateHsl($color-contact, 10%)};
-  --color-primary-main: 290 100% 70%;
-  --color-secondary: 320 100% 50%;
-  --color-secondary-dark: 320 100% 20%;
+  --color-primary-main: 250 100% 70%;
+  --color-secondary: 280 100% 50%;
+  --color-secondary-dark: 280 100% 20%;
 }
 
 * {
@@ -121,43 +131,7 @@ body {
   background: var(--color-background);
 }
 
-.home-bg {
-  background: radial-gradient(
-    100% 95% at 100% 5%,
-    hsl(var(--color-secondary-dark)) 0%,
-    hsl(var(--color-primary-background)) 50%,
-    transparent 100%
-  );
-}
-
-.about-bg {
-  background: radial-gradient(
-    100% 95% at 100% 5%,
-    hsl(var(--color-secondary-dark)) 0%,
-    hsl(var(--color-primary-background)) 50%,
-    transparent 100%
-  );
-}
-
-.projects-bg {
-  background: radial-gradient(
-    100% 95% at 100% 5%,
-    hsl(var(--color-secondary-dark)) 0%,
-    hsl(var(--color-primary-background)) 50%,
-    transparent 100%
-  );
-}
-
-.blog-bg {
-  background: radial-gradient(
-    100% 95% at 100% 5%,
-    hsl(var(--color-secondary-dark)) 0%,
-    hsl(var(--color-primary-background)) 50%,
-    transparent 100%
-  );
-}
-
-.contact-bg {
+.background-gradient {
   background: radial-gradient(
     100% 95% at 100% 5%,
     hsl(var(--color-secondary-dark)) 0%,
@@ -234,7 +208,7 @@ body {
 
 .cards-range > li {
   &:nth-child(1) {
-    @apply absolute top-0 z-20;
+    @apply absolute top-0 z-20 h-[27rem] w-80;
   }
 
   &:nth-child(2) {

@@ -5,7 +5,6 @@ import { BiLink } from 'react-icons/bi';
 import { format } from 'date-fns';
 import { FADE_IN_FIRST } from 'data';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
-import { StyledLink } from 'components/StyledLink';
 import { ArrowLink } from 'components/ArrowLink';
 import { Button } from 'components/Button';
 

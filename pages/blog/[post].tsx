@@ -34,7 +34,7 @@ const Blog = ({
   return (
     <>
       <Seo templateTitle={title} description={desc} />
-      <Background background="blog-bg" />
+      <Background />
       <Container>
         <div className="relative w-full xl:grid xl:grid-cols-[auto,300px] xl:gap-12">
           <div>
