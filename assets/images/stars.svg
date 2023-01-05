@@ -6,7 +6,7 @@
    viewBox="0 0 855.93958 630.06608"
    version="1.1"
    id="svg96"
-   sodipodi:docname="undraw_stars_re_6je7.svg"
+   sodipodi:docname="stars.svg"
    inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -24,9 +24,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
-     inkscape:zoom="0.90230827"
-     inkscape:cx="430.00825"
-     inkscape:cy="386.23164"
+     inkscape:zoom="0.6380283"
+     inkscape:cx="877.70402"
+     inkscape:cy="213.94035"
      inkscape:window-width="1920"
      inkscape:window-height="991"
      inkscape:window-x="-9"
@@ -189,4 +189,22 @@
      r="17.48305"
      fill="#e6e6e6"
      id="circle94" />
+  <circle
+     cx="758.58704"
+     cy="437.28467"
+     r="3.7023399"
+     fill="#6c63ff"
+     id="circle20-0" />
+  <circle
+     cx="805.60693"
+     cy="543.86304"
+     r="4.2888899"
+     fill="#ff6584"
+     id="circle50-9" />
+  <circle
+     cx="780.52966"
+     cy="122.25163"
+     r="4.2888899"
+     fill="#ff6584"
+     id="circle50-7" />
 </svg>
