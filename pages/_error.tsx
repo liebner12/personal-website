@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Background, Button, Container, Seo } from 'components';
 import Stars from 'assets/images/stars.svg';
+import { FADE_IN_FIRST, FADE_IN_X } from 'data';
 type Props = {
   statusCode?: number;
 };
@@ -13,7 +14,10 @@ const Error = ({ statusCode }: Props) => {
       <Seo templateTitle="Not found" />
       <Background />
       <Container>
-        <div className="flex h-full max-h-full w-full flex-col items-center justify-center gap-8 text-center md:flex-row md:gap-20 lg:gap-40">
+        <motion.div
+          className="flex h-full max-h-full w-full flex-col items-center justify-center gap-8 text-center md:flex-row md:gap-20 lg:gap-40"
+          {...FADE_IN_FIRST}
+        >
           <div className="relative overflow-visible">
             <Image
               src={Stars}
@@ -385,7 +389,7 @@ const Error = ({ statusCode }: Props) => {
               Get To Home Page
             </Button>
           </div>
-        </div>
+        </motion.div>
       </Container>
     </>
   );
