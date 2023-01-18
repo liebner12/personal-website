@@ -121,7 +121,6 @@ body {
 }
 
 html {
-  width: 100vw;
   overflow-x: hidden;
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
@@ -222,6 +221,15 @@ body {
     rotate: -6deg !important;
     opacity: 0.8 !important;
   }
+}
+
+.disable-scrolling {
+  overflow: hidden;
+  height: 100%;
+}
+
+.grid-rows-auto-fr {
+  grid-template-rows: auto 1fr auto;
 }
 
 @media (hover: hover) {

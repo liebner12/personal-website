@@ -70,9 +70,9 @@ export const ArrowLink = ({
     <MotionStyledLink
       focusState=""
       className={clsx(
-        'inline-flex items-center text-xl font-semibold focus:outline-none',
-        { 'gap-6': isCircle },
-        { 'gap-4': !isCircle }
+        'inline-flex items-center font-semibold focus:outline-none',
+        { 'gap-6 text-xl': isCircle },
+        { 'gap-4 text-lg': !isCircle }
       )}
       whileTap="tap"
       whileHover="hover"

@@ -38,6 +38,7 @@ module.exports = {
       black: 'var(--color-black)',
       transparent: 'var(--color-transparent)',
       background: 'var(--color-background)',
+      backgroundOpacity: 'var(--color-background-opacity)',
       home: combineHsl('--color-home'),
       about: combineHsl('--color-about'),
       projects: combineHsl('--color-projects'),

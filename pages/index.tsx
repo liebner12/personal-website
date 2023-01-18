@@ -30,7 +30,7 @@ function HomePage({
         description="On this website I showcase my projects and write blog posts connected with Javascript ecosystem"
       />
       <Background />
-      <Container className="overflow-hidden py-10 md:mt-0 md:overflow-auto md:!pt-0">
+      <Container className="overflow-hidden py-10 lg:mt-0 lg:overflow-auto lg:!pt-0">
         <section className="flex min-h-screen flex-col justify-center">
           <div className="flex flex-col gap-20 lg:flex-row lg:items-center">
             <div className="prose prose-invert my-auto">
@@ -56,7 +56,7 @@ function HomePage({
                     Get to know me!
                   </Button>
                 </div>
-                <div className="mt-6 flex gap-4">
+                <div className="mt-8 flex gap-6">
                   <StyledLink
                     href="https://github.com/liebner12"
                     target="_blank"
