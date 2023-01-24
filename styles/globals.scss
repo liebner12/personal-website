@@ -213,13 +213,13 @@ body {
   &:nth-child(2) {
     @apply absolute top-4 -right-24 z-10 w-80;
     rotate: 6deg !important;
-    opacity: 0.8 !important;
+    opacity: 0.4 !important;
   }
 
   &:nth-child(3) {
     @apply absolute top-4 -left-24 z-0 w-80;
     rotate: -6deg !important;
-    opacity: 0.8 !important;
+    opacity: 0.4 !important;
   }
 }
 
@@ -242,10 +242,10 @@ body {
       display: block;
     }
 
-    .navbar:hover {
+    .navbar:hover > div {
       width: 16rem;
-      box-shadow: 0.5rem -1.5rem 1.5rem 2rem var(--color-background-opacity);
-      background: var(--color-background-opacity);
+      box-shadow: 0.5rem -1.5rem 1.5rem 2rem var(--color-background);
+      background: var(--color-background);
     }
   }
 }

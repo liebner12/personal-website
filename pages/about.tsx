@@ -4,10 +4,8 @@ import { motion } from 'framer-motion';
 import { Container, Background, Icons, Seo, StyledLink } from 'components';
 import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_X } from 'data';
 import Me from 'assets/images/me.png';
-import { useMaxWidthPosition } from 'hooks';
 
 const About = () => {
-  const x = useMaxWidthPosition();
   return (
     <>
       <Seo
@@ -25,8 +23,7 @@ const About = () => {
               src={Me}
               width={498}
               height={885}
-              className=" my-0 ml-4 max-w-[8rem] md:max-w-[10rem] lg:max-w-[16rem] xl:max-w-[20rem]"
-              style={{ right: x }}
+              className="my-0 ml-4 max-w-[8rem] md:max-w-[10rem] lg:max-w-[16rem] xl:max-w-[20rem]"
               alt="Image presenting me"
             />
           </motion.div>

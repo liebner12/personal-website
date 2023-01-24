@@ -9,7 +9,9 @@ type Props = {
 
 export const Layout = ({ children, theme }: Props) => {
   return (
-    <div className={clsx('min-h-screen w-full', theme)}>
+    <div
+      className={clsx('flex min-h-screen w-full flex-col items-center', theme)}
+    >
       <div className="flex min-h-full w-full max-w-screen-2xl flex-col lg:flex-row">
         <Navbar />
         {children}

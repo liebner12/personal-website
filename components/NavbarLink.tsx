@@ -44,7 +44,7 @@ export const NavbarLink = ({ path, text, isExact, icon, onClick }: Props) => {
         ariaLabel={text}
         isActive={isActive}
         StartIcon={icon}
-        className="h-6 text-xl lg:text-lg"
+        className="z-20 h-6 text-xl lg:text-lg"
         onClick={onClick}
       >
         <p className="link-text">{text}</p>

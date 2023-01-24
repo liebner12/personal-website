@@ -31,7 +31,7 @@ export function PostHeader({
       <ArrowLink direction="left" href={`/${endpoint}`} isCircle={false}>
         Back to overview
       </ArrowLink>
-      <h1 className="mt-16 text-4xl font-bold text-white">{title}</h1>
+      <h1 className="mt-12 text-4xl font-bold text-white">{title}</h1>
       {desc && <p className="mt-4 text-lg text-grey-300">{desc}</p>}
       <div className="mt-3 flex flex-wrap items-center gap-2 text-lg">
         {publishedAt && (
