@@ -37,7 +37,7 @@ const Contact = () => {
             />
             <ContactButton
               Icon={FiLinkedin}
-              text="Linkedin"
+              text="LinkedIn"
               showedLink="Michał Liebner"
               link="https://www.linkedin.com/in/micha%C5%82-liebner-352034229"
             />

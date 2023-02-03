@@ -42,5 +42,7 @@ public/workbox-*.js.map
 public/sw.js
 public/sw.js.map
 public/worker-*.js
+public/rss
 tsconfig.tsbuildinfo
 dist
+sitemap-0.xml

@@ -43,12 +43,7 @@ export const Button = ({
   ...props
 }: StyledLink & Props) => {
   return (
-    <motion.div
-      {...HOVER_SCALE}
-      className={clsx(containerClassName, {
-        'flex items-center gap-2': StartIcon || EndIcon,
-      })}
-    >
+    <motion.div {...HOVER_SCALE} className={containerClassName}>
       <StyledLink
         focusState="focus-state"
         className={clsx(

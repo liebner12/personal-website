@@ -12,7 +12,7 @@ import {
   ArrowLink,
 } from 'components';
 import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_VIEW } from 'data';
-import { getAllFilesFrontmatter, getTags } from 'lib';
+import { getAllFilesFrontmatter, getTags, generateRssFeed } from 'lib';
 import { sortByDate } from 'utils';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
 import Me from 'assets/images/me.png';
@@ -146,6 +146,7 @@ export const getStaticProps: GetStaticProps<{
 }> = async () => {
   const projects = await getAllFilesFrontmatter('projects');
   const blogs = await getAllFilesFrontmatter('blog');
+  await generateRssFeed();
 
   return {
     props: {

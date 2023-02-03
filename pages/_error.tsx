@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Background, Button, Container, Seo } from 'components';
 import Stars from 'assets/images/stars.svg';
-import { FADE_IN_FIRST, FADE_IN_X } from 'data';
+import { FADE_IN_FIRST } from 'data';
 type Props = {
   statusCode?: number;
 };

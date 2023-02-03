@@ -1,3 +1,5 @@
+import { Variants } from 'framer-motion';
+
 export const THEMES = {
   about: 'theme-about',
   blog: 'theme-blog',
@@ -59,4 +61,32 @@ export const FADE_IN_VIEW = {
   initial: { y: '40px', opacity: 0 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: '-50px' },
+};
+
+export const navigationItemVariants: Variants = {
+  open: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      ease: [0.6, 0.05, 0.01, 0.9],
+    },
+  },
+  closed: {
+    y: 50,
+    opacity: 0,
+    transition: {
+      duration: 0.4,
+      ease: [0.6, 0.05, 0.01, 0.9],
+    },
+  },
+};
+
+export const navigationListVariants: Variants = {
+  open: {
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+  },
+  closed: {
+    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+  },
 };

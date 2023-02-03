@@ -1,13 +1,9 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { meta } from 'data';
 
 const defaultMeta = {
-  title: 'Michał Liebner',
-  siteName: 'michal-liebner.vercel.app',
-  description:
-    'Showcase of my projects, and some of my thoughts about web development.',
-  url: 'https://michal-liebner.vercel.app',
-  image: 'https://michal-liebner.vercel.app/api/og',
+  ...meta,
   type: 'website',
   robots: 'follow, index',
 };
@@ -41,8 +37,8 @@ export function Seo(props: SeoProps) {
       <title>{meta.title}</title>
       <meta name="robots" content={meta.robots} />
       <meta content={meta.description} name="description" />
-      <meta property="og:url" content={`${meta.url}${router.asPath}`} />
-      <link rel="canonical" href={`${meta.url}${router.asPath}`} />
+      <meta property="og:url" content={`${meta.link}${router.asPath}`} />
+      <link rel="canonical" href={`${meta.link}${router.asPath}`} />
       <meta property="og:type" content={meta.type} />
       <meta property="og:site_name" content={meta.siteName} />
       <meta property="og:description" content={meta.description} />

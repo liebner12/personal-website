@@ -12,8 +12,8 @@ export const TagsList = ({
   checkTagged: (tag: string) => boolean;
 }) => {
   return (
-    <SkipToContent id="Skip tags">
-      <ul className="relative flex flex-wrap gap-4 gap-y-4">
+    <ul className="relative flex flex-wrap gap-4 gap-y-4">
+      <SkipToContent id="Skip tags">
         {tags.map((item) => (
           <Tag
             key={item}
@@ -22,7 +22,7 @@ export const TagsList = ({
             checkTagged={checkTagged}
           />
         ))}
-      </ul>
-    </SkipToContent>
+      </SkipToContent>
+    </ul>
   );
 };

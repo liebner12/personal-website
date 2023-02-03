@@ -10,14 +10,50 @@ import {
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { SiGithub } from 'react-icons/si';
-import {
-  Button,
-  menuItemVariants,
-  NavbarLink,
-  SkipToContent,
-} from 'components';
+import { useRouter } from 'next/dist/client/router';
+import { IconType } from 'react-icons/lib';
+import { Button, SkipToContent, StyledLink } from 'components';
 import { useMediaQuery } from 'hooks';
-import { FADE_IN_X_REVERSE } from 'data';
+import {
+  FADE_IN_X_REVERSE,
+  navigationItemVariants,
+  navigationListVariants,
+} from 'data';
+import { theme } from 'tailwind.config';
+
+type Props = {
+  path: string;
+  text: string;
+  isExact?: boolean;
+  icon?: IconType;
+  onClick?: () => void;
+};
+
+export const NavbarLink = ({ path, text, isExact, icon, onClick }: Props) => {
+  const { pathname } = useRouter();
+
+  const isActive = isExact
+    ? pathname === path
+    : new RegExp(`${path}*`).test(pathname);
+
+  return (
+    <motion.li
+      className="flex h-10 items-center"
+      variants={navigationItemVariants}
+    >
+      <StyledLink
+        href={path}
+        ariaLabel={text}
+        isActive={isActive}
+        StartIcon={icon}
+        className="z-20 h-6 text-xl lg:text-lg"
+        onClick={onClick}
+      >
+        <p className="link-text">{text}</p>
+      </StyledLink>
+    </motion.li>
+  );
+};
 
 const Menu = () => {
   return (
@@ -43,15 +79,6 @@ const Menu = () => {
       </div>
     </motion.div>
   );
-};
-
-const navigationLinksVariants: Variants = {
-  open: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
-  },
-  closed: {
-    transition: { staggerChildren: 0.05, staggerDirection: -1 },
-  },
 };
 
 const backgroundFill: Variants = {
@@ -95,8 +122,10 @@ const MobileMenu = () => {
         className="absolute top-0 left-0 z-40 h-screen w-full bg-backgroundOpacity backdrop-blur-sm"
         variants={backgroundFill}
       />
-      <button
+      <motion.button
         aria-label="nav-toggle"
+        whileFocus="focused"
+        animate={isOpen ? 'open' : 'closed'}
         className="z-50 ml-auto rounded-lg focus:border-primary-main focus:outline-none"
         onClick={toggleSetIsOpen}
       >
@@ -112,8 +141,20 @@ const MobileMenu = () => {
                 rotate: 0,
                 width: 23,
               },
+              focused: {
+                backgroundPosition: '100%',
+                transition: {
+                  backgroundPosition: {
+                    repeat: Infinity,
+                    duration: 2,
+                  },
+                },
+              },
             }}
-            className="h-[3px] flex-shrink-0 rounded-full bg-white"
+            style={{
+              background: `linear-gradient(-45deg, #fff 50%, ${theme.colors.primary.main} 50%)`,
+            }}
+            className="h-[3px] w-full flex-shrink-0 rounded-full bg-[length:200%_200%]"
           />
           <motion.span
             variants={{
@@ -122,22 +163,50 @@ const MobileMenu = () => {
                 opacity: 1,
                 translateX: '0',
               },
+              focused: {
+                backgroundPosition: '100%',
+                transition: {
+                  backgroundPosition: {
+                    repeat: Infinity,
+                    duration: 2,
+                  },
+                },
+              },
             }}
             transition={{ duration: 0.1, ease: [0.6, 0.05, 0.01, 0.9] }}
-            className="h-[3px] w-full flex-shrink-0 rounded-full bg-white "
+            style={{
+              background: `linear-gradient(-45deg, #fff 50%, ${theme.colors.primary.main} 50%)`,
+            }}
+            className="h-[3px] w-full flex-shrink-0 rounded-full bg-[length:200%_200%]"
           />
           <motion.span
             variants={{
-              open: { rotate: 45, width: '100%', translateY: '-5px' },
+              open: {
+                rotate: 45,
+                width: '100%',
+                translateY: '-5px',
+              },
               closed: {
                 rotate: 0,
                 width: 16,
               },
+              focused: {
+                backgroundPosition: '100% 0',
+                transition: {
+                  backgroundPosition: {
+                    repeat: Infinity,
+                    duration: 1,
+                  },
+                },
+              },
             }}
-            className="h-[3px] flex-shrink-0 rounded-full bg-white "
+            style={{
+              background: `linear-gradient(-45deg, #fff 50%, ${theme.colors.primary.main} 50%)`,
+            }}
+            className="h-[3px] w-full flex-shrink-0 rounded-full bg-[length:200%_200%]"
           />
         </div>
-      </button>
+      </motion.button>
       <motion.div
         className={clsx(
           'grid-rows-auto-fr fixed left-0 top-0 z-40 h-screen w-full transition-all'
@@ -150,7 +219,7 @@ const MobileMenu = () => {
         <div className="pb-20" />
         <motion.ul
           className="my-auto flex w-full flex-col items-center justify-around gap-10 font-semibold"
-          variants={navigationLinksVariants}
+          variants={navigationListVariants}
         >
           <NavbarLink path="/" text="Home" isExact onClick={toggleSetIsOpen} />
           <NavbarLink path="/about" text="About" onClick={toggleSetIsOpen} />
@@ -165,7 +234,10 @@ const MobileMenu = () => {
             text="Contact"
             onClick={toggleSetIsOpen}
           />
-          <motion.li variants={menuItemVariants} className="mx-auto pt-20">
+          <motion.li
+            variants={navigationItemVariants}
+            className="mx-auto pt-20"
+          >
             <Button
               StartIcon={SiGithub}
               href="https://github.com/liebner12"
@@ -182,11 +254,11 @@ const MobileMenu = () => {
 export const Navbar = () => {
   return (
     <nav>
-      <div className="relative hidden h-full lg:block">
-        <SkipToContent id="Skip navbar">
+      <SkipToContent id="Skip navbar">
+        <div className="relative hidden h-full lg:block">
           <Menu />
-        </SkipToContent>
-      </div>
+        </div>
+      </SkipToContent>
       <div className="block lg:hidden">
         <MobileMenu />
       </div>

@@ -16,7 +16,11 @@ export const Layout = ({ children, theme }: Props) => {
         <Navbar />
         {children}
       </div>
-      <Footer />
+      <div className="flex w-full border-t-2 border-grey-900 ">
+        <div className="mx-auto w-full max-w-screen-lg">
+          <Footer />
+        </div>
+      </div>
     </div>
   );
 };
