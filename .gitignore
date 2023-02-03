@@ -43,6 +43,6 @@ public/sw.js
 public/sw.js.map
 public/worker-*.js
 public/rss
+public/sitemap-0.xml
 tsconfig.tsbuildinfo
 dist
-sitemap-0.xml

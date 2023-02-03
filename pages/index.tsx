@@ -113,7 +113,7 @@ function HomePage({
           </motion.div>
           <CardsRange posts={projects} />
         </section>
-        <section className="mx-auto grid max-w-6xl items-center gap-20 py-40 lg:grid-cols-2 lg:gap-10 xl:gap-20">
+        <section className="mx-auto grid max-w-6xl items-center gap-20 pt-40 lg:grid-cols-2 lg:gap-10 xl:gap-20">
           <ImagesGrid
             images={[
               ...blogs.map(({ image, title }) => ({ image, alt: title })),

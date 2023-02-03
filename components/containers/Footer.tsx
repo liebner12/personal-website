@@ -73,7 +73,7 @@ export const Footer = () => {
           <FooterItem path="/projects" text="Projects" />
           <FooterItem path="/blog" text="Blog" />
           <FooterItem path="/contact" text="Contact" />
-          <FooterItem path="/sitemap.xml" text="Sitemap" />
+          <FooterItem path="/sitemap-0.xml" text="Sitemap" />
         </FooterList>
         <FooterList>
           <FooterItem as="header" text="General" />
