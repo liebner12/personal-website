@@ -3,7 +3,11 @@ import { ReactNode } from 'react';
 import { BsSpotify } from 'react-icons/bs';
 import clsx from 'clsx';
 import { StyledLink } from 'components/StyledLink';
-import { navigationItemVariants, navigationListVariants } from 'data';
+import {
+  FADE_IN_VIEW,
+  navigationItemVariants,
+  navigationListVariants,
+} from 'data';
 import { ArrowLink } from 'components/ArrowLink';
 
 type Props = {
@@ -53,7 +57,7 @@ const FooterItem = ({ path, text, target, as, children }: Props) => {
 
 export const Footer = () => {
   return (
-    <footer className="w-full px-8 pb-8 pt-16 md:px-12 lg:pt-32 lg:pb-32">
+    <footer className="w-full px-8 pb-8 pt-24 md:px-12 lg:pb-32">
       <div className="mb-20 flex items-center gap-3 text-grey-400">
         <BsSpotify className="h-8 w-8" />
         <span className="text-xl font-bold text-white">Not Playing</span>
@@ -79,7 +83,7 @@ export const Footer = () => {
           <FooterItem as="header" text="General" />
           <FooterItem path="/privacy" text="Privacy" />
           <FooterItem path="/newsletter" text="Newsletter" />
-          <FooterItem path="/rss" text="RSS" />
+          <FooterItem path="/rss/feed.xml" text="RSS" />
           <FooterItem as="container">
             <FooterList className="mt-10">
               <FooterItem as="header" text="Contact" />
@@ -122,15 +126,21 @@ export const Footer = () => {
           </FooterItem>
         </FooterList>
       </motion.div>
-      <div className="mt-10 flex w-full flex-col items-center gap-24 sm:mt-32 sm:gap-10 lg:flex-row lg:items-center lg:justify-between">
+      <motion.div
+        className="mt-10 flex w-full flex-col items-center gap-24 sm:mt-32 sm:gap-10 lg:flex-row lg:items-center lg:justify-between"
+        {...FADE_IN_VIEW}
+      >
         <div className="flex items-center gap-3 rounded-full border-2 border-grey-800 bg-grey-900 px-5 py-2 text-grey-400">
-          <span className="inline-block h-1.5 w-1.5 animate-ping rounded-full bg-primary-main"></span>
+          <span className="relative grid h-3 w-3 place-items-center">
+            <span className="absolute left-0 top-0 inline-flex h-full w-full animate-ping rounded-full bg-primary-main opacity-75"></span>
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-main"></span>
+          </span>
           302 visitors in last 7 days
         </div>
         <div className="text-grey-300">
           All rights reserved © Michał Liebner 2023
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 };

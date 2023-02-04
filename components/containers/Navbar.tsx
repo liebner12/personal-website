@@ -126,10 +126,10 @@ const MobileMenu = () => {
         aria-label="nav-toggle"
         whileFocus="focused"
         animate={isOpen ? 'open' : 'closed'}
-        className="z-50 ml-auto rounded-lg focus:border-primary-main focus:outline-none"
+        className="z-50 ml-auto grid place-items-center rounded-lg focus:outline-none"
         onClick={toggleSetIsOpen}
       >
-        <div className="flex h-8 w-8 flex-col items-end gap-[7px]">
+        <div className="flex h-8 w-8 flex-col items-end justify-center gap-[7px]">
           <motion.span
             variants={{
               open: {
@@ -142,19 +142,10 @@ const MobileMenu = () => {
                 width: 23,
               },
               focused: {
-                backgroundPosition: '100%',
-                transition: {
-                  backgroundPosition: {
-                    repeat: Infinity,
-                    duration: 2,
-                  },
-                },
+                backgroundColor: theme.colors.primary.main,
               },
             }}
-            style={{
-              background: `linear-gradient(-45deg, #fff 50%, ${theme.colors.primary.main} 50%)`,
-            }}
-            className="h-[3px] w-full flex-shrink-0 rounded-full bg-[length:200%_200%]"
+            className="h-[3px] w-full flex-shrink-0 rounded-full bg-grey-200"
           />
           <motion.span
             variants={{
@@ -164,20 +155,11 @@ const MobileMenu = () => {
                 translateX: '0',
               },
               focused: {
-                backgroundPosition: '100%',
-                transition: {
-                  backgroundPosition: {
-                    repeat: Infinity,
-                    duration: 2,
-                  },
-                },
+                backgroundColor: theme.colors.primary.main,
               },
             }}
             transition={{ duration: 0.1, ease: [0.6, 0.05, 0.01, 0.9] }}
-            style={{
-              background: `linear-gradient(-45deg, #fff 50%, ${theme.colors.primary.main} 50%)`,
-            }}
-            className="h-[3px] w-full flex-shrink-0 rounded-full bg-[length:200%_200%]"
+            className="h-[3px] w-full flex-shrink-0 rounded-full bg-grey-200"
           />
           <motion.span
             variants={{
@@ -191,19 +173,10 @@ const MobileMenu = () => {
                 width: 16,
               },
               focused: {
-                backgroundPosition: '100% 0',
-                transition: {
-                  backgroundPosition: {
-                    repeat: Infinity,
-                    duration: 1,
-                  },
-                },
+                backgroundColor: theme.colors.primary.main,
               },
             }}
-            style={{
-              background: `linear-gradient(-45deg, #fff 50%, ${theme.colors.primary.main} 50%)`,
-            }}
-            className="h-[3px] w-full flex-shrink-0 rounded-full bg-[length:200%_200%]"
+            className="h-[3px] w-full flex-shrink-0 rounded-full bg-grey-200"
           />
         </div>
       </motion.button>
