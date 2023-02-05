@@ -1,17 +1,12 @@
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
-import { BsSpotify } from 'react-icons/bs';
 import clsx from 'clsx';
-import useSWR from 'swr';
-import Image from 'next/image';
-import Link from 'next/link';
-import { StyledLink } from 'components/StyledLink';
 import {
   FADE_IN_VIEW,
   navigationItemVariants,
   navigationListVariants,
 } from 'data';
-import { ArrowLink } from 'components/ArrowLink';
+import { ArrowLink, Spotify, StyledLink } from 'components';
 
 type Props = {
   path?: string;
@@ -55,51 +50,6 @@ const FooterItem = ({ path, text, target, as, children }: Props) => {
         </StyledLink>
       )}
     </motion.li>
-  );
-};
-
-const Spotify = () => {
-  const { data } = useSWR(`/api/spotify`);
-
-  if (data?.isPlaying) {
-    return (
-      <>
-        <div className="mb-6 text-xl font-semibold text-white">
-          Currently playing:
-        </div>
-        <Link
-          href={data.url}
-          className="mb-20 block rounded-full border-2 border-grey-800 bg-grey-900 p-4 px-10 text-grey-400 transition-colors hover:bg-grey-800"
-        >
-          <div className="flex items-center gap-4">
-            <Image
-              alt={data.title}
-              src={data.image}
-              width={48}
-              height={48}
-              quality={50}
-              className="rounded-lg"
-            />
-            <div>
-              <div className="text-xl font-bold text-white">{data.title}</div>
-              <div>{data.artist}</div>
-            </div>
-            <BsSpotify className="ml-auto h-8 w-8 animate-spin-slow" />
-          </div>
-        </Link>
-      </>
-    );
-  }
-
-  return (
-    <>
-      <div className="mb-20 flex items-center gap-3 text-grey-400">
-        <BsSpotify className="h-8 w-8" />
-        <span className="text-xl font-bold text-white">Not Playing</span>
-        <span>—</span>
-        <span>Spotify</span>
-      </div>
-    </>
   );
 };
 

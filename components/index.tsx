@@ -10,3 +10,4 @@ export * from './SkipToContent';
 export * from './ContactBlock';
 export * from './StyledLink';
 export * from './ArrowLink';
+export * from './Spotify';
