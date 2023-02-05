@@ -68,24 +68,20 @@ const Spotify = () => {
           Currently playing:
         </div>
         <Link
-          href={data.song.albumImageUrl}
-          className="mb-20 rounded-full border-2 border-grey-800 bg-grey-900 p-4 px-10 text-grey-400 transition-colors hover:bg-grey-800"
+          href={data.url}
+          className="mb-20 block rounded-full border-2 border-grey-800 bg-grey-900 p-4 px-10 text-grey-400 transition-colors hover:bg-grey-800"
         >
           <div className="flex items-center gap-4">
             <Image
-              alt={data.song.title}
-              src={data.song.albumImageUrl}
+              alt={data.title}
+              src={data.image}
               width={48}
               height={48}
               quality={50}
-              placeholder="blur"
-              blurDataURL={data.song.albumImageUrl}
               className="rounded-lg"
             />
             <div>
-              <div className="text-xl font-bold text-white">
-                {data.song.title}
-              </div>
+              <div className="text-xl font-bold text-white">{data.title}</div>
               <div>{data.artist}</div>
             </div>
             <BsSpotify className="ml-auto h-8 w-8 animate-spin-slow" />
@@ -97,18 +93,11 @@ const Spotify = () => {
 
   return (
     <>
-      <div className="mb-6 text-xl font-semibold text-white">
-        Currently playing:
-      </div>
-      <div className="mb-20 rounded-full border-2 border-grey-800 bg-grey-900 p-4 px-10 text-grey-400 transition-colors hover:bg-grey-800">
-        <div className="flex items-center gap-4">
-          <div className="h-[48px] w-[48px] rounded-lg bg-primary-main" />
-          <div>
-            <div className="text-xl font-bold text-white">Monkey buisness</div>
-            <div>Three days grace</div>
-          </div>
-          <BsSpotify className="ml-auto h-8 w-8 animate-spin-slow" />
-        </div>
+      <div className="mb-20 flex items-center gap-3 text-grey-400">
+        <BsSpotify className="h-8 w-8" />
+        <span className="text-xl font-bold text-white">Not Playing</span>
+        <span>—</span>
+        <span>Spotify</span>
       </div>
     </>
   );

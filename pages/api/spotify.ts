@@ -11,7 +11,7 @@ export default async function handler(
     return res.status(200).json({ isPlaying: false });
   }
 
-  const { is_playing, item } = await response.json();
+  const { item, is_playing } = await response.json();
 
   if (item === null) {
     return res.status(200).json({ isPlaying: false });
@@ -19,8 +19,8 @@ export default async function handler(
 
   const title = item.name;
   const artist = item.artists.map((_artist: any) => _artist.name).join(', ');
-  const albumImageUrl = item.album.images[0].url;
-  const songUrl = item.external_urls.spotify;
+  const image = item.album.images[0].url;
+  const url = item.external_urls.spotify;
 
   res.setHeader(
     'Cache-Control',
@@ -30,8 +30,8 @@ export default async function handler(
   return res.status(200).json({
     title,
     artist,
-    albumImageUrl,
-    songUrl,
+    image,
+    url,
     isPlaying: is_playing,
   });
 }

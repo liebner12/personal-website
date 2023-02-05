@@ -1,29 +1,22 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
 
-const nextConfig = {
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+  runtimeCaching,
+  buildExcludes: [/middleware-manifest.json$/],
+  disable: process.env.NODE_ENV === 'development',
+});
+
+module.exports = withPWA({
   reactStrictMode: true,
   swcMinify: true,
-  pwa: {
-    dest: 'public',
-    register: true,
-    skipWaiting: true,
-    runtimeCaching,
-    buildExcludes: [/middleware-manifest.json$/],
-    disable: process.env.NODE_ENV === 'development',
-  },
   i18n: {
     locales: ['en'],
     defaultLocale: 'en',
   },
-};
-
-// eslint-disable-next-line no-undef, @typescript-eslint/no-unused-vars
-module.exports = buildConfig = (_phase) => {
-  const plugins = [withPWA];
-  const config = plugins.reduce((acc, plugin) => plugin(acc), {
-    ...nextConfig,
-  });
-  return config;
-};
+  images: {
+    domains: ['i.scdn.co'],
+  },
+});

@@ -25,6 +25,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
     'import/order': 'error',
+    '@typescript-eslint/no-var-requires': 0,
   },
   globals: {
     React: true,
