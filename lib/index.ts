@@ -8,3 +8,4 @@ export * from './getFile';
 export * from './getFileBySlugFrontmatter';
 export * from './getPaths';
 export * from './generateRssFeed';
+export * from './spotify';

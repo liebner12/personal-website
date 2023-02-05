@@ -92,7 +92,7 @@ const CardText = ({ title, desc, size }: CardText) => {
       >
         {title}
       </h2>
-      {desc && <p className="mx-4 mb-4 text-grey-300">{desc}</p>}
+      {desc && <p className="mx-4 mb-8 text-grey-300">{desc}</p>}
     </>
   );
 };

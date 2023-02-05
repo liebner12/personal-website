@@ -1,7 +1,6 @@
 import 'styles/globals.scss';
 import 'styles/prose.css';
 import 'styles/prism.css';
-import axios from 'axios';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import NextNProgress from 'nextjs-progressbar';
@@ -16,7 +15,10 @@ function Application({ Component, pageProps }: AppProps) {
   return (
     <SWRConfig
       value={{
-        fetcher: (url) => axios.get(url).then((res) => res.data),
+        fetcher: (url) =>
+          fetch(url)
+            .then((res) => res.json())
+            .then((data) => data),
       }}
     >
       <NextNProgress color={color} />

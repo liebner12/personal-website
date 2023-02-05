@@ -12,6 +12,9 @@ module.exports = {
       screens: {
         'hover-hover': { raw: '(hover: hover)' },
       },
+      animation: {
+        'spin-slow': 'spin 5s linear infinite',
+      },
     },
     colors: {
       primary: {
