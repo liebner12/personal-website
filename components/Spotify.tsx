@@ -22,7 +22,7 @@ export const Spotify = () => {
         <MotionLink
           {...FADE_IN_VIEW}
           href={data.url}
-          className="mb-20 block rounded-full border-2 border-grey-800 bg-grey-900 py-6 px-16 text-grey-400 transition-colors hover:bg-grey-800"
+          className="mb-20 block rounded-xl border-2 border-grey-800 bg-grey-900 py-4 px-4 text-grey-400 transition-colors hover:bg-grey-800 sm:rounded-full sm:py-6 sm:px-16"
         >
           <div className="flex items-center gap-4">
             <Image
@@ -37,7 +37,7 @@ export const Spotify = () => {
               <div className="text-xl font-bold text-white">{data.title}</div>
               <div>{data.artist}</div>
             </div>
-            <BsSpotify className="ml-auto h-8 w-8 animate-spin-slow" />
+            <BsSpotify className="ml-auto h-8 w-8 shrink-0 animate-spin-slow" />
           </div>
         </MotionLink>
       </>
