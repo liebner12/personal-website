@@ -7,10 +7,12 @@ import NextNProgress from 'nextjs-progressbar';
 import { SWRConfig } from 'swr';
 import { Layout } from 'components';
 import { getCurrentTheme } from 'utils';
+import { usePushView } from 'hooks';
 
 function Application({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter();
   const { color, theme } = getCurrentTheme(pathname);
+  usePushView(pathname);
 
   return (
     <SWRConfig

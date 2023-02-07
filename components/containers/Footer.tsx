@@ -1,12 +1,14 @@
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
 import clsx from 'clsx';
+import useSWR from 'swr';
 import {
   FADE_IN_VIEW,
   navigationItemVariants,
   navigationListVariants,
 } from 'data';
 import { ArrowLink, Spotify, StyledLink } from 'components';
+import { usePushView } from 'hooks';
 
 type Props = {
   path?: string;
@@ -54,6 +56,9 @@ const FooterItem = ({ path, text, target, as, children }: Props) => {
 };
 
 export const Footer = () => {
+  const { data } = useSWR(`/api/views/total`);
+  usePushView('total');
+
   return (
     <footer className="w-full px-8 pb-8 pt-24 md:px-12 lg:pb-32">
       <Spotify />
@@ -128,7 +133,7 @@ export const Footer = () => {
             <span className="absolute left-0 top-0 inline-flex h-full w-full animate-ping rounded-full bg-primary-main opacity-75"></span>
             <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-main"></span>
           </span>
-          302 visitors in last 7 days
+          {data?.views} total views count
         </div>
         <div className="text-grey-300">
           All rights reserved © Michał Liebner 2023

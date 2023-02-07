@@ -24,7 +24,7 @@ export const Spotify = () => {
           href={data.url}
           className="mb-20 block rounded-xl border-2 border-grey-800 bg-grey-900 py-4 px-4 text-grey-400 transition-colors hover:bg-grey-800 sm:rounded-full sm:py-6 sm:px-16"
         >
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 sm:gap-6">
             <Image
               alt={data.title}
               src={data.image}

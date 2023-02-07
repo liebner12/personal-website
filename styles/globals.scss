@@ -207,19 +207,32 @@ body {
 
 .cards-range > li {
   &:nth-child(1) {
-    @apply absolute top-0 z-20 h-[27rem] w-80;
+    @apply absolute top-0 h-[27rem] w-80;
+    z-index: 30 !important;
+  }
+  &:nth-child(2):before {
+    z-index: 20;
+    content: '';
+    @apply h-full absolute -right-0 z-20 w-80 top-0 block cursor-grab;
   }
 
   &:nth-child(2) {
-    @apply absolute top-4 -right-24 z-10 w-80;
+    @apply absolute -right-24 z-10 w-80;
+    top: 1rem !important;
     rotate: 6deg !important;
     opacity: 0.4 !important;
   }
 
   &:nth-child(3) {
-    @apply absolute top-4 -left-24 z-0 w-80;
+    @apply absolute -left-24 z-0 w-80 top-0 cursor-grab;
+    top: 1rem !important;
     rotate: -6deg !important;
     opacity: 0.4 !important;
+  }
+  &:nth-child(3):before {
+    z-index: 20;
+    content: '';
+    @apply h-full block absolute -left-0 z-20 w-80;
   }
 }
 

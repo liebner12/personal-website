@@ -3,12 +3,13 @@ import { MdCalendarToday, MdRemoveRedEye, MdTimer } from 'react-icons/md';
 import { motion } from 'framer-motion';
 import { BiLink } from 'react-icons/bi';
 import { format } from 'date-fns';
+import { useRouter } from 'next/router';
 import { FADE_IN_FIRST } from 'data';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
 import { ArrowLink } from 'components/ArrowLink';
 import { Button } from 'components/Button';
 
-export type PostHeader = { endpoint: string } & Partial<
+export type PostHeader = Partial<
   Pick<BlogFrontmatter, 'title' | 'readingTime' | 'views' | 'publishedAt'> &
     Pick<
       ProjectFrontmatter,
@@ -24,11 +25,17 @@ export function PostHeader({
   readingTime,
   url,
   views,
-  endpoint,
 }: PostHeader) {
+  const router = useRouter();
+
   return (
     <motion.div className="mb-12" {...FADE_IN_FIRST}>
-      <ArrowLink direction="left" href={`/${endpoint}`} isCircle={false}>
+      <ArrowLink
+        direction="left"
+        isCircle={false}
+        onClick={() => router.back()}
+        as="button"
+      >
         Back to overview
       </ArrowLink>
       <h1 className="mt-12 text-4xl font-bold text-white">{title}</h1>

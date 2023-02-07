@@ -20,7 +20,7 @@ export const Container = ({
   return (
     <main
       className={clsx(
-        'flex w-full flex-1 flex-col px-8 pt-[5%] pb-24 md:px-12 lg:mt-6 lg:ml-44 lg:px-12 lg:pl-4 lg:pr-20',
+        'flex flex-1 flex-col px-8 pt-[5%] pb-24 md:px-12 lg:mt-6 lg:ml-44 lg:px-12 lg:pl-4 lg:pr-20',
         className
       )}
     >

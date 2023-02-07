@@ -1,20 +1,18 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { Card } from './Card';
 import { ProjectFrontmatter } from 'types';
 import { FADE_IN_VIEW } from 'data';
 
 export const CardsRange = ({ posts }: { posts: Array<ProjectFrontmatter> }) => {
+  const [currentPosts, setCurrentPosts] = useState(posts.slice(0, 3));
   return (
-    <motion.div
-      className="relative mx-auto w-full max-w-sm md:w-64"
-      {...FADE_IN_VIEW}
-    >
+    <motion.div className="relative mx-auto" {...FADE_IN_VIEW}>
       <div className="relative h-[26rem] w-80">
         <ul className="cards-range">
-          {posts
-            .slice(0, 3)
-            .map(
-              ({
+          {currentPosts.map(
+            (
+              {
                 slug,
                 title,
                 image,
@@ -23,22 +21,61 @@ export const CardsRange = ({ posts }: { posts: Array<ProjectFrontmatter> }) => {
                 publishedAt,
                 readingTime,
                 desc,
-              }) => (
-                <Card slug={slug} key={slug} endpoint="projects">
-                  <Card.Image
-                    title={title}
-                    image={image}
-                    blurDataURL={blurDataURL}
-                  />
-                  <Card.Date
-                    publishedAt={publishedAt}
-                    readingTime={readingTime}
-                  />
-                  <Card.Text title={title} desc={desc} />
-                  <Card.Footer slug={slug} tags={tags} />
-                </Card>
-              )
-            )}
+              },
+              index
+            ) => (
+              <motion.li
+                key={slug}
+                onClick={() => {
+                  setCurrentPosts((prev) => [
+                    currentPosts[index],
+                    ...prev.filter((_, _index) => _index !== index),
+                  ]);
+                }}
+                drag="x"
+                dragSnapToOrigin
+                dragConstraints={{ left: 0, right: 0 }}
+                dragTransition={{ bounceStiffness: 600, bounceDamping: 40 }}
+                whileDrag={{ scale: 1.1 }}
+                whileTap={{ scale: 1.1 }}
+                dragElastic={0.15}
+                onDragEnd={(_, info) => {
+                  if (
+                    index === 0 &&
+                    info.offset.x > 100 &&
+                    Math.abs(info.offset.x) > 100
+                  ) {
+                    setCurrentPosts((prev) => [prev[2], prev[0], prev[1]]);
+                  }
+                  if (
+                    index === 0 &&
+                    info.offset.x < 100 &&
+                    Math.abs(info.offset.x) > 100
+                  ) {
+                    setCurrentPosts((prev) => [prev[1], prev[2], prev[0]]);
+                  }
+                }}
+                tabIndex={-1}
+                className="h-full"
+              >
+                <ul className="h-full">
+                  <Card slug={slug} endpoint="projects">
+                    <Card.Image
+                      title={title}
+                      image={image}
+                      blurDataURL={blurDataURL}
+                    />
+                    <Card.Date
+                      publishedAt={publishedAt}
+                      readingTime={readingTime}
+                    />
+                    <Card.Text title={title} desc={desc} />
+                    <Card.Footer slug={slug} tags={tags} />
+                  </Card>
+                </ul>
+              </motion.li>
+            )
+          )}
         </ul>
       </div>
     </motion.div>

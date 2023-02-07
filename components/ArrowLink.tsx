@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import type { Variant } from 'framer-motion';
 import {
@@ -41,6 +41,7 @@ type Props = {
   direction?: ArrowDirections;
   className?: string;
   isCircle?: boolean;
+  as?: 'link' | 'button';
 };
 
 const ArrowIcon = ({ direction, className }: Props) => {
@@ -58,28 +59,14 @@ const ArrowIcon = ({ direction, className }: Props) => {
 
 const MotionStyledLink = motion(StyledLink);
 
-export const ArrowLink = ({
+const ArrowBody = ({
   children,
   direction = 'right',
   isCircle = true,
-  ...props
-}: StyledLink & Props) => {
+}: { children: ReactNode } & Props) => {
   const pathLength = 22 * 2 * Math.PI;
-
   return (
-    <MotionStyledLink
-      focusState=""
-      className={clsx(
-        'inline-flex items-center font-semibold focus:outline-none',
-        { 'gap-6 text-xl': isCircle },
-        { 'gap-4 text-lg': !isCircle }
-      )}
-      whileTap="tap"
-      whileHover="hover"
-      whileFocus="hover"
-      initial="initial"
-      {...props}
-    >
+    <>
       {(direction === 'right' || direction === 'up') && children}
       <div
         className={clsx(
@@ -132,6 +119,55 @@ export const ArrowLink = ({
         </motion.span>
       </div>
       {(direction === 'left' || direction === 'down') && children}
+    </>
+  );
+};
+
+export const ArrowLink = ({
+  children,
+  direction = 'right',
+  isCircle = true,
+  as = 'link',
+  ...props
+}: StyledLink & Props) => {
+  if (as === 'button') {
+    return (
+      <motion.button
+        className={clsx(
+          'inline-flex items-center font-semibold focus:outline-none',
+          { 'gap-6 text-xl': isCircle },
+          { 'gap-4 text-lg': !isCircle }
+        )}
+        whileTap="tap"
+        whileHover="hover"
+        whileFocus="hover"
+        initial="initial"
+        {...props}
+      >
+        <ArrowBody isCircle={isCircle} direction={direction}>
+          {children}
+        </ArrowBody>
+      </motion.button>
+    );
+  }
+
+  return (
+    <MotionStyledLink
+      focusState=""
+      className={clsx(
+        'inline-flex items-center font-semibold focus:outline-none',
+        { 'gap-6 text-xl': isCircle },
+        { 'gap-4 text-lg': !isCircle }
+      )}
+      whileTap="tap"
+      whileHover="hover"
+      whileFocus="hover"
+      initial="initial"
+      {...props}
+    >
+      <ArrowBody isCircle={isCircle} direction={direction}>
+        {children}
+      </ArrowBody>
     </MotionStyledLink>
   );
 };

@@ -4,7 +4,6 @@ import type {
   InferGetStaticPropsType,
 } from 'next';
 import useSWR from 'swr';
-import { useEffect } from 'react';
 import readingTime from 'reading-time';
 import { getFileBySlugFrontmatter, getFiles, getPaths } from 'lib';
 import {
@@ -25,12 +24,6 @@ const Blog = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { data } = useSWR(`/api/views/${slug}`);
 
-  useEffect(() => {
-    fetch(`/api/views/${slug}`, {
-      method: 'POST',
-    });
-  }, [slug]);
-
   return (
     <>
       <Seo templateTitle={title} description={desc} />
@@ -39,7 +32,6 @@ const Blog = ({
         <div className="relative w-full xl:grid xl:grid-cols-[auto,300px] xl:gap-12">
           <div>
             <PostHeader
-              endpoint="blog"
               title={title}
               desc={desc}
               readingTime={readingTime}

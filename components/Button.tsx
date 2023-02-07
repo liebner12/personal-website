@@ -43,7 +43,7 @@ export const Button = ({
   ...props
 }: StyledLink & Props) => {
   return (
-    <motion.div {...HOVER_SCALE} className={containerClassName}>
+    <motion.div {...HOVER_SCALE} className={containerClassName} tabIndex={-1}>
       <StyledLink
         focusState="focus-state"
         className={clsx(
