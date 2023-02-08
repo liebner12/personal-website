@@ -82,8 +82,8 @@ function HomePage({
               </div>
               <Image
                 src={Me}
-                width={498}
-                height={885}
+                width={300}
+                height={600}
                 className=" absolute bottom-0 right-0 my-0 mx-auto max-w-[8rem] md:max-w-[10rem] lg:max-w-[16rem] xl:max-w-[20rem]"
                 alt="Image presenting me"
               />

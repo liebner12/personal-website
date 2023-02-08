@@ -19,8 +19,8 @@ export const ImagesGrid = ({ images }: Props) => {
             src={image}
             alt={alt}
             className="rounded-lg"
-            width={300}
-            height={200}
+            width={240}
+            height={135}
           />
         </li>
       ))}
