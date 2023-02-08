@@ -42,15 +42,15 @@ export const CardsRange = ({ posts }: { posts: Array<ProjectFrontmatter> }) => {
                 onDragEnd={(_, info) => {
                   if (
                     index === 0 &&
-                    info.offset.x > 100 &&
-                    Math.abs(info.offset.x) > 100
+                    info.offset.x > 50 &&
+                    Math.abs(info.offset.x) > 50
                   ) {
                     setCurrentPosts((prev) => [prev[2], prev[0], prev[1]]);
                   }
                   if (
                     index === 0 &&
-                    info.offset.x < 100 &&
-                    Math.abs(info.offset.x) > 100
+                    info.offset.x < 50 &&
+                    Math.abs(info.offset.x) > 50
                   ) {
                     setCurrentPosts((prev) => [prev[1], prev[2], prev[0]]);
                   }

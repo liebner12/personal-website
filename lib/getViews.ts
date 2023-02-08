@@ -13,12 +13,10 @@ export const getViews = async (slug: string): Promise<number> => {
     .single();
 
   if (error && error.details?.includes(`0 rows`)) {
-    const { error } = await supabase
+    await supabase
       .from(`views`)
       .insert({ slug: slug, count: 1 }, { count: `exact` })
       .single();
-
-    console.log(error);
   }
 
   if (!views) {
@@ -29,9 +27,7 @@ export const getViews = async (slug: string): Promise<number> => {
 };
 
 export const registerView = async (slug: string): Promise<void> => {
-  const { error } = await supabase.rpc('increment_views', {
+  await supabase.rpc('increment_views', {
     page_slug: slug,
   });
-
-  console.log(error);
 };

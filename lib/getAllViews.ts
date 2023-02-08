@@ -8,11 +8,7 @@ const supabase = createClient(
 export type ViewCount = { slug: string; count: number };
 
 export const getAllViews = async (): Promise<Array<ViewCount>> => {
-  const { data: views, error } = await supabase
-    .from('views')
-    .select('slug,count');
-
-  console.log(error);
+  const { data: views } = await supabase.from('views').select('slug,count');
 
   if (!views) {
     return [];

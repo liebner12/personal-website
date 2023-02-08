@@ -45,16 +45,14 @@ export const Spotify = () => {
   }
 
   return (
-    <>
-      <motion.div
-        className="mb-20 flex items-center gap-3 text-grey-400"
-        {...FADE_IN_VIEW}
-      >
-        <BsSpotify className="h-8 w-8" />
-        <span className="text-xl font-bold text-white">Not Playing</span>
-        <span>—</span>
-        <span>Spotify</span>
-      </motion.div>
-    </>
+    <motion.div
+      className="mb-20 flex items-center gap-3 text-grey-400"
+      {...FADE_IN_VIEW}
+    >
+      <BsSpotify className="h-8 w-8" />
+      <span className="text-xl font-bold text-white">Not Playing</span>
+      <span>—</span>
+      <span>Spotify</span>
+    </motion.div>
   );
 };

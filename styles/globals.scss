@@ -213,7 +213,7 @@ body {
   &:nth-child(2):before {
     z-index: 20;
     content: '';
-    @apply h-full absolute -right-0 z-20 w-80 top-0 block cursor-grab;
+    @apply absolute -right-0 top-0 z-20 block h-full w-80 cursor-grab;
   }
 
   &:nth-child(2) {
@@ -224,7 +224,7 @@ body {
   }
 
   &:nth-child(3) {
-    @apply absolute -left-24 z-0 w-80 top-0 cursor-grab;
+    @apply absolute -left-24 top-0 z-0 w-80 cursor-grab;
     top: 1rem !important;
     rotate: -6deg !important;
     opacity: 0.4 !important;
@@ -232,7 +232,7 @@ body {
   &:nth-child(3):before {
     z-index: 20;
     content: '';
-    @apply h-full block absolute -left-0 z-20 w-80;
+    @apply absolute -left-0 z-20 block h-full w-80;
   }
 }
 

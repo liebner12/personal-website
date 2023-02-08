@@ -18,7 +18,9 @@ export default async function handler(
   }
 
   const title = item.name;
-  const artist = item.artists.map((_artist: any) => _artist.name).join(', ');
+  const artist = item.artists
+    .map((_artist: { name: string }) => _artist.name)
+    .join(', ');
   const image = item.album.images[0].url;
   const url = item.external_urls.spotify;
 
