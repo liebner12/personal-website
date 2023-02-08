@@ -52,8 +52,8 @@ const CardImage = ({ image, title, blurDataURL, overlay }: CardImage) => {
         blurDataURL={blurDataURL}
         src={image}
         alt={title}
-        width={480}
-        height={270}
+        width={320}
+        height={180}
       />
       {overlay && <div className="absolute inset-0 z-10">{overlay}</div>}
     </div>

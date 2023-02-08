@@ -35,7 +35,7 @@ function HomePage({
           <div className="flex flex-col gap-20 lg:flex-row lg:items-center">
             <div className="prose prose-invert my-auto">
               <motion.h1
-                className="mt-0 mb-8 max-w-xl text-5xl sm:text-6xl lg:text-5xl xl:text-6xl"
+                className="mb-8 text-5xl sm:text-6xl lg:text-5xl xl:max-w-xl xl:text-6xl"
                 {...FADE_IN_FIRST}
               >
                 I am focused on
@@ -81,6 +81,7 @@ function HomePage({
                 Want to learn react together?
               </div>
               <Image
+                loading="eager"
                 src={Me}
                 width={300}
                 height={600}
@@ -150,9 +151,9 @@ export const getStaticProps: GetStaticProps<{
 
   return {
     props: {
-      projects: projects.sort(sortByDate),
+      projects: projects.sort(sortByDate).slice(0, 3),
       tags: getTags(blogs),
-      blogs: blogs.sort(sortByDate),
+      blogs: blogs.sort(sortByDate).slice(0, 6),
     },
   };
 };

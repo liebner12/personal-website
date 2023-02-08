@@ -15,12 +15,13 @@ export const ImagesGrid = ({ images }: Props) => {
       {images.slice(0, 6).map(({ image, alt }) => (
         <li key={alt}>
           <Image
+            quality={30}
             key={alt}
             src={image}
             alt={alt}
             className="rounded-lg"
-            width={240}
-            height={135}
+            width={300}
+            height={200}
           />
         </li>
       ))}
