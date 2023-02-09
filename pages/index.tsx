@@ -2,6 +2,7 @@ import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { motion } from 'framer-motion';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import {
   Container,
   IconsList,
@@ -16,8 +17,13 @@ import { getAllFilesFrontmatter, getTags, generateRssFeed } from 'lib';
 import { sortByDate } from 'utils';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
 import Me from 'assets/images/me.png';
-import { ImagesGrid } from 'components/ImagesGrid';
-import { CardsRange } from 'components/CardsRange';
+
+const DynamicImagesGrid = dynamic(() =>
+  import('components/ImagesGrid').then((mod) => mod.ImagesGrid)
+);
+const DynamicCardsRange = dynamic(() =>
+  import('components/CardsRange').then((mod) => mod.CardsRange)
+);
 
 function HomePage({
   blogs,
@@ -34,15 +40,12 @@ function HomePage({
         <section className="flex min-h-screen flex-col justify-center">
           <div className="flex flex-col gap-20 lg:flex-row lg:items-center">
             <div className="prose prose-invert my-auto">
-              <motion.h1
-                className="mb-8 text-5xl sm:text-6xl lg:text-5xl xl:max-w-xl xl:text-6xl"
-                {...FADE_IN_FIRST}
-              >
+              <h1 className="mb-8 text-5xl sm:text-6xl lg:text-5xl xl:max-w-xl xl:text-6xl">
                 I am focused on
                 <span className="text-primary-main"> web standards</span> and
                 modern
                 <span className="text-primary-main"> web apps</span> development
-              </motion.h1>
+              </h1>
               <motion.p className="max-w-lg text-xl" {...FADE_IN_SECOND}>
                 Hi! My name is Michał. I work with Javascript Ecosystem on both
                 backend and front side of applications.
@@ -111,10 +114,10 @@ function HomePage({
               <ArrowLink href="/projects">See more projects</ArrowLink>
             </div>
           </motion.div>
-          <CardsRange posts={projects} />
+          <DynamicCardsRange posts={projects} />
         </section>
         <section className="mx-auto grid max-w-6xl items-center gap-20 pt-40 lg:grid-cols-2 lg:gap-10 xl:gap-20">
-          <ImagesGrid
+          <DynamicImagesGrid
             images={[
               ...blogs.map(({ image, title }) => ({ image, alt: title })),
             ]}
