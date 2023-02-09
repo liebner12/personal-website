@@ -81,7 +81,6 @@ function HomePage({
                 Want to learn react together?
               </div>
               <Image
-                priority
                 src={Me}
                 width={300}
                 height={600}
