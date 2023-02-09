@@ -40,12 +40,15 @@ function HomePage({
         <section className="flex min-h-screen flex-col justify-center">
           <div className="flex flex-col gap-20 lg:flex-row lg:items-center">
             <div className="prose prose-invert my-auto">
-              <h1 className="mb-8 text-5xl sm:text-6xl lg:text-5xl xl:max-w-xl xl:text-6xl">
+              <motion.h1
+                className="mb-8 text-5xl sm:text-6xl lg:text-5xl xl:max-w-xl xl:text-6xl"
+                {...FADE_IN_FIRST}
+              >
                 I am focused on
                 <span className="text-primary-main"> web standards</span> and
                 modern
                 <span className="text-primary-main"> web apps</span> development
-              </h1>
+              </motion.h1>
               <motion.p className="max-w-lg text-xl" {...FADE_IN_SECOND}>
                 Hi! My name is Michał. I work with Javascript Ecosystem on both
                 backend and front side of applications.
