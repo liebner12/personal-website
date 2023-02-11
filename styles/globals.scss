@@ -189,10 +189,6 @@ body {
   transition-delay: 100ms;
 }
 
-.main-header {
-  animation: 0.5s ease-out slideInFromBottom;
-}
-
 .images-grid > li {
   &:nth-child(1),
   &:nth-child(3),
@@ -264,16 +260,5 @@ body {
       box-shadow: 0.5rem -1.5rem 1.5rem 2rem var(--color-background);
       background: var(--color-background);
     }
-  }
-}
-
-@keyframes slideInFromBottom {
-  0% {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
   }
 }

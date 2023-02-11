@@ -14,18 +14,18 @@ export const BLOG_SORT_LIST = ['date', 'views'];
 export const MAX_WIDTH = 1536;
 
 export const FADE_IN_FIRST = {
-  initial: { y: 100, opacity: 0 },
+  initial: { y: 100, opacity: 0.1 },
   animate: { y: 0, opacity: 1 },
-  exit: { y: 100, opacity: 0 },
+  exit: { y: 100, opacity: 0.1 },
   transition: {
     duration: 0.5,
   },
 };
 
 export const FADE_IN_SECOND = {
-  initial: { y: 100, opacity: 0 },
+  initial: { y: 100, opacity: 0.1 },
   animate: { y: 0, opacity: 1 },
-  exit: { y: 100, opacity: 0 },
+  exit: { y: 100, opacity: 0.1 },
   transition: {
     duration: 0.3,
     delay: 0.25,
@@ -33,9 +33,9 @@ export const FADE_IN_SECOND = {
 };
 
 export const FADE_IN_X = {
-  initial: { x: 20, opacity: 0 },
+  initial: { x: 20, opacity: 0.1 },
   animate: { x: 0, opacity: 1 },
-  exit: { x: 20, opacity: 0 },
+  exit: { x: 20, opacity: 0.1 },
   transition: {
     duration: 0.25,
     delay: 0.4,
@@ -43,7 +43,7 @@ export const FADE_IN_X = {
 };
 
 export const FADE_IN_X_REVERSE = {
-  initial: { x: -200, opacity: 0 },
+  initial: { x: -200, opacity: 0.1 },
   animate: { x: 0, opacity: 1 },
   transition: {
     delay: 0.25,
@@ -58,8 +58,8 @@ export const HOVER_SCALE = {
 };
 
 export const FADE_IN_VIEW = {
-  initial: { y: '40px', opacity: 0 },
-  whileInView: { opacity: 1, y: 0 },
+  initial: { y: '40px', opacity: 0.1 },
+  whileInView: { opacity: 1, y: 0.1 },
   viewport: { once: true, margin: '-50px' },
 };
 
