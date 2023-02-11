@@ -36,8 +36,8 @@ $color-contact: 250 100% 70%;
   --color-gray-700: #3a3d4a;
   --color-gray-800: #2e3039;
   --color-gray-900: #1f2028;
-  --color-background: #12181b;
-  --color-background-opacity: rgba(18, 24, 27, 0.95);
+  --color-background: rgb(18,18,18);
+  --color-background-opacity: rgba(18, 18, 18, 0.95);
   --color-transparent: transparent;
   color-scheme: dark;
 }
@@ -189,6 +189,10 @@ body {
   transition-delay: 100ms;
 }
 
+.main-header {
+  animation: 0.5s ease-out slideInFromBottom;
+}
+
 .images-grid > li {
   &:nth-child(1),
   &:nth-child(3),
@@ -260,5 +264,16 @@ body {
       box-shadow: 0.5rem -1.5rem 1.5rem 2rem var(--color-background);
       background: var(--color-background);
     }
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
