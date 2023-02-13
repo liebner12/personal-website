@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import Image from 'next/image';
-import { CldImage } from 'next-cloudinary';
 import { FADE_IN_SECOND } from 'data';
 import { CustomCode, CustomImage, GridCols, Icons } from 'components';
+const { CldImage } = require('next-cloudinary');
 
 export function PostBody({
   image,
