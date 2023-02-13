@@ -1,4 +1,9 @@
-import { FaGithub } from 'react-icons/fa';
+import {
+  FaComment,
+  FaGithub,
+  FaRegComment,
+  FaRegComments,
+} from 'react-icons/fa';
 import { MdCalendarToday, MdRemoveRedEye, MdTimer } from 'react-icons/md';
 import { motion } from 'framer-motion';
 import { BiLink } from 'react-icons/bi';
@@ -41,23 +46,24 @@ export function PostHeader({
       <h1 className="mt-12 text-4xl font-bold text-white">{title}</h1>
       {desc && <p className="mt-4 text-lg text-grey-300">{desc}</p>}
       <div className="mt-3 flex flex-wrap items-center gap-2 text-lg">
-        {publishedAt && (
-          <>
-            <div className="flex items-center gap-1 text-primary-main">
-              <MdCalendarToday />
-              <p>{format(new Date(publishedAt), 'dd MMM yyyy')}</p>
-            </div>
-          </>
-        )}
         {readingTime && (
           <>
-            -
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 text-primary-main">
               <MdTimer />
               <span>{readingTime.text}</span>
             </div>
           </>
         )}
+        {publishedAt && (
+          <>
+            -
+            <div className="flex items-center gap-1">
+              <MdCalendarToday />
+              <p>{format(new Date(publishedAt), 'dd MMM yyyy')}</p>
+            </div>
+          </>
+        )}
+
         {views && (
           <>
             -
@@ -78,6 +84,7 @@ export function PostHeader({
               target="_blank"
             />
           )}
+          <Button StartIcon={FaRegComments} href="#comments" />
         </div>
       )}
     </motion.div>

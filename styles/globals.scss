@@ -245,6 +245,14 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
+.gsc-comment-box {
+  border-radius: 1rem;
+}
+
+.gsc-comment-box:not(.gsc-comment-box-is-reply) {
+  @apply rounded-xl;
+}
+
 @media (hover: hover) {
   .navbar:hover .nav-arrow svg {
     transform: rotate(-180deg);

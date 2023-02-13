@@ -46,3 +46,5 @@ public/rss
 public/sitemap-0.xml
 tsconfig.tsbuildinfo
 dist
+
+scripts/node_modules

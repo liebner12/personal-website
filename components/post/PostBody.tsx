@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import Image from 'next/image';
+import { CldImage } from 'next-cloudinary';
 import { FADE_IN_SECOND } from 'data';
 import { CustomCode, CustomImage, GridCols, Icons } from 'components';
 
@@ -27,11 +28,12 @@ export function PostBody({
         />
       </motion.div>
       <motion.section {...FADE_IN_SECOND}>
-        <article className="mdx prose prose-invert mx-auto mt-4 w-full">
+        <article className="mdx prose prose-invert mx-auto my-4 w-full pb-10">
           <MDXRemote
             {...mdxSource}
             components={{
               CustomImage,
+              CldImage,
               Icons,
               code: (props) => <CustomCode {...props} />,
               GridCols,

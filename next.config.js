@@ -17,6 +17,6 @@ module.exports = withPWA({
     defaultLocale: 'en',
   },
   images: {
-    domains: ['i.scdn.co'],
+    domains: ['i.scdn.co', 'res.cloudinary.com'],
   },
 });
