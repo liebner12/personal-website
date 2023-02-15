@@ -7,7 +7,7 @@ type Props = {
   src: string;
   className: string;
   alt: string;
-};
+} & React.ComponentPropsWithoutRef<'figure'>;
 
 export const CloudinaryImage = ({
   width,
@@ -15,14 +15,31 @@ export const CloudinaryImage = ({
   src,
   className,
   alt,
+  style,
+  ...rest
 }: Props) => {
   return (
-    <CldImage
-      width={width}
-      height={height}
-      src={src}
-      className={clsx('rounded-lg', className)}
-      alt={alt}
-    />
+    <figure
+      className={clsx(
+        'mx-auto flex w-full overflow-hidden rounded-lg',
+        {
+          'mx-auto w-full': Number(width) <= 800,
+        },
+        className
+      )}
+      style={{
+        ...(Number(width) <= 800 && { maxWidth: `${width}px` }),
+        ...style,
+      }}
+      {...rest}
+    >
+      <CldImage
+        width={width}
+        height={height}
+        src={src}
+        className={clsx('rounded-lg', className)}
+        alt={alt}
+      />
+    </figure>
   );
 };

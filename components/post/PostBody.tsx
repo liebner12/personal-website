@@ -33,7 +33,7 @@ export function PostBody({
         />
       </motion.div>
       <motion.section {...FADE_IN_SECOND}>
-        <article className="mdx prose prose-invert mx-auto my-4 w-full pb-10">
+        <article className="mdx prose prose-invert mx-auto my-4 w-full pb-16">
           <MDXRemote
             {...mdxSource}
             components={{

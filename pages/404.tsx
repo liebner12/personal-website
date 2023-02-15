@@ -1,4 +1,3 @@
-import { NextPageContext } from 'next';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Background, Button, Container, Seo } from 'components';

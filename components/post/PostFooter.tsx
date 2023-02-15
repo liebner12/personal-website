@@ -2,7 +2,7 @@ import Giscus from '@giscus/react';
 
 export const PostFooter = ({ title }: { title: string }) => {
   return (
-    <div className="border-t-2 border-grey-800 pt-10" id="comments">
+    <div className="border-t-2 border-grey-800 pt-16" id="comments">
       <Giscus
         id="comments"
         repo="liebner12/personal-website"

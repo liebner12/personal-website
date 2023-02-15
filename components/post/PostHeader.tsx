@@ -1,9 +1,4 @@
-import {
-  FaComment,
-  FaGithub,
-  FaRegComment,
-  FaRegComments,
-} from 'react-icons/fa';
+import { FaGithub, FaRegComments } from 'react-icons/fa';
 import { MdCalendarToday, MdRemoveRedEye, MdTimer } from 'react-icons/md';
 import { motion } from 'framer-motion';
 import { BiLink } from 'react-icons/bi';
@@ -75,7 +70,14 @@ export function PostHeader({
       </div>
       {(url || repository) && (
         <div className="mt-10 flex items-center gap-4">
-          {url && <Button href={url} target="_blank" StartIcon={BiLink} />}
+          {url && (
+            <Button
+              href={url}
+              target="_blank"
+              StartIcon={BiLink}
+              ariaLabel="Link to page"
+            />
+          )}
           {repository && (
             <Button
               ariaLabel="Github"
