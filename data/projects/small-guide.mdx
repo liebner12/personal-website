@@ -1,6 +1,6 @@
 ---
   title: 'Small Guide'
-  image: '/images/small-guide/thumbnail.webp'
+  image: 'https://res.cloudinary.com/dtce87smh/image/upload/v1676228382/small-guide/thumbnail_cczygh.webp'
   desc: 'Application for creating and searching for tours with recommendations'
   tags: ['firebase', 'nextjs', 'tailwindcss', 'algolia']
   publishedAt: 'Tue Dec 13 2022 20:53:31 GMT+0100'
@@ -14,29 +14,24 @@ and link to quickly navigate between them. Each trip would also contain informat
 to help user find quickly his destination. User could also easily save each trip and edit them.
 
 <GridCols>
-  <CldImage width="400" height="800" src="https://res.cloudinary.com/dtce87smh/image/upload/v1676228381/small-guide/home_k8aybg.webp" className="rounded-lg" />
-  <CldImage width="400" height="800" src="https://res.cloudinary.com/dtce87smh/image/upload/v1676228381/small-guide/process-map_kyi8jg.webp" className="rounded-lg" />
-  <CldImage width="400" height="800" src="https://res.cloudinary.com/dtce87smh/image/upload/v1676228382/small-guide/trip_iuk3bi.webp" className="rounded-lg" />
-</GridCols>
-
-<GridCols>
-  <CustomImage src="/images/small-guide/home.jpg" height={800} width={400} />
-  <CustomImage
-    src="/images/small-guide/process-map.png"
-    height={800}
-    width={400}
+  <CloudinaryImage
+    width="400"
+    height="800"
+    src="https://res.cloudinary.com/dtce87smh/image/upload/v1676228381/small-guide/home_k8aybg.webp"
+    alt="Home page of Small Guide"
   />
-  <CustomImage src="/images/small-guide/trip.png" height={800} width={400} />
-</GridCols>
-
-<GridCols>
-  <CustomImage src="/optimized/small-guide/home.webp" height={800} width={400} />
-  <CustomImage
-    src="/optimized/small-guide/process-map.webp"
-    height={800}
-    width={400}
+  <CloudinaryImage
+    width="400"
+    height="800"
+    src="https://res.cloudinary.com/dtce87smh/image/upload/v1676228381/small-guide/process-map_kyi8jg.webp"
+    alt="Trip creator screen"
   />
-  <CustomImage src="/optimized/small-guide/trip.webp" height={800} width={400} />
+  <CloudinaryImage
+    width="400"
+    height="800"
+    src="https://res.cloudinary.com/dtce87smh/image/upload/v1676228382/small-guide/trip_iuk3bi.webp"
+    alt="Created trip"
+  />
 </GridCols>
 
 > ## Project Goals
@@ -46,7 +41,12 @@ The main idea behind this project was to implement application that would integr
 After user authenticate, user would be able to create trips with special integration with Google Maps, that with just point and click on different locations he could add points to his trip plan
 and later after fullfilling more information, application would generate link for end user to quickly get to navigation.
 
-<CustomImage src="/images/small-guide/mockup.png" height={2160} width={1080} />
+<CloudinaryImage
+  src="https://res.cloudinary.com/dtce87smh/image/upload/v1676228381/small-guide/mockup_gufcir.webp"
+  height="1200"
+  width="800"
+  alt="Created trip"
+/>
 
 > ## Tech Stack Used
 

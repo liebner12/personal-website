@@ -78,13 +78,18 @@ export function PostHeader({
           {url && <Button href={url} target="_blank" StartIcon={BiLink} />}
           {repository && (
             <Button
+              ariaLabel="Github"
               variant="filled"
               StartIcon={FaGithub}
               href={repository}
               target="_blank"
             />
           )}
-          <Button StartIcon={FaRegComments} href="#comments" />
+          <Button
+            StartIcon={FaRegComments}
+            href="#comments"
+            ariaLabel="Comments"
+          />
         </div>
       )}
     </motion.div>

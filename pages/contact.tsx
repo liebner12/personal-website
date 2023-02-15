@@ -2,8 +2,11 @@ import { FiGithub, FiLinkedin, FiMail, FiTwitter } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { Container, Background, ContactButton, Header, Seo } from 'components';
 import { FADE_IN_SECOND } from 'data';
+import { usePushView } from 'hooks';
 
 const Contact = () => {
+  usePushView('contact');
+
   return (
     <>
       <Seo

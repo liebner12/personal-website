@@ -17,6 +17,7 @@ import { getAllFilesFrontmatter, getTags, generateRssFeed } from 'lib';
 import { sortByDate } from 'utils';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
 import Me from 'assets/images/me.png';
+import { usePushView } from 'hooks';
 
 const DynamicImagesGrid = dynamic(() =>
   import('components/ImagesGrid').then((mod) => mod.ImagesGrid)
@@ -29,6 +30,8 @@ function HomePage({
   blogs,
   projects,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  usePushView('homepage');
+
   return (
     <>
       <Seo

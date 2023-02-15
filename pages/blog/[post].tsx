@@ -15,6 +15,7 @@ import {
   TableOfContents,
 } from 'components';
 import { StaticParams } from 'types';
+import { usePushView } from 'hooks';
 
 const Blog = ({
   frontmatter: { title, desc, image, blurDataURL, publishedAt },
@@ -23,6 +24,7 @@ const Blog = ({
   readingTime,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { data } = useSWR(`/api/views/${slug}`);
+  usePushView(slug);
 
   return (
     <>

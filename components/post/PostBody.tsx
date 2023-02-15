@@ -2,8 +2,13 @@ import { motion } from 'framer-motion';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import Image from 'next/image';
 import { FADE_IN_SECOND } from 'data';
-import { CustomCode, CustomImage, GridCols, Icons } from 'components';
-const { CldImage } = require('next-cloudinary');
+import {
+  CustomCode,
+  CustomImage,
+  GridCols,
+  Icons,
+  CloudinaryImage,
+} from 'components';
 
 export function PostBody({
   image,
@@ -22,8 +27,8 @@ export function PostBody({
           blurDataURL={blurDataURL}
           src={image}
           alt="prop"
-          width={1280}
-          height={720}
+          width={900}
+          height={506}
           className="max-w-full rounded-lg"
         />
       </motion.div>
@@ -33,7 +38,7 @@ export function PostBody({
             {...mdxSource}
             components={{
               CustomImage,
-              CldImage,
+              CloudinaryImage,
               Icons,
               code: (props) => <CustomCode {...props} />,
               GridCols,

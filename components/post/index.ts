@@ -5,3 +5,4 @@ export * from './GridCols';
 export * from './PostBody';
 export * from './PostHeader';
 export * from './PostFooter';
+export * from './CloudinaryImage';

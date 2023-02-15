@@ -10,7 +10,7 @@ import {
 } from 'components';
 import { getAllFilesFrontmatter, getTags } from 'lib';
 import { checkTagged, sortByDate } from 'utils';
-import { useInjectContent, useSelectedPosts } from 'hooks';
+import { useInjectContent, usePushView, useSelectedPosts } from 'hooks';
 
 const description = 'My personal journey as a frontend developer.';
 
@@ -21,6 +21,7 @@ const Projects = ({
   const populatedPosts = useInjectContent(projects);
   const { filteredPosts, search, setSearch, sortBy, setSortBy, toggleTag } =
     useSelectedPosts(populatedPosts, 'projects');
+  usePushView('projects');
 
   return (
     <>

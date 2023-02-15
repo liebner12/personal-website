@@ -9,7 +9,7 @@ import {
   Card,
 } from 'components';
 import { getTags, getAllFilesFrontmatter } from 'lib';
-import { useSelectedPosts, useInjectContent } from 'hooks';
+import { useSelectedPosts, useInjectContent, usePushView } from 'hooks';
 import { checkTagged, sortByDate } from 'utils';
 
 const description = 'My thoughts, implementations in Javascript ecosystem.';
@@ -21,6 +21,7 @@ const Blog = ({
   const populatedPosts = useInjectContent(blogs);
   const { filteredPosts, search, setSearch, sortBy, setSortBy, toggleTag } =
     useSelectedPosts(populatedPosts, 'blog');
+  usePushView('blog');
 
   return (
     <>

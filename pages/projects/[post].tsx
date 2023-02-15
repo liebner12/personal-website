@@ -16,6 +16,7 @@ import {
   Container,
 } from 'components';
 import { StaticParams } from 'types';
+import { usePushView } from 'hooks';
 
 const DynamicPostFooter = dynamic(() =>
   import('components/post/PostFooter').then((mod) => mod.PostFooter)
@@ -36,6 +37,7 @@ const Project = ({
   readingTime,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { data } = useSWR(`/api/views/${slug}`);
+  usePushView(slug);
 
   return (
     <>
