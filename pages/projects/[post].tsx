@@ -5,7 +5,6 @@ import type {
 } from 'next';
 import readingTime from 'reading-time';
 import useSWR from 'swr';
-import dynamic from 'next/dynamic';
 import { getFileBySlugFrontmatter, getFiles, getPaths } from 'lib';
 import {
   TableOfContents,
@@ -14,13 +13,10 @@ import {
   Background,
   PostHeader,
   Container,
+  PostFooter,
 } from 'components';
 import { StaticParams } from 'types';
 import { usePushView } from 'hooks';
-
-const DynamicPostFooter = dynamic(() =>
-  import('components/post/PostFooter').then((mod) => mod.PostFooter)
-);
 
 const Project = ({
   slug,
@@ -60,7 +56,7 @@ const Project = ({
               image={image}
               blurDataURL={blurDataURL}
             />
-            <DynamicPostFooter title={title} />
+            <PostFooter title={title} />
           </div>
           <TableOfContents />
         </div>

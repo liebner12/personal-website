@@ -13,6 +13,7 @@ import {
   Container,
   Background,
   TableOfContents,
+  PostFooter,
 } from 'components';
 import { StaticParams } from 'types';
 import { usePushView } from 'hooks';
@@ -45,6 +46,7 @@ const Blog = ({
               image={image}
               blurDataURL={blurDataURL}
             />
+            <PostFooter title={title} />
           </div>
           <TableOfContents />
         </div>
