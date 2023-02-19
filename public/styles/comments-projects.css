@@ -237,3 +237,13 @@ body {
 * {
   -webkit-tap-highlight-color: transparent;
 }
+.gsc-comment-reactions {
+  width: 100%;
+}
+.gsc-direct-reaction-buttons {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+  flex: 1;
+  padding-right: 2rem;
+}
