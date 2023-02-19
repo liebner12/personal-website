@@ -46,7 +46,7 @@ const Blog = ({
               image={image}
               blurDataURL={blurDataURL}
             />
-            <PostFooter title={title} />
+            <PostFooter title={title} type="blog" />
           </div>
           <TableOfContents />
         </div>

@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { Search } from './Search';
 import { SortList } from './SortList';
 import { TagsList } from './TagsList';
-import { BLOG_SORT_LIST, FADE_IN_X } from 'data';
+import { BLOG_SORT_LIST, FADE_IN_SECOND } from 'data';
 import { TagsType } from 'lib';
 import { checkTagged } from 'utils';
 
@@ -26,7 +26,7 @@ export const SearchContainer = ({
 }: SearchContainerType) => {
   return (
     <motion.div
-      {...FADE_IN_X}
+      {...FADE_IN_SECOND}
       className="mb-auto block w-full flex-shrink-0 flex-col rounded-xl text-white lg:col-span-12 lg:flex xl:col-span-3 xl:col-start-10 xl:row-span-3"
     >
       <div className="flex flex-col gap-3 md:flex-row xl:flex-col">

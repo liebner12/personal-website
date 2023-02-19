@@ -23,9 +23,9 @@ export const FADE_IN_FIRST = {
 };
 
 export const FADE_IN_SECOND = {
-  initial: { y: 100, opacity: 0.1 },
+  initial: { y: 100, opacity: 0.01 },
   animate: { y: 0, opacity: 1 },
-  exit: { y: 100, opacity: 0.1 },
+  exit: { y: 100, opacity: 0.01 },
   transition: {
     duration: 0.3,
     delay: 0.25,
@@ -33,9 +33,9 @@ export const FADE_IN_SECOND = {
 };
 
 export const FADE_IN_X = {
-  initial: { x: 20, opacity: 0.1 },
+  initial: { x: 20, opacity: 0.01 },
   animate: { x: 0, opacity: 1 },
-  exit: { x: 20, opacity: 0.1 },
+  exit: { x: 20, opacity: 0.01 },
   transition: {
     duration: 0.25,
     delay: 0.4,
@@ -43,7 +43,7 @@ export const FADE_IN_X = {
 };
 
 export const FADE_IN_X_REVERSE = {
-  initial: { x: -200, opacity: 0.1 },
+  initial: { x: -200, opacity: 0.01 },
   animate: { x: 0, opacity: 1 },
   transition: {
     delay: 0.25,

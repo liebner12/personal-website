@@ -56,7 +56,7 @@ const Project = ({
               image={image}
               blurDataURL={blurDataURL}
             />
-            <PostFooter title={title} />
+            <PostFooter title={title} type="projects" />
           </div>
           <TableOfContents />
         </div>

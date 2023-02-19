@@ -1,6 +1,12 @@
 import Giscus from '@giscus/react';
 
-export const PostFooter = ({ title }: { title: string }) => {
+export const PostFooter = ({
+  title,
+  type,
+}: {
+  title: string;
+  type: 'blog' | 'projects';
+}) => {
   return (
     <div className="border-t-2 border-grey-800 pt-16" id="comments">
       <Giscus
@@ -14,7 +20,11 @@ export const PostFooter = ({ title }: { title: string }) => {
         reactionsEnabled="1"
         emitMetadata="0"
         inputPosition="top"
-        theme="dark"
+        theme={
+          type === 'blog'
+            ? 'https://michal-liebner.vercel.app/styles/comments-blog.css'
+            : 'https://michal-liebner.vercel.app/styles/comments-projects.css'
+        }
         lang="en"
         loading="lazy"
       />
