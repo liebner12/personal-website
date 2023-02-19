@@ -243,4 +243,6 @@ body {
   outline: #66e6ff solid 2px !important;
   border-radius: 99999px;
 }
-.color-text-primary:focus-visible {}
+* {
+  -webkit-tap-highlight-color: transparent;
+}
