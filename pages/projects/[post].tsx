@@ -39,26 +39,28 @@ const Project = ({
     <>
       <Seo templateTitle={title} description={desc} />
       <Background />
-      <Container>
-        <div className="relative w-full lg:grid lg:grid-cols-[auto,300px] lg:gap-12">
-          <div>
-            <PostHeader
-              title={title}
-              desc={desc}
-              url={url}
-              readingTime={readingTime}
-              repository={repository}
-              publishedAt={publishedAt}
-              views={data?.views}
-              image={image}
-              blurDataURL={blurDataURL}
-            />
-            <PostBody mdxSource={mdxSource} />
-            <PostFooter title={title} type="projects" />
+      <div>
+        <Container className="pb-0">
+          <div className="relative w-full lg:grid lg:grid-cols-[auto,300px] lg:gap-12">
+            <div>
+              <PostHeader
+                title={title}
+                desc={desc}
+                url={url}
+                readingTime={readingTime}
+                repository={repository}
+                publishedAt={publishedAt}
+                views={data?.views}
+                image={image}
+                blurDataURL={blurDataURL}
+              />
+              <PostBody mdxSource={mdxSource} />
+            </div>
+            <TableOfContents />
           </div>
-          <TableOfContents />
-        </div>
-      </Container>
+        </Container>
+        <PostFooter title={title} type="projects" />
+      </div>
     </>
   );
 };

@@ -31,24 +31,26 @@ const Blog = ({
     <>
       <Seo templateTitle={title} description={desc} />
       <Background />
-      <Container>
-        <div className="relative w-full xl:grid xl:grid-cols-[auto,300px] xl:gap-12">
-          <div>
-            <PostHeader
-              title={title}
-              desc={desc}
-              readingTime={readingTime}
-              publishedAt={publishedAt}
-              views={data?.views}
-              image={image}
-              blurDataURL={blurDataURL}
-            />
-            <PostBody mdxSource={mdxSource} />
-            <PostFooter title={title} type="blog" />
+      <div>
+        <Container className="pb-0">
+          <div className="relative w-full xl:grid xl:grid-cols-[auto,300px] xl:gap-12">
+            <div>
+              <PostHeader
+                title={title}
+                desc={desc}
+                readingTime={readingTime}
+                publishedAt={publishedAt}
+                views={data?.views}
+                image={image}
+                blurDataURL={blurDataURL}
+              />
+              <PostBody mdxSource={mdxSource} />
+            </div>
+            <TableOfContents />
           </div>
-          <TableOfContents />
-        </div>
-      </Container>
+        </Container>
+        <PostFooter title={title} type="blog" />
+      </div>
     </>
   );
 };
