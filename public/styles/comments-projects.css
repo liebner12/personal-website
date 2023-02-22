@@ -1,5 +1,10 @@
 // DONT JUDGE THIS CODE 🙏 I KNOW IT'S TERRIBLE
 
+::selection {
+  background-color: #006644;
+  color: #fff;
+}
+
 .gsc-comment-box {
   border-radius: 0.5rem !important;
   border-width: 1px;

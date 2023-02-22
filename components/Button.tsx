@@ -9,13 +9,17 @@ const sizeVariants = {
   lg: 'px-10 py-4',
   md: 'px-6 py-2',
   sm: 'px-4 py-1',
+  circle: 'p-3',
 };
 
 type Props = {
   variant?: 'primary' | 'secondary' | 'filled';
   rounded?: 'full' | 'xl' | 'lg';
   containerClassName?: string;
+  size?: 'xl' | 'lg' | 'md' | 'sm' | 'circle';
 };
+
+export type ButtonProps = Omit<StyledLink, 'size'> & Props;
 
 const getVariant = (variant: 'primary' | 'secondary' | 'filled') => {
   switch (variant) {
@@ -41,7 +45,7 @@ export const Button = ({
   StartIcon,
   EndIcon,
   ...props
-}: StyledLink & Props) => {
+}: ButtonProps) => {
   return (
     <motion.div {...HOVER_SCALE} className={containerClassName} tabIndex={-1}>
       <StyledLink

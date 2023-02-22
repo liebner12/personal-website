@@ -50,12 +50,10 @@ const Project = ({
               repository={repository}
               publishedAt={publishedAt}
               views={data?.views}
-            />
-            <PostBody
-              mdxSource={mdxSource}
               image={image}
               blurDataURL={blurDataURL}
             />
+            <PostBody mdxSource={mdxSource} />
             <PostFooter title={title} type="projects" />
           </div>
           <TableOfContents />

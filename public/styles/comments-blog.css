@@ -9,6 +9,11 @@
   --color-gray-dark: #1f2028; */
 }
 
+::selection {
+  background-color: #005566;
+  color: #fff;
+}
+
 .gsc-comment-box {
   border-radius: 0.5rem !important;
   border-width: 1px;
@@ -255,4 +260,7 @@ body {
   white-space: nowrap;
   flex: 1;
   padding-right: 2rem;
+}
+.gsc-reactions-count {
+  display: none;
 }

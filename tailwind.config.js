@@ -48,6 +48,7 @@ module.exports = {
       blog: combineHsl('--color-blog'),
       contact: combineHsl('--color-contact'),
       error: combineHsl('--color-error'),
+      blured: 'var(--color-blured)',
     },
   },
   plugins: [

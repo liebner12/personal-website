@@ -40,12 +40,10 @@ const Blog = ({
               readingTime={readingTime}
               publishedAt={publishedAt}
               views={data?.views}
-            />
-            <PostBody
-              mdxSource={mdxSource}
               image={image}
               blurDataURL={blurDataURL}
             />
+            <PostBody mdxSource={mdxSource} />
             <PostFooter title={title} type="blog" />
           </div>
           <TableOfContents />

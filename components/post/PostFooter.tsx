@@ -1,4 +1,5 @@
 import Giscus from '@giscus/react';
+import { ShareTweetButton } from 'components/ShareTweetButton';
 
 export const PostFooter = ({
   title,
@@ -8,7 +9,10 @@ export const PostFooter = ({
   type: 'blog' | 'projects';
 }) => {
   return (
-    <div className="border-t-2 border-grey-800 pt-16" id="comments">
+    <div className="" id="comments">
+      <div className="mb-12 flex justify-end">
+        <ShareTweetButton />
+      </div>
       <Giscus
         id="comments"
         repo="liebner12/personal-website"
@@ -17,7 +21,7 @@ export const PostFooter = ({
         categoryId="DIC_kwDOG77VHM4CUJds"
         mapping="specific"
         term={title}
-        reactionsEnabled="1"
+        reactionsEnabled="0"
         emitMetadata="0"
         inputPosition="top"
         theme={
