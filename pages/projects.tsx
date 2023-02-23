@@ -53,7 +53,7 @@ const Projects = ({
               desc,
               tags,
             }) => (
-              <Card endpoint="projects" slug={slug} key={slug}>
+              <Card endpoint="projects" slug={slug} key={slug} layoutId={slug}>
                 <Card.Image
                   title={title}
                   image={image}

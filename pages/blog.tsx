@@ -50,7 +50,7 @@ const Blog = ({
               readingTime,
               tags,
             }) => (
-              <Card slug={slug} key={slug}>
+              <Card slug={slug} key={slug} layoutId={slug}>
                 <Card.Image
                   title={title}
                   image={image}
