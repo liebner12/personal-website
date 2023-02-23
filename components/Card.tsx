@@ -13,13 +13,14 @@ import { FADE_IN_VIEW, HOVER_SCALE } from 'data';
 type Card = Pick<ProjectFrontmatter & BlogFrontmatter, 'slug'> & {
   children: JSX.Element[] | JSX.Element;
   endpoint?: 'projects' | 'blog';
+  id?: 'home';
 };
 
 const MotionLink = motion(Link);
 
-export const Card = ({ slug, children, endpoint = 'blog' }: Card) => {
+export const Card = ({ slug, children, endpoint = 'blog', id }: Card) => {
   return (
-    <motion.li layoutId={slug} {...FADE_IN_VIEW} className="h-full">
+    <motion.li layoutId={slug + id} {...FADE_IN_VIEW} className="h-full">
       <MotionLink
         {...HOVER_SCALE}
         href={`/${endpoint}/${slug}`}

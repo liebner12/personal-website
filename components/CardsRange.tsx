@@ -59,7 +59,7 @@ export const CardsRange = ({ posts }: { posts: Array<ProjectFrontmatter> }) => {
                 className="h-full"
               >
                 <ul className="h-full">
-                  <Card slug={slug} endpoint="projects">
+                  <Card slug={slug} endpoint="projects" id="home">
                     <Card.Image
                       title={title}
                       image={image}
