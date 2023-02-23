@@ -37,10 +37,10 @@ const Project = ({
 
   return (
     <>
-      <Seo templateTitle={title} description={desc} />
+      <Seo templateTitle={title} description={desc} image={image} />
       <Background />
       <div>
-        <Container className="pb-0">
+        <Container className="!pb-0">
           <div className="relative w-full lg:grid lg:grid-cols-[auto,300px] lg:gap-12">
             <div>
               <PostHeader

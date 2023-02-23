@@ -20,6 +20,8 @@ export const Spotify = () => {
           Currently playing:
         </motion.div>
         <MotionLink
+          target="_blank"
+          rel="noreferrer"
           {...FADE_IN_VIEW}
           href={data.url}
           className="mb-20 block rounded-xl border-2 border-grey-800 bg-grey-900 py-4 px-4 text-grey-400 transition-colors hover:bg-grey-800 sm:rounded-full sm:py-6 sm:px-16"

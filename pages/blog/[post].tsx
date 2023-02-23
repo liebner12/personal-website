@@ -29,10 +29,10 @@ const Blog = ({
 
   return (
     <>
-      <Seo templateTitle={title} description={desc} />
+      <Seo templateTitle={title} description={desc} image={image} />
       <Background />
       <div>
-        <Container className="pb-0">
+        <Container className="!pb-0">
           <div className="relative w-full xl:grid xl:grid-cols-[auto,300px] xl:gap-12">
             <div>
               <PostHeader

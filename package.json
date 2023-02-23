@@ -22,7 +22,7 @@
     "@giscus/react": "^2.2.6",
     "@headlessui/react": "^1.7.7",
     "@supabase/supabase-js": "^2.2.3",
-    "@vercel/og": "^0.0.21",
+    "@vercel/og": "^0.1.0",
     "feed": "^4.2.2",
     "framer-motion": "^9.0.1",
     "next": "^13.1.6",

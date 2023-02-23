@@ -11,6 +11,7 @@ import {
 import { getTags, getAllFilesFrontmatter } from 'lib';
 import { useSelectedPosts, useInjectContent, usePushView } from 'hooks';
 import { checkTagged, sortByDate } from 'utils';
+import { theme } from 'tailwind.config';
 
 const description = 'My thoughts, implementations in Javascript ecosystem.';
 
@@ -37,7 +38,7 @@ const Blog = ({
           search={search}
           setSearch={setSearch}
         />
-        <List isEmpty={filteredPosts.length === 0}>
+        <List isEmpty={filteredPosts.length === 0} color={theme.colors.blog}>
           {filteredPosts.map(
             ({
               slug,

@@ -14,6 +14,7 @@ type SeoProps = {
   isBlog?: boolean;
   banner?: string;
   description?: string;
+  image?: string;
 } & Partial<typeof defaultMeta>;
 
 export function Seo(props: SeoProps) {
@@ -26,7 +27,7 @@ export function Seo(props: SeoProps) {
     ? `${props.templateTitle} | ${meta.title}`
     : meta.title;
 
-  if (meta.image === defaultMeta.image && props.templateTitle) {
+  if (meta.image === defaultMeta.image && props.templateTitle && !props.image) {
     meta.image = `https://michal-liebner.vercel.app/api/og?title=${
       props.templateTitle
     }&description=${props.description ? props.description : ''}`;

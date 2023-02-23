@@ -5,7 +5,7 @@ import { BiLink } from 'react-icons/bi';
 import { format } from 'date-fns';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { FADE_IN_FIRST, FADE_IN_SECOND } from 'data';
+import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_X } from 'data';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
 import { ArrowLink } from 'components/ArrowLink';
 import { Button } from 'components/Button';
@@ -94,9 +94,14 @@ export function PostHeader({
         )}
       </motion.div>
       <motion.div {...FADE_IN_SECOND} className="relative">
-        <div className="absolute top-2 right-2 flex items-center gap-2 rounded-full bg-blured py-1.5 px-4 font-semibold text-white backdrop-blur md:top-4 md:right-4">
-          <MdRemoveRedEye className="text-primary-main" /> {views} views
-        </div>
+        {views && (
+          <motion.div
+            {...FADE_IN_X}
+            className="absolute top-2 right-2 flex items-center gap-2 rounded-full bg-blured py-1.5 px-4 font-semibold text-white backdrop-blur md:top-4 md:right-4"
+          >
+            <MdRemoveRedEye className="text-primary-main" /> {views} views
+          </motion.div>
+        )}
         <Image
           placeholder="blur"
           blurDataURL={blurDataURL}
@@ -105,6 +110,7 @@ export function PostHeader({
           width={900}
           height={506}
           className="max-w-full rounded-lg"
+          loading="eager"
         />
       </motion.div>
     </>

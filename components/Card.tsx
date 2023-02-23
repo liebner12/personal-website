@@ -8,7 +8,7 @@ import { HiClock, HiEye } from 'react-icons/hi';
 import clsx from 'clsx';
 import { Icons } from './Icons';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types/frontmatters';
-import { HOVER_SCALE } from 'data';
+import { FADE_IN_VIEW, HOVER_SCALE } from 'data';
 
 type Card = Pick<ProjectFrontmatter & BlogFrontmatter, 'slug'> & {
   children: JSX.Element[] | JSX.Element;
@@ -19,19 +19,13 @@ const MotionLink = motion(Link);
 
 export const Card = ({ slug, children, endpoint = 'blog' }: Card) => {
   return (
-    <motion.li
-      layoutId={slug}
-      initial={{ y: '40px', opacity: 0 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      className="h-full"
-    >
+    <motion.li layoutId={slug} {...FADE_IN_VIEW} className="h-full">
       <MotionLink
         {...HOVER_SCALE}
         href={`/${endpoint}/${slug}`}
-        className="focus-state focus-state-clean rounded-border-gradient relative block h-full rounded-xl"
+        className="focus-state focus-state-clean rounded-border-gradient relative block h-full rounded-xl pb-4"
       >
-        <div className="flex h-full flex-col pb-4">{children}</div>
+        {children}
       </MotionLink>
     </motion.li>
   );
@@ -46,14 +40,15 @@ export type CardImage = Pick<
 
 const CardImage = ({ image, title, blurDataURL, overlay }: CardImage) => {
   return (
-    <div className="relative flex-shrink-0 overflow-hidden rounded-t-xl">
+    <div className="relative">
       <Image
         placeholder="blur"
         blurDataURL={blurDataURL}
         src={image}
         alt={title}
-        width={320}
-        height={180}
+        width={400}
+        height={225}
+        className="rounded-t-xl"
       />
       {overlay && <div className="absolute inset-0 z-10">{overlay}</div>}
     </div>

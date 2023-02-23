@@ -11,6 +11,7 @@ import {
 import { getAllFilesFrontmatter, getTags } from 'lib';
 import { checkTagged, sortByDate } from 'utils';
 import { useInjectContent, usePushView, useSelectedPosts } from 'hooks';
+import { theme } from 'tailwind.config';
 
 const description = 'My personal journey as a frontend developer.';
 
@@ -37,7 +38,10 @@ const Projects = ({
           sortBy={sortBy}
           setSortBy={setSortBy}
         />
-        <List isEmpty={filteredPosts.length === 0}>
+        <List
+          isEmpty={filteredPosts.length === 0}
+          color={theme.colors.projects}
+        >
           {filteredPosts.map(
             ({
               slug,
