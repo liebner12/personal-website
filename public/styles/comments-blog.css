@@ -9,7 +9,7 @@
   --color-gray-dark: #1f2028; */
 }
 
-::selection {
+:selection {
   background-color: #005566;
   color: #fff;
 }

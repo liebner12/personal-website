@@ -58,6 +58,8 @@ export const Icons = ({
                   sizeVariants[size],
                   technologyClassName
                 )}
+                role="img"
+                title={current.name}
               />
             </Tooltip>
           </AnimatePresence>

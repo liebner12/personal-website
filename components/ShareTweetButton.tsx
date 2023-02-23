@@ -21,7 +21,7 @@ export function ShareTweetButton({
       {...rest}
       href={intentUrl}
       className={clsx(
-        'bg-[#1DA1F2] text-white focus:ring-offset-[#1DA1F2] focus-within:focus:ring-[#1DA1F2]',
+        'bg-[#1d9bf0] text-white focus:ring-offset-[#1d9bf0] focus-within:focus:ring-[#1d9bf0]',
         className
       )}
       target="_blank"
