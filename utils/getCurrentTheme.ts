@@ -7,7 +7,9 @@ export const getCurrentTheme = (path: string) => {
       return { color: theme.colors.home, theme: THEMES.home };
     case /\/about.*/.test(path):
       return { color: theme.colors.about, theme: THEMES.about };
-    case /\/blog.*/.test(path):
+    case /\/blog.*/.test(path) ||
+      /\/privacy.*/.test(path) ||
+      /\/newsletter.*/.test(path):
       return { color: theme.colors.blog, theme: THEMES.blog };
     case /\/contact.*/.test(path):
       return { color: theme.colors.contact, theme: THEMES.contact };

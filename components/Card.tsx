@@ -20,11 +20,11 @@ const MotionLink = motion(Link);
 
 export const Card = ({ slug, children, endpoint = 'blog', layoutId }: Card) => {
   return (
-    <motion.li layoutId={layoutId} {...FADE_IN_VIEW} className="h-full">
+    <motion.li layoutId={layoutId} {...FADE_IN_VIEW}>
       <MotionLink
         {...HOVER_SCALE}
         href={`/${endpoint}/${slug}`}
-        className="focus-state focus-state-clean rounded-border-gradient relative block h-full rounded-xl pb-4"
+        className="focus-state focus-state-clean rounded-border-gradient relative flex flex-col rounded-xl pb-4"
       >
         {children}
       </MotionLink>

@@ -109,17 +109,19 @@ export const Footer = () => {
               <div className="mb-4 text-xl font-semibold">Stay up to date</div>
               <p className="mb-8 text-lg text-grey-400">
                 Subscribe to the newsletter to stay up to date with articles,
-                courses and much more!
+                projects and much more!
               </p>
             </div>
           </FooterItem>
           <FooterItem as="container">
             <div className="w-full">
-              <label className="mb-8 block text-lg text-grey-300">
-                Email
+              <label className="mb-8 block text-lg text-grey-300 ">
+                <span className="mb-4 text-xl font-semibold">Email</span>
                 <input className="focus-state mt-2 h-28 w-full rounded-xl border-2 border-grey-800 bg-grey-900 p-4 transition-colors hover:bg-grey-800"></input>
               </label>
-              <ArrowLink href="/">Sign me up</ArrowLink>
+              <ArrowLink href="https://liebner.substack.com/" target="_blank">
+                Sign me up
+              </ArrowLink>
             </div>
           </FooterItem>
         </FooterList>

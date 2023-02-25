@@ -42,6 +42,7 @@ type Props = {
   className?: string;
   isCircle?: boolean;
   as?: 'link' | 'button';
+  disabled?: boolean;
 };
 
 const ArrowIcon = ({ direction, className }: Props) => {
@@ -128,6 +129,7 @@ export const ArrowLink = ({
   direction = 'right',
   isCircle = true,
   as = 'link',
+  disabled = false,
   ...props
 }: StyledLink & Props) => {
   if (as === 'button') {
@@ -142,6 +144,7 @@ export const ArrowLink = ({
         whileHover="hover"
         whileFocus="hover"
         initial="initial"
+        disabled={disabled}
         {...props}
       >
         <ArrowBody isCircle={isCircle} direction={direction}>
