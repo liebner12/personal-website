@@ -1,15 +1,14 @@
-const runtimeCaching = require('next-pwa/cache');
+// const runtimeCaching = require('next-pwa/cache');
 
-const withPWA = require('next-pwa')({
-  dest: 'public',
-  register: true,
-  skipWaiting: true,
-  runtimeCaching,
-  buildExcludes: [/middleware-manifest.json$/],
-  disable: process.env.NODE_ENV === 'development',
-});
+// const withPWA = require('next-pwa')({
+//   dest: 'public',
+//   register: true,
+//   runtimeCaching,
+//   buildExcludes: [/middleware-manifest.json$/],
+//   disable: process.env.NODE_ENV === 'development',
+// });
 
-module.exports = withPWA({
+module.exports = {
   reactStrictMode: true,
   swcMinify: true,
   i18n: {
@@ -19,4 +18,4 @@ module.exports = withPWA({
   images: {
     domains: ['i.scdn.co', 'res.cloudinary.com'],
   },
-});
+};
