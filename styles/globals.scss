@@ -79,8 +79,8 @@ $color-contact: 250 100% 70%;
   --color-primary-dark: #{calculateHsl($color-projects, 20%)};
   --color-primary-background: #{calculateHsl($color-projects, 10%)};
   --color-primary-main: 160 100% 50%;
-  --color-secondary: 190 100% 50%;
-  --color-secondary-dark: 190 100% 20%;
+  --color-secondary: 140 100% 50%;
+  --color-secondary-dark: 140 100% 20%;
 }
 
 .theme-blog {
@@ -252,6 +252,47 @@ body {
 
 .gsc-comment-box:not(.gsc-comment-box-is-reply) {
   @apply rounded-xl;
+}
+
+.waves-box {
+  background: linear-gradient(90deg, hsl(30 100% 70%), hsl(30 100% 70%));
+  --mask: radial-gradient(
+        88.29px at calc(100% + 67.6px) 50%,
+        #0000 calc(99% - 6px),
+        #000 calc(101% - 6px) 99%,
+        #0000 101%
+      )
+      calc(50% - 29px + 0.5px) calc(50% - 104px) / 58px 208px,
+    radial-gradient(
+        88.29px at -67.6px 50%,
+        #0000 calc(99% - 6px),
+        #000 calc(101% - 6px) 99%,
+        #0000 101%
+      )
+      calc(50% + 29px) 50%/58px 208px;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  mask: var(--mask);
+}
+
+.waves-box-horizontal {
+  background: linear-gradient(180deg, hsl(30 100% 70%), hsl(30 100% 70%));
+  --mask: radial-gradient(
+        63.04px at 50% calc(100% + 46.8px),
+        #0000 calc(99% - 8px),
+        #000 calc(101% - 8px) 99%,
+        #0000 101%
+      )
+      calc(50% - 72px) calc(50% - 22px + 0.5px) / 144px 44px,
+    radial-gradient(
+        63.04px at 50% -46.8px,
+        #0000 calc(99% - 8px),
+        #000 calc(101% - 8px) 99%,
+        #0000 101%
+      )
+      50% calc(50% + 22px) / 144px 44px;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
 }
 
 @media (hover: hover) {

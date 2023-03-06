@@ -13,3 +13,4 @@ export * from './ArrowLink';
 export * from './Spotify';
 export * from './ShareTweetButton';
 export * from './Missing';
+export * from './BackButton';

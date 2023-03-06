@@ -16,7 +16,7 @@ import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_VIEW } from 'data';
 import { getAllFilesFrontmatter, getTags, generateRssFeed } from 'lib';
 import { sortByDate } from 'utils';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
-import Me from 'assets/images/me.png';
+import Me from 'assets/images/profileSecond.webp';
 import { usePushView } from 'hooks';
 
 const DynamicImagesGrid = dynamic(() =>
@@ -39,10 +39,10 @@ function HomePage({
         description="On this website I showcase my projects and write blog posts connected with Javascript ecosystem"
       />
       <Background />
-      <Container className="overflow-hidden py-10 lg:mt-0 lg:overflow-auto lg:!pt-0">
-        <section className="flex min-h-screen flex-col justify-center">
+      <Container className="overflow-hidden py-10 lg:mt-0 lg:!pt-0">
+        <section className="flex flex-col justify-center lg:py-[8%]">
           <div className="flex flex-col gap-20 lg:flex-row lg:items-center">
-            <div className="prose prose-invert my-auto">
+            <div className="prose prose-invert my-auto flex-1">
               <motion.h1
                 className="mb-8 text-5xl sm:text-6xl lg:text-5xl xl:max-w-xl xl:text-6xl"
                 {...FADE_IN_FIRST}
@@ -85,22 +85,55 @@ function HomePage({
                 </div>
               </motion.div>
             </div>
-            <div className="relative mx-auto aspect-square w-[500px] max-w-full rounded-xl bg-primary-main">
-              <div className="border-full absolute -top-8 -left-4 rounded-full bg-[#fddfff] px-12 py-4 text-grey-700 md:-left-12">
-                Want to learn react together?
+            <motion.div
+              className="relative mx-auto mt-20 flex-1 lg:mt-0"
+              {...FADE_IN_FIRST}
+            >
+              <div className="absolute -top-16 -left-6 z-10 flex max-w-[90%] flex-col items-start gap-1 md:-left-12 md:-top-8">
+                <div className="border-full rounded-full bg-[hsl(30,100%,90%)] px-12 py-4 font-semibold text-[hsl(30,100%,20%)]">
+                  Want to learn JavaScript development?🧑‍🔬
+                </div>
               </div>
+              <div className="waves-box-horizontal absolute -top-4 -left-4 -z-10 h-24 w-3/4" />
               <Image
                 src={Me}
-                width={300}
-                height={600}
-                className=" absolute bottom-0 right-0 my-0 mx-auto max-w-[8rem] md:max-w-[10rem] lg:max-w-[16rem] xl:max-w-[20rem]"
+                width={500}
+                height={500}
+                className="mx-auto rounded-xl"
                 alt="Image presenting me"
               />
-              <div className="border-full absolute -bottom-8 -right-4 rounded-full bg-[#ddffff] px-12 py-4 text-grey-700 md:-right-12">
-                Let me show you what I&#39;m working on...🧑‍💻
+              <div className="absolute -bottom-8 -right-6 z-10 flex flex-col items-end gap-1 md:-right-12">
+                <div className="border-full  rounded-full bg-[hsl(30,100%,90%)] px-12 py-4 font-semibold text-[hsl(30,100%,20%)]">
+                  For sure! Let&#39;s do it!🧑‍💻
+                </div>
               </div>
-            </div>
+              <div className="waves-box absolute -bottom-4 -right-4 -z-10 h-40 w-3/4" />
+            </motion.div>
           </div>
+        </section>
+        <section className="mx-auto grid max-w-6xl items-center gap-20 pt-40 lg:grid-cols-2 lg:gap-10 xl:gap-20">
+          <DynamicImagesGrid
+            images={[
+              ...blogs.map(({ image, title }) => ({ image, alt: title })),
+            ]}
+          />
+          <motion.div
+            {...FADE_IN_VIEW}
+            className="row-start-1 lg:row-start-auto"
+          >
+            <h2 className="text-4xl font-bold text-primary-main md:text-6xl lg:text-5xl xl:text-6xl">
+              Posts that share my knowledge
+            </h2>
+            <p className="mt-4 text-lg text-grey-300">
+              I want this space to show some useful algorithms and
+              functionalities that are good to know. Under this link You will
+              find posts that cover concepts from Javascript world and few other
+              languages too.
+            </p>
+            <div className="mt-8 flex">
+              <ArrowLink href="/blog">Start reading the blog</ArrowLink>
+            </div>
+          </motion.div>
         </section>
         <section
           id="intro"
@@ -121,27 +154,6 @@ function HomePage({
             </div>
           </motion.div>
           <DynamicCardsRange posts={projects} />
-        </section>
-        <section className="mx-auto grid max-w-6xl items-center gap-20 pt-40 lg:grid-cols-2 lg:gap-10 xl:gap-20">
-          <DynamicImagesGrid
-            images={[
-              ...blogs.map(({ image, title }) => ({ image, alt: title })),
-            ]}
-          />
-          <motion.div {...FADE_IN_VIEW}>
-            <h2 className="text-4xl font-bold text-primary-main md:text-6xl lg:text-5xl xl:text-6xl">
-              Posts that share my knowledge
-            </h2>
-            <p className="mt-4 text-lg text-grey-300">
-              I want this space to show some useful algorithms and
-              functionalities that are good to know. Under this link You will
-              find posts that cover concepts from Javascript world and few other
-              languages too.
-            </p>
-            <div className="mt-8 flex">
-              <ArrowLink href="/blog">Start reading the blog</ArrowLink>
-            </div>
-          </motion.div>
         </section>
       </Container>
     </>

@@ -10,7 +10,7 @@ export const PostFooter = ({
 }) => {
   return (
     <div
-      className="px-6 pb-24 md:px-12 lg:ml-44 lg:px-12 lg:pl-4 lg:pr-20"
+      className="px-4 pb-24 md:px-12 lg:ml-44 lg:px-12 lg:pl-4 lg:pr-20"
       id="comments"
     >
       <div className="relative w-full lg:grid lg:grid-cols-[auto,300px] lg:gap-12">

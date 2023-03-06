@@ -130,6 +130,7 @@ export const ArrowLink = ({
   isCircle = true,
   as = 'link',
   disabled = false,
+  className,
   ...props
 }: StyledLink & Props) => {
   if (as === 'button') {
@@ -138,7 +139,8 @@ export const ArrowLink = ({
         className={clsx(
           'inline-flex items-center font-semibold focus:outline-none',
           { 'gap-6 text-xl': isCircle },
-          { 'gap-4 text-lg': !isCircle }
+          { 'gap-4 text-lg': !isCircle },
+          className
         )}
         whileTap="tap"
         whileHover="hover"
@@ -160,7 +162,8 @@ export const ArrowLink = ({
       className={clsx(
         'inline-flex items-center font-semibold focus:outline-none',
         { 'gap-6 text-xl': isCircle },
-        { 'gap-4 text-lg': !isCircle }
+        { 'gap-4 text-lg': !isCircle },
+        className
       )}
       whileTap="tap"
       whileHover="hover"

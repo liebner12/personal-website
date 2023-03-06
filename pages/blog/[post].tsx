@@ -43,6 +43,7 @@ const Blog = ({
                 views={data?.views}
                 image={image}
                 blurDataURL={blurDataURL}
+                href="/blog"
               />
               <PostBody mdxSource={mdxSource} />
             </div>

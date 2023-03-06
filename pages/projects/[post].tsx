@@ -53,6 +53,7 @@ const Project = ({
                 views={data?.views}
                 image={image}
                 blurDataURL={blurDataURL}
+                href="/projects"
               />
               <PostBody mdxSource={mdxSource} />
             </div>

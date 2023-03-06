@@ -17,6 +17,7 @@ export type StyledLink = {
   focusState?: 'focus-state-bottom' | 'focus-state' | '';
   size?: 'xl' | 'lg' | 'md' | 'sm';
   style?: CSSProperties;
+  as?: 'button' | 'link';
 };
 
 const sizeVariants = {
@@ -26,7 +27,10 @@ const sizeVariants = {
   md: 'h-6 w-6',
 };
 
-export const StyledLink = forwardRef<HTMLAnchorElement, StyledLink>(
+export const StyledLink = forwardRef<
+  HTMLAnchorElement & HTMLButtonElement,
+  StyledLink
+>(
   (
     {
       target,
@@ -42,11 +46,37 @@ export const StyledLink = forwardRef<HTMLAnchorElement, StyledLink>(
       focusState = 'focus-state-bottom',
       size = 'md',
       style,
+      as = 'Link',
     },
     ref
   ) => {
     const startIcon = StartIcon && <StartIcon className={sizeVariants[size]} />;
     const endIcon = EndIcon && <EndIcon className={sizeVariants[size]} />;
+
+    if (as === 'button') {
+      return (
+        <button
+          ref={ref}
+          onClick={onClick}
+          className={clsx(
+            {
+              'font-bold text-primary-main': isActive,
+              [color || 'text-grey-300']: !isActive,
+            },
+            focusState,
+            className,
+            { 'flex items-center gap-2': StartIcon || EndIcon },
+            { 'inline-block': !StartIcon && !EndIcon }
+          )}
+          style={style}
+          aria-label={ariaLabel}
+        >
+          {startIcon}
+          {children}
+          {endIcon}
+        </button>
+      );
+    }
 
     return (
       <Link

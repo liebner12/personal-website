@@ -3,7 +3,7 @@ import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { motion } from 'framer-motion';
 import { Container, Background, Icons, Seo, StyledLink } from 'components';
 import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_X } from 'data';
-import Me from 'assets/images/me.png';
+import Me from 'assets/images/profilePicture.webp';
 import { usePushView } from 'hooks';
 
 const About = () => {

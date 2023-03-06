@@ -133,7 +133,7 @@ const CardOverlay = ({ tags, slug, checkTagged }: CardOverlay) => {
           <li
             key={tag}
             className={clsx(
-              'rounded-full border-2 border-grey-800 bg-grey-900 px-2.5 py-1 text-sm',
+              'rounded-full border-2 border-grey-800 bg-grey-900 px-4 py-1.5 text-sm',
               { 'border-primary-main text-primary-main': checkTagged?.(tag) }
             )}
           >

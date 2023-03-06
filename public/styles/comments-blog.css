@@ -9,7 +9,7 @@
   --color-gray-dark: #1f2028; */
 }
 
-:selection {
+::selection {
   background-color: #005566;
   color: #fff;
 }
@@ -262,5 +262,8 @@ body {
   padding-right: 2rem;
 }
 .gsc-reactions-count {
+  display: none;
+}
+.gsc-comment-box-textarea-extras {
   display: none;
 }

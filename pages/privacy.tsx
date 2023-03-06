@@ -1,6 +1,13 @@
 import { motion } from 'framer-motion';
 import { FiExternalLink } from 'react-icons/fi';
-import { Container, Background, Seo, StyledLink, Button } from 'components';
+import {
+  Container,
+  Background,
+  Seo,
+  StyledLink,
+  Button,
+  BackButton,
+} from 'components';
 import { FADE_IN_FIRST, FADE_IN_SECOND } from 'data';
 import { usePushView } from 'hooks';
 
@@ -15,6 +22,7 @@ const Privacy = () => {
       />
       <Background />
       <Container>
+        <BackButton />
         <div className="prose prose-invert my-auto text-lg lg:!max-w-full">
           <motion.h1 className="text-primary-main" {...FADE_IN_FIRST}>
             Privacy policy

@@ -48,3 +48,5 @@ tsconfig.tsbuildinfo
 dist
 
 scripts/node_modules
+scripts/webp
+scripts/assets

@@ -3,12 +3,10 @@ import { MdCalendarToday, MdRemoveRedEye, MdTimer } from 'react-icons/md';
 import { motion } from 'framer-motion';
 import { BiLink } from 'react-icons/bi';
 import { format } from 'date-fns';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_X } from 'data';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
-import { ArrowLink } from 'components/ArrowLink';
-import { Button } from 'components/Button';
+import { Button, BackButton } from 'components';
 
 export type PostHeader = Partial<
   Pick<BlogFrontmatter, 'title' | 'readingTime' | 'views' | 'publishedAt'> &
@@ -19,6 +17,7 @@ export type PostHeader = Partial<
 > & {
   image: string;
   blurDataURL: string;
+  href: string;
 };
 
 export function PostHeader({
@@ -31,21 +30,13 @@ export function PostHeader({
   views,
   blurDataURL,
   image,
+  href,
 }: PostHeader) {
-  const router = useRouter();
-
   return (
     <>
       <motion.div className="mb-12" {...FADE_IN_FIRST}>
-        <ArrowLink
-          direction="left"
-          isCircle={false}
-          onClick={() => router.back()}
-          as="button"
-        >
-          Back to overview
-        </ArrowLink>
-        <h1 className="mt-12 text-4xl font-bold text-white">{title}</h1>
+        <BackButton href={href} />
+        <h1 className="text-4xl font-bold text-white">{title}</h1>
         {desc && <p className="mt-4 text-lg text-grey-300">{desc}</p>}
         <div className="mt-3 flex flex-wrap items-center gap-2 text-base text-grey-300">
           {readingTime && (
@@ -90,6 +81,32 @@ export function PostHeader({
               href="#comments"
               ariaLabel="Comments"
             />
+            <div className="ml-auto flex gap-6 overflow-hidden text-xl text-grey-300">
+              <div className="flex items-center">
+                👍 <span className="text-lg">20</span>
+              </div>
+              <div className="flex items-center">
+                👎 <span className="text-lg">1</span>
+              </div>
+              <div className="flex items-center">
+                😂 <span className="text-lg">1</span>
+              </div>
+              <div className="flex items-center">
+                🤔 <span className="text-lg">1</span>
+              </div>
+              <div className="flex items-center">
+                ❤️ <span className="text-lg">1</span>
+              </div>
+              <div className="flex items-center">
+                🎉 <span className="text-lg">1</span>
+              </div>
+              <div className="flex items-center">
+                🚀 <span className="text-lg">1</span>
+              </div>
+              <div className="flex items-center">
+                👀 <span className="text-lg">1</span>
+              </div>
+            </div>
           </div>
         )}
       </motion.div>

@@ -252,3 +252,6 @@ body {
   flex: 1;
   padding-right: 2rem;
 }
+.gsc-comment-box-textarea-extras {
+  display: none;
+}
