@@ -40,7 +40,7 @@ function HomePage({
       />
       <Background />
       <Container className="overflow-hidden py-10 lg:mt-0 lg:!pt-0">
-        <section className="flex flex-col justify-center lg:min-h-[40rem] lg:pb-12 lg:pt-24">
+        <section className="flex flex-col justify-center lg:h-screen lg:max-h-[58rem]">
           <div className="flex flex-col gap-20 lg:flex-row lg:items-center">
             <div className="prose prose-invert my-auto flex-1">
               <motion.h1
