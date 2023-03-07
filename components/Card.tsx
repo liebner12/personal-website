@@ -24,7 +24,7 @@ export const Card = ({ slug, children, endpoint = 'blog', layoutId }: Card) => {
       <MotionLink
         {...HOVER_SCALE}
         href={`/${endpoint}/${slug}`}
-        className="focus-state focus-state-clean rounded-border-gradient relative flex h-full flex-col rounded-xl pb-4"
+        className="focus-state focus-state-clean relative flex h-full flex-col rounded-xl border-b-2 border-b-primary-main bg-grey-900 pb-4"
       >
         {children}
       </MotionLink>

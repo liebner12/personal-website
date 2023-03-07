@@ -40,7 +40,7 @@ function HomePage({
       />
       <Background />
       <Container className="overflow-hidden py-10 lg:mt-0 lg:!pt-0">
-        <section className="flex flex-col justify-center lg:py-[8%]">
+        <section className="flex flex-col justify-center lg:min-h-[40rem] lg:pb-12 lg:pt-24">
           <div className="flex flex-col gap-20 lg:flex-row lg:items-center">
             <div className="prose prose-invert my-auto flex-1">
               <motion.h1
@@ -90,8 +90,8 @@ function HomePage({
               {...FADE_IN_FIRST}
             >
               <div className="absolute -top-16 -left-6 z-10 flex max-w-[90%] flex-col items-start gap-1 md:-left-12 md:-top-8">
-                <div className="border-full rounded-full bg-[hsl(30,100%,90%)] px-12 py-4 font-semibold text-[hsl(30,100%,20%)]">
-                  Want to learn JavaScript development?🧑‍🔬
+                <div className="border-full rounded-full bg-home-light px-12 py-4 font-semibold text-home-dark">
+                  Want to learn JavaScript development?🧑‍💻
                 </div>
               </div>
               <div className="waves-box-horizontal absolute -top-4 -left-4 -z-10 h-24 w-3/4" />
@@ -103,8 +103,8 @@ function HomePage({
                 alt="Image presenting me"
               />
               <div className="absolute -bottom-8 -right-6 z-10 flex flex-col items-end gap-1 md:-right-12">
-                <div className="border-full  rounded-full bg-[hsl(30,100%,90%)] px-12 py-4 font-semibold text-[hsl(30,100%,20%)]">
-                  For sure! Let&#39;s do it!🧑‍💻
+                <div className="border-full rounded-full bg-home-light px-12 py-4 font-semibold text-home-dark">
+                  Let&#39;s do it!🚀
                 </div>
               </div>
               <div className="waves-box absolute -bottom-4 -right-4 -z-10 h-40 w-3/4" />

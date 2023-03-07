@@ -48,6 +48,8 @@ module.exports = {
       blog: combineHsl('--color-blog'),
       contact: combineHsl('--color-contact'),
       error: combineHsl('--color-error'),
+      'home-light': 'var(--color-home-light)',
+      'home-dark': 'var(--color-home-dark)',
       blured: 'var(--color-blured)',
     },
   },

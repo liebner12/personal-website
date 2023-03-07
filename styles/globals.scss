@@ -40,6 +40,8 @@ $color-contact: 250 100% 70%;
   --color-background-opacity: rgba(18, 20, 27, 0.95);
   --color-transparent: transparent;
   --color-blured: rgba(0, 0, 0, 0.6);
+  --color-home-light: hsl(30, 100%, 90%);
+  --color-home-dark: hsl(30, 100%, 20%);
   color-scheme: dark;
 }
 
@@ -89,8 +91,8 @@ $color-contact: 250 100% 70%;
   --color-primary-dark: #{calculateHsl($color-blog, 20%)};
   --color-primary-background: #{calculateHsl($color-blog, 10%)};
   --color-primary-main: 190 100% 70%;
-  --color-secondary: 210 100% 50%;
-  --color-secondary-dark: 210 100% 20%;
+  --color-secondary: 170 100% 50%;
+  --color-secondary-dark: 170 100% 20%;
 }
 
 .theme-contact {
