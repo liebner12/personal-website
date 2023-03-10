@@ -83,7 +83,7 @@ export function PostHeader({
                 ariaLabel="Comments"
               />
             </div>
-            <div className="flex gap-4 text-xl text-grey-300">
+            <div className="flex flex-wrap gap-4 text-xl text-grey-300">
               <div className="flex items-center">
                 👍 <span className="text-lg">20</span>
               </div>
