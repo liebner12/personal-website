@@ -50,6 +50,8 @@ module.exports = {
       error: combineHsl('--color-error'),
       'home-light': 'var(--color-home-light)',
       'home-dark': 'var(--color-home-dark)',
+      'blog-dark': 'var(--color-blog-dark)',
+      'projects-dark': 'var(--color-projects-dark)',
       blured: 'var(--color-blured)',
     },
   },

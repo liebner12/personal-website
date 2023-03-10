@@ -29,10 +29,7 @@ export function TableOfContents() {
   }, []);
 
   return (
-    <motion.div
-      className="relative hidden h-full pl-10 lg:block"
-      {...FADE_IN_X}
-    >
+    <motion.div className="relative hidden h-full lg:block" {...FADE_IN_X}>
       <div className="sticky top-16 h-screen pb-16">
         <div className="hidden w-full max-w-[300px] pb-4 lg:block">
           <h3 className="mb-8 text-2xl font-bold text-white">

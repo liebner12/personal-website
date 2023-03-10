@@ -58,30 +58,32 @@ export function PostHeader({
           )}
         </div>
         {(url || repository) && (
-          <div className="mt-10 flex items-center gap-4">
-            {url && (
+          <div className="mt-10 flex flex-row flex-wrap gap-4 gap-y-8">
+            <div className="mr-auto flex items-center gap-4">
+              {url && (
+                <Button
+                  href={url}
+                  target="_blank"
+                  StartIcon={BiLink}
+                  ariaLabel="Link to page"
+                />
+              )}
+              {repository && (
+                <Button
+                  ariaLabel="Github"
+                  variant="filled"
+                  StartIcon={FaGithub}
+                  href={repository}
+                  target="_blank"
+                />
+              )}
               <Button
-                href={url}
-                target="_blank"
-                StartIcon={BiLink}
-                ariaLabel="Link to page"
+                StartIcon={FaRegComments}
+                href="#comments"
+                ariaLabel="Comments"
               />
-            )}
-            {repository && (
-              <Button
-                ariaLabel="Github"
-                variant="filled"
-                StartIcon={FaGithub}
-                href={repository}
-                target="_blank"
-              />
-            )}
-            <Button
-              StartIcon={FaRegComments}
-              href="#comments"
-              ariaLabel="Comments"
-            />
-            <div className="ml-auto flex gap-6 overflow-hidden text-xl text-grey-300">
+            </div>
+            <div className="flex gap-4 text-xl text-grey-300">
               <div className="flex items-center">
                 👍 <span className="text-lg">20</span>
               </div>

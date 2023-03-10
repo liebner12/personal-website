@@ -41,7 +41,12 @@ const Project = ({
       <Background />
       <div>
         <Container className="!pb-0">
-          <div className="relative w-full lg:grid lg:grid-cols-[auto,300px] lg:gap-12">
+          <div
+            className="relative lg:grid lg:gap-16"
+            style={{
+              gridTemplateColumns: 'minmax(0, 3fr) minmax(225px, 1fr)',
+            }}
+          >
             <div>
               <PostHeader
                 title={title}

@@ -66,7 +66,7 @@ const Projects = ({
                 <Card.Text title={title} desc={desc} />
                 <Card.Footer
                   slug={slug}
-                  tags={tags}
+                  icons={tags}
                   checkTagged={(tag) => checkTagged(tags, tag, search)}
                 />
               </Card>

@@ -10,10 +10,15 @@ export const PostFooter = ({
 }) => {
   return (
     <div
-      className="px-4 pb-24 md:px-12 lg:ml-44 lg:px-12 lg:pl-4 lg:pr-20"
+      className="px-4 pb-24 md:px-12 lg:ml-32 lg:px-12 lg:pl-4 lg:pr-20 xl:ml-44"
       id="comments"
     >
-      <div className="relative w-full lg:grid lg:grid-cols-[auto,300px] lg:gap-12">
+      <div
+        className="relative lg:grid lg:gap-12"
+        style={{
+          gridTemplateColumns: 'minmax(0, 3fr) minmax(250px, 1fr)',
+        }}
+      >
         <div>
           <div className="mb-12 flex justify-end">
             <ShareTweetButton />

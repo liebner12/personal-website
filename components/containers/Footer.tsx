@@ -128,12 +128,12 @@ export const Footer = () => {
         </FooterList>
       </motion.div>
       <motion.div
-        className="mt-10 flex w-full flex-col items-center gap-24 sm:mt-32 sm:gap-10 lg:flex-row lg:items-center"
+        className="mt-20 flex w-full flex-col items-center gap-6 sm:mt-32 sm:flex-row sm:items-center sm:gap-10"
         {...FADE_IN_VIEW}
       >
         {data?.views && (
           <motion.div
-            {...FADE_IN_FIRST}
+            {...FADE_IN_VIEW}
             className="flex items-center gap-3 rounded-full border-2 border-grey-800 bg-grey-900 px-5 py-2 text-grey-400"
           >
             <span className="relative grid h-3 w-3 place-items-center">
@@ -143,7 +143,7 @@ export const Footer = () => {
             {data?.views} total views count
           </motion.div>
         )}
-        <div className="ml-auto text-grey-300">
+        <div className="text-grey-300 sm:ml-auto">
           All rights reserved © Michał Liebner 2023
         </div>
       </motion.div>

@@ -55,19 +55,17 @@ const Blog = ({
                   title={title}
                   image={image}
                   blurDataURL={blurDataURL}
-                  overlay={
-                    <Card.Overlay
-                      slug={slug}
-                      tags={tags}
-                      checkTagged={(tag) => checkTagged(tags, tag, search)}
-                    />
-                  }
                 />
                 <Card.Date
                   publishedAt={publishedAt}
                   readingTime={readingTime}
                 />
                 <Card.Text title={title} desc={desc} />
+                <Card.Footer
+                  slug={slug}
+                  tags={tags}
+                  checkTagged={(tag) => checkTagged(tags, tag, search)}
+                />
               </Card>
             )
           )}

@@ -6,9 +6,10 @@ import { FADE_IN_VIEW } from 'data';
 
 export const CardsRange = ({ posts }: { posts: Array<ProjectFrontmatter> }) => {
   const [currentPosts, setCurrentPosts] = useState(posts.slice(0, 3));
+  // Sory for code quality :sadge:
   return (
     <motion.div className="relative mx-auto" {...FADE_IN_VIEW}>
-      <div className="relative h-[26rem] w-80">
+      <div className="theme-projects relative h-[28rem] w-80">
         <ul className="cards-range">
           {currentPosts.map(
             (
@@ -27,10 +28,12 @@ export const CardsRange = ({ posts }: { posts: Array<ProjectFrontmatter> }) => {
               <motion.li
                 key={slug}
                 onClick={() => {
-                  setCurrentPosts((prev) => [
-                    currentPosts[index],
-                    ...prev.filter((_, _index) => _index !== index),
-                  ]);
+                  if (index === 2) {
+                    setCurrentPosts((prev) => [prev[2], prev[0], prev[1]]);
+                  }
+                  if (index === 1) {
+                    setCurrentPosts((prev) => [prev[1], prev[2], prev[0]]);
+                  }
                 }}
                 drag="x"
                 dragSnapToOrigin
@@ -74,7 +77,7 @@ export const CardsRange = ({ posts }: { posts: Array<ProjectFrontmatter> }) => {
                       readingTime={readingTime}
                     />
                     <Card.Text title={title} desc={desc} />
-                    <Card.Footer slug={slug} tags={tags} />
+                    <Card.Footer slug={slug} icons={tags} />
                   </Card>
                 </ul>
               </motion.li>
