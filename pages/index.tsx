@@ -42,7 +42,7 @@ function HomePage({
       <Container className="overflow-hidden py-10 lg:mt-0 lg:!pt-0">
         <section className="flex flex-col justify-center lg:h-screen lg:max-h-[58rem]">
           <div className="flex flex-col gap-20 lg:flex-row lg:items-center">
-            <div className="prose prose-invert my-auto flex-1">
+            <div className="prose prose-invert my-auto">
               <motion.h1
                 className="mb-8 text-5xl sm:text-6xl lg:text-5xl xl:max-w-xl xl:text-6xl"
                 {...FADE_IN_FIRST}

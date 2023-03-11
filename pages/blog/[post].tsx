@@ -33,8 +33,14 @@ const Blog = ({
       <Background />
       <div>
         <Container className="!pb-0">
-          <div className="relative w-full xl:grid xl:grid-cols-[auto,300px] xl:gap-12">
-            <div>
+          <div
+            className="relative w-full lg:grid lg:gap-16"
+            style={{
+              gridTemplateColumns: 'minmax(0, 3fr) minmax(225px, 1fr)',
+            }}
+          >
+            <TableOfContents />
+            <div className="col-start-1 row-start-1">
               <PostHeader
                 title={title}
                 desc={desc}
@@ -47,7 +53,6 @@ const Blog = ({
               />
               <PostBody mdxSource={mdxSource} />
             </div>
-            <TableOfContents />
           </div>
         </Container>
         <PostFooter title={title} type="blog" />

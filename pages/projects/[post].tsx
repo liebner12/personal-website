@@ -47,7 +47,8 @@ const Project = ({
               gridTemplateColumns: 'minmax(0, 3fr) minmax(225px, 1fr)',
             }}
           >
-            <div>
+            <TableOfContents />
+            <div className="col-start-1 row-start-1">
               <PostHeader
                 title={title}
                 desc={desc}
@@ -62,7 +63,6 @@ const Project = ({
               />
               <PostBody mdxSource={mdxSource} />
             </div>
-            <TableOfContents />
           </div>
         </Container>
         <PostFooter title={title} type="projects" />

@@ -43,7 +43,6 @@ export const PostFooter = ({
             loading="lazy"
           />
         </div>
-        <div></div>
       </div>
     </div>
   );

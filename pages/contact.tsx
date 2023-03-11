@@ -1,7 +1,7 @@
 import { FiGithub, FiLinkedin, FiMail, FiTwitter } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { Container, Background, ContactButton, Header, Seo } from 'components';
-import { FADE_IN_SECOND } from 'data';
+import { FADE_IN_FIRST, FADE_IN_SECOND } from 'data';
 import { usePushView } from 'hooks';
 
 const Contact = () => {
@@ -11,19 +11,21 @@ const Contact = () => {
     <>
       <Seo
         templateTitle="Contact"
-        description="Do contact me if you want to talk about programming and especially if it's connected with Javascript ecosystem. I'll be happy to get to know each other!"
+        description="Have a question or want to discuss? Feel free to contact me!"
       />
       <Background />
-      <Container>
+      <Container className="w-full">
         <div className="my-auto">
-          <Header
-            title="GET IN TOUCH"
-            desc="Do contact me if you want to talk about programming and especially
-              if it&#39;s connected with Javascript ecosystem. I&#39;ll be happy
-              to get to know each other!"
-          />
+          <motion.h1
+            className="mb-12 text-5xl font-extrabold sm:text-6xl lg:text-5xl xl:max-w-3xl xl:text-6xl"
+            {...FADE_IN_FIRST}
+          >
+            Have a <span className="text-primary-main">question</span> or want
+            to discuss? Feel free to
+            <span className="text-primary-main"> contact me!</span>
+          </motion.h1>
           <motion.ul
-            className="mt-8 grid max-w-screen-lg grid-cols-1 gap-8 pl-0 text-primary-main md:grid-cols-2 md:grid-rows-2"
+            className="mt-12 grid max-w-4xl grid-cols-1 gap-12 pl-0 text-primary-main md:grid-cols-2 md:grid-rows-2"
             {...FADE_IN_SECOND}
           >
             <ContactButton

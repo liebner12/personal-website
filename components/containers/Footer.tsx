@@ -3,7 +3,6 @@ import { ReactNode } from 'react';
 import clsx from 'clsx';
 import useSWR from 'swr';
 import {
-  FADE_IN_FIRST,
   FADE_IN_VIEW,
   navigationItemVariants,
   navigationListVariants,
@@ -61,7 +60,7 @@ export const Footer = () => {
   usePushView('total');
 
   return (
-    <footer className="w-full px-8 pb-8 pt-24 md:px-12 lg:pb-32">
+    <footer className="w-full px-8 pb-8 pt-24 md:px-12 lg:pb-16">
       <Spotify />
       <motion.div
         className="grid grid-cols-2 gap-10 sm:gap-y-20 md:grid-cols-3"

@@ -19,12 +19,15 @@ export const ContactButton = ({
       <Button
         href={link}
         target="_blank"
-        size="xl"
-        variant="secondary"
-        className="flex flex-col items-center gap-4 bg-grey-900 text-center sm:flex-row sm:gap-6 sm:text-left"
+        size="circle"
+        variant="filled"
+        rounded="xl"
+        className="relative flex flex-col items-start gap-4 py-4 px-4 text-start sm:flex-row sm:gap-6 sm:text-left md:gap-4 md:px-4 lg:gap-6"
       >
-        <Icon className="h-12 w-12 flex-shrink-0 text-primary-main md:h-10 md:w-10 lg:h-12 lg:w-12" />
-        <div>
+        <div className="absolute top-2 right-2 rounded-full border-4 border-grey-800 bg-primary-main p-2">
+          <Icon className="h-6 w-6 flex-shrink-0 text-black sm:h-8 sm:w-8" />
+        </div>
+        <div className="mt-6">
           <h2 className="mb-1 text-2xl font-bold text-white">{text}</h2>
           <p className="break-all text-lg text-grey-300">{showedLink}</p>
         </div>

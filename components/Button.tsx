@@ -24,10 +24,10 @@ export type ButtonProps = Omit<StyledLink, 'size'> & Props;
 const getVariant = (variant: 'primary' | 'secondary' | 'filled') => {
   switch (variant) {
     case 'filled': {
-      return 'border-2 border-grey-700 bg-grey-800 font-semibold';
+      return 'border-2 border-grey-800 bg-grey-900 font-semibold';
     }
     case 'secondary': {
-      return 'border-2 border-grey-700 font-semibold';
+      return 'border-2 border-grey-800 font-semibold';
     }
     default: {
       return 'bg-primary-main text-grey-900 font-bold';
