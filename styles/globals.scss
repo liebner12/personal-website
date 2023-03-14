@@ -309,8 +309,10 @@ body {
 
     .navbar:hover > div {
       width: 16rem;
-      box-shadow: 0.5rem -1.5rem 1.5rem 2rem var(--color-background);
-      background: var(--color-background);
+      box-shadow: -32rem 0px 0px 32rem var(--color-background-opacity);
+      background: var(--color-background-opacity);
+      border-right: 2px solid var(--color-gray-900);
+      backdrop-filter: blur(4px);
     }
   }
 }

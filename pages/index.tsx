@@ -11,6 +11,7 @@ import {
   StyledLink,
   Button,
   ArrowLink,
+  Heading,
 } from 'components';
 import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_VIEW } from 'data';
 import { getAllFilesFrontmatter, getTags, generateRssFeed } from 'lib';
@@ -43,15 +44,12 @@ function HomePage({
         <section className="flex flex-col justify-center lg:h-screen lg:max-h-[58rem]">
           <div className="flex flex-col gap-20 lg:flex-row lg:items-center">
             <div className="prose prose-invert my-auto">
-              <motion.h1
-                className="mb-8 text-5xl sm:text-6xl lg:text-5xl xl:max-w-xl xl:text-6xl"
-                {...FADE_IN_FIRST}
-              >
+              <Heading className="mb-8 xl:!max-w-xl">
                 I am focused on
                 <span className="text-primary-main"> web standards</span> and
                 modern
                 <span className="text-primary-main"> web apps</span> development
-              </motion.h1>
+              </Heading>
               <motion.p className="max-w-lg text-xl" {...FADE_IN_SECOND}>
                 Hi! My name is Michał. I work with Javascript Ecosystem on both
                 backend and front side of applications.

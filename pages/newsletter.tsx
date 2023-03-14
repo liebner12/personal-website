@@ -1,7 +1,14 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { HiOutlineMail } from 'react-icons/hi';
-import { Container, Background, Seo, Button, BackButton } from 'components';
+import {
+  Container,
+  Background,
+  Seo,
+  Button,
+  BackButton,
+  Heading,
+} from 'components';
 import { FADE_IN_FIRST, FADE_IN_X } from 'data';
 import { usePushView } from 'hooks';
 import Mail from 'assets/images/mail.svg';
@@ -13,36 +20,37 @@ const NewsLetter = () => {
     <>
       <Seo
         templateTitle="Newsletter"
-        description="Subscribe to the newsletter to stay up to date with articles,
-        projects and much more!"
+        description="Fuel your passion with valuable knowledge emailed to you each week"
       />
       <Background />
-      <Container isGrid>
+      <Container>
         <BackButton />
-        <motion.div
-          className="prose prose-invert mb-10 flex h-full flex-col items-start lg:col-span-6 lg:justify-center"
+        <motion.section
+          className="my-auto flex flex-col items-center gap-20 md:flex-row"
           {...FADE_IN_FIRST}
         >
-          <h1 className="mb-12 text-5xl sm:text-6xl lg:text-5xl xl:max-w-xl xl:text-6xl">
-            Fuel your <span className="text-primary-main">passion</span> with
-            valuable <span className="text-primary-main"> knowledge</span>{' '}
-            emailed to you each week
-          </h1>
-          <Button
-            StartIcon={HiOutlineMail}
-            size="lg"
-            href="https://liebner.substack.com/"
-            target="_blank"
+          <div className="flex flex-1 flex-col items-start">
+            <Heading>
+              Fuel your <span className="text-primary-main">passion</span> with
+              valuable <span className="text-primary-main"> knowledge</span>{' '}
+              emailed to you each week
+            </Heading>
+            <Button
+              StartIcon={HiOutlineMail}
+              size="lg"
+              href="https://liebner.substack.com/"
+              target="_blank"
+            >
+              Subscribe
+            </Button>
+          </div>
+          <motion.div
+            className="mb-auto flex flex-1 justify-center"
+            {...FADE_IN_X}
           >
-            Subscribe
-          </Button>
-        </motion.div>
-        <motion.div
-          className="mb-auto flex justify-end lg:col-span-6"
-          {...FADE_IN_X}
-        >
-          <Image src={Mail} height={400} width={400} alt="mail" />
-        </motion.div>
+            <Image src={Mail} height={400} width={400} alt="mail" />
+          </motion.div>
+        </motion.section>
       </Container>
     </>
   );

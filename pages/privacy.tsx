@@ -7,6 +7,7 @@ import {
   StyledLink,
   Button,
   BackButton,
+  Heading,
 } from 'components';
 import { FADE_IN_FIRST, FADE_IN_SECOND } from 'data';
 import { usePushView } from 'hooks';
@@ -18,16 +19,13 @@ const Privacy = () => {
     <>
       <Seo
         templateTitle="Privacy policy"
-        description="This page describes what and how data is processed on this project"
+        description="This page describes what data and how it is processed on this project"
       />
       <Background />
       <Container>
         <BackButton />
         <div className="prose prose-invert my-auto text-lg lg:!max-w-full">
-          <motion.h1 className="text-primary-main" {...FADE_IN_FIRST}>
-            Privacy policy
-          </motion.h1>
-
+          <Heading>Privacy policy</Heading>
           <motion.div className="prose prose-invert" {...FADE_IN_SECOND}>
             <p>
               I want to assure visitors and subscribers that I do not use any
@@ -53,7 +51,7 @@ const Privacy = () => {
               contact.
             </p>
             <div className="mt-10 flex justify-start">
-              <Button href="/contact" EndIcon={FiExternalLink}>
+              <Button href="/contact" EndIcon={FiExternalLink} size="lg">
                 Link to contact page
               </Button>
             </div>

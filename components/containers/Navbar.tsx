@@ -59,9 +59,9 @@ const Menu = () => {
   return (
     <motion.div
       {...FADE_IN_X_REVERSE}
-      className="navbar sticky top-0 left-0 z-30 mr-4 h-screen w-0 items-start text-white supports-[h-[100dvh]]:h-[100dvh]"
+      className="navbar sticky top-0 left-0 z-30 mr-4 h-[100dvh] w-0 items-start text-white"
     >
-      <div className="absolute left-0 top-0 flex h-full w-auto flex-col justify-between py-16 pl-16 transition-all duration-200 xl:pl-20">
+      <div className="absolute left-0 top-0 flex h-full w-auto flex-col justify-between py-16 pl-16 xl:pl-20">
         <div className="nav-arrow block">
           <HiOutlineChevronDoubleRight className="h-8 w-8 text-primary-main" />
         </div>
