@@ -1,14 +1,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { HiOutlineMail } from 'react-icons/hi';
-import {
-  Container,
-  Background,
-  Seo,
-  Button,
-  BackButton,
-  Heading,
-} from 'components';
+import { Container, Seo, Button, BackButton, Heading } from 'components';
 import { FADE_IN_FIRST, FADE_IN_X } from 'data';
 import { usePushView } from 'hooks';
 import Mail from 'assets/images/mail.svg';
@@ -22,7 +15,6 @@ const NewsLetter = () => {
         templateTitle="Newsletter"
         description="Fuel your passion with valuable knowledge emailed to you each week"
       />
-      <Background />
       <Container>
         <BackButton />
         <motion.section

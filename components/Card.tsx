@@ -27,7 +27,7 @@ export const Card = ({ slug, children, endpoint = 'blog', layoutId }: Card) => {
       <MotionLink
         {...HOVER_SCALE}
         href={`/${endpoint}/${slug}`}
-        className="focus-state focus-state-clean relative flex h-full flex-col rounded-xl border-2 border-grey-800 bg-grey-900 pb-4"
+        className="focus-state focus-state-clean relative flex h-full flex-col rounded-xl bg-grey-900 pb-5"
       >
         {children}
       </MotionLink>
@@ -66,7 +66,7 @@ export type CardDate = Pick<
 
 const CardDate = ({ publishedAt, readingTime }: CardDate) => {
   return (
-    <div className="mx-4 mt-4 mb-1 flex items-center gap-2 text-sm font-semibold text-grey-300">
+    <div className="mx-4 mt-4 mb-1 flex items-center gap-2 text-sm font-semibold text-grey-400">
       <span>{format(new Date(publishedAt), 'dd MMM yyyy')}</span>-
       <div className="flex items-center gap-1">
         <HiClock className="h-4 w-4" />
@@ -76,21 +76,12 @@ const CardDate = ({ publishedAt, readingTime }: CardDate) => {
   );
 };
 
-export type CardText = Pick<BlogFrontmatter, 'title'> & {
-  desc?: string;
-  size?: string;
-};
+export type CardText = Pick<BlogFrontmatter, 'title' | 'desc'>;
 
-const CardText = ({ title, desc, size }: CardText) => {
+const CardText = ({ title, desc }: CardText) => {
   return (
     <>
-      <h2
-        className={clsx('mx-4 mb-3 text-xl font-bold text-white', {
-          'text-2xl': size === '2xl',
-        })}
-      >
-        {title}
-      </h2>
+      <h2 className="mx-4 mb-3 text-xl font-bold">{title}</h2>
       {desc && <p className="mx-4 mb-4 text-grey-300">{desc}</p>}
     </>
   );

@@ -11,7 +11,6 @@ import {
   PostBody,
   Seo,
   Container,
-  Background,
   TableOfContents,
   PostFooter,
 } from 'components';
@@ -30,7 +29,6 @@ const Blog = ({
   return (
     <>
       <Seo templateTitle={title} description={desc} image={image} />
-      <Background />
       <div>
         <Container className="!pb-0">
           <div

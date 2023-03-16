@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { motion } from 'framer-motion';
-import { Container, Background, Icons, Seo, StyledLink } from 'components';
+import { Container, Icons, Seo, StyledLink } from 'components';
 import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_X } from 'data';
 import Me from 'assets/images/profilePicture.webp';
 import { usePushView } from 'hooks';
@@ -14,7 +14,6 @@ const About = () => {
         templateTitle="About"
         description="Some words about me and technologies that I am most familiar with."
       />
-      <Background />
       <Container>
         <div className="prose prose-invert my-auto lg:!max-w-full">
           <motion.h1 className="text-primary-main" {...FADE_IN_FIRST}>

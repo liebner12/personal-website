@@ -2,14 +2,13 @@ import { motion } from 'framer-motion';
 import { FiExternalLink } from 'react-icons/fi';
 import {
   Container,
-  Background,
   Seo,
   StyledLink,
   Button,
   BackButton,
   Heading,
 } from 'components';
-import { FADE_IN_FIRST, FADE_IN_SECOND } from 'data';
+import { FADE_IN_SECOND } from 'data';
 import { usePushView } from 'hooks';
 
 const Privacy = () => {
@@ -21,7 +20,6 @@ const Privacy = () => {
         templateTitle="Privacy policy"
         description="This page describes what data and how it is processed on this project"
       />
-      <Background />
       <Container>
         <BackButton />
         <div className="prose prose-invert my-auto text-lg lg:!max-w-full">

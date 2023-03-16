@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { meta } from 'data';
+import { theme } from 'tailwind.config';
 
 const defaultMeta = {
   ...meta,
@@ -50,6 +51,7 @@ export function Seo(props: SeoProps) {
       <meta name="twitter:title" content={meta.title} />
       <meta name="twitter:description" content={meta.description} />
       <meta name="twitter:image" content={meta.image} />
+      <meta name="theme-color" content={theme.colors.primary.main} />
       {meta.date && (
         <>
           <meta property="article:published_time" content={meta.date} />

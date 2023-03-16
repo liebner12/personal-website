@@ -7,7 +7,6 @@ import {
   Container,
   IconsList,
   Seo,
-  Background,
   StyledLink,
   Button,
   ArrowLink,
@@ -39,7 +38,6 @@ function HomePage({
         templateTitle="Home"
         description="On this website I showcase my projects and write blog posts connected with Javascript ecosystem"
       />
-      <Background />
       <Container className="overflow-hidden py-10 lg:mt-0 lg:!pt-0">
         <section className="flex flex-col justify-center lg:h-screen lg:max-h-[58rem]">
           <div className="flex flex-col gap-20 lg:flex-row lg:items-center">

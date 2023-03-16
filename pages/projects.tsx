@@ -2,7 +2,6 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import {
   Header,
   Container,
-  Background,
   List,
   SearchContainer,
   Card,
@@ -27,7 +26,6 @@ const Projects = ({
   return (
     <>
       <Seo templateTitle="Projects" description={description} />
-      <Background />
       <Container isGrid>
         <Header title="Projects" desc={description} />
         <SearchContainer

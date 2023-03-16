@@ -1,6 +1,5 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import {
-  Background,
   Seo,
   Header,
   Container,
@@ -27,7 +26,6 @@ const Blog = ({
   return (
     <>
       <Seo templateTitle="Blog" description={description} />
-      <Background />
       <Container isGrid>
         <Header title="Blog" desc={description} />
         <SearchContainer

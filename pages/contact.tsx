@@ -1,7 +1,7 @@
 import { FiGithub, FiLinkedin, FiMail, FiTwitter } from 'react-icons/fi';
 import { motion } from 'framer-motion';
-import { Container, Background, ContactButton, Seo, Heading } from 'components';
-import { FADE_IN_FIRST, FADE_IN_SECOND } from 'data';
+import { Container, ContactButton, Seo, Heading } from 'components';
+import { FADE_IN_SECOND } from 'data';
 import { usePushView } from 'hooks';
 
 const Contact = () => {
@@ -13,7 +13,6 @@ const Contact = () => {
         templateTitle="Contact"
         description="Have a question or want to discuss? Feel free to contact me!"
       />
-      <Background />
       <Container className="w-full">
         <div className="my-auto">
           <Heading>

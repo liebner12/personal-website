@@ -10,7 +10,6 @@ import {
   TableOfContents,
   PostBody,
   Seo,
-  Background,
   PostHeader,
   Container,
   PostFooter,
@@ -38,7 +37,6 @@ const Project = ({
   return (
     <>
       <Seo templateTitle={title} description={desc} image={image} />
-      <Background />
       <div>
         <Container className="!pb-0">
           <div

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Background, Button, Container, Missing, Seo } from 'components';
+import { Button, Container, Missing, Seo } from 'components';
 import { FADE_IN_FIRST } from 'data';
 import { theme } from 'tailwind.config';
 import Stars from 'assets/images/stars.svg';
@@ -13,7 +13,6 @@ const Error = ({ statusCode }: Props) => {
   return (
     <>
       <Seo templateTitle="Not found" />
-      <Background />
       <Container>
         <motion.div
           className="flex h-full max-h-full w-full flex-col items-center justify-center gap-8 text-center md:flex-row md:gap-20 lg:gap-40"
