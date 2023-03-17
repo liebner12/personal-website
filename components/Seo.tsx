@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { meta } from 'data';
-import { theme } from 'tailwind.config';
+import { getCurrentTheme } from 'utils';
 
 const defaultMeta = {
   ...meta,
@@ -19,7 +19,7 @@ type SeoProps = {
 } & Partial<typeof defaultMeta>;
 
 export function Seo(props: SeoProps) {
-  const router = useRouter();
+  const { asPath } = useRouter();
   const meta = {
     ...defaultMeta,
     ...props,
@@ -33,14 +33,14 @@ export function Seo(props: SeoProps) {
       props.templateTitle
     }&description=${props.description ? props.description : ''}`;
   }
-
+  const { color } = getCurrentTheme(asPath);
   return (
     <Head>
       <title>{meta.title}</title>
       <meta name="robots" content={meta.robots} />
       <meta content={meta.description} name="description" />
-      <meta property="og:url" content={`${meta.link}${router.asPath}`} />
-      <link rel="canonical" href={`${meta.link}${router.asPath}`} />
+      <meta property="og:url" content={`${meta.link}${asPath}`} />
+      <link rel="canonical" href={`${meta.link}${asPath}`} />
       <meta property="og:type" content={meta.type} />
       <meta property="og:site_name" content={meta.siteName} />
       <meta property="og:description" content={meta.description} />
@@ -51,7 +51,7 @@ export function Seo(props: SeoProps) {
       <meta name="twitter:title" content={meta.title} />
       <meta name="twitter:description" content={meta.description} />
       <meta name="twitter:image" content={meta.image} />
-      <meta name="theme-color" content={theme.colors.primary.main} />
+      <meta name="theme-color" content={color} />
       {meta.date && (
         <>
           <meta property="article:published_time" content={meta.date} />

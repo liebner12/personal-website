@@ -5,13 +5,12 @@ export const Missing = ({ color }: { color: string }) => {
   return (
     <motion.svg
       data-name="Layer 1"
-      width="350"
       height="350"
       viewBox="0 0 672.5315 738.39398"
       version="1.1"
       id="svg180"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ overflow: 'visible' }}
+      style={{ overflow: 'visible', flex: 1 }}
       {...FADE_IN_FIRST}
     >
       <defs id="defs184" />

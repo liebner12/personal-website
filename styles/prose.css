@@ -117,5 +117,5 @@ pre {
 }
 
 .prose p em {
-  @apply text-primary-main;
+  @apply font-bold text-white;
 }

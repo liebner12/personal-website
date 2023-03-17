@@ -46,10 +46,10 @@ export const NavbarLink = ({ path, text, isExact, icon, onClick }: Props) => {
         ariaLabel={text}
         isActive={isActive}
         StartIcon={icon}
-        className="z-20 h-6 text-xl lg:text-lg"
+        className="z-20 h-6 text-xl font-bold"
         onClick={onClick}
       >
-        <p className="link-text">{text}</p>
+        <p className="link-text tracking-wide">{text}</p>
       </StyledLink>
     </motion.li>
   );
@@ -59,7 +59,7 @@ const Menu = () => {
   return (
     <motion.div
       {...FADE_IN_X_REVERSE}
-      className="navbar sticky top-0 left-0 z-30 mr-4 h-[100dvh] w-0 items-start text-white"
+      className="navbar sticky top-0 left-0 z-30 mr-4 h-screen w-0 items-start text-white"
     >
       <div className="absolute left-0 top-0 flex h-full w-auto flex-col justify-between py-16 pl-16 xl:pl-20">
         <div className="nav-arrow block">
@@ -119,7 +119,7 @@ const MobileMenu = () => {
       animate={isOpen ? 'open' : 'closed'}
     >
       <motion.div
-        className="absolute top-0 left-0 z-40 h-screen w-full bg-backgroundOpacity backdrop-blur-sm"
+        className="absolute top-0 left-0 z-40 h-[100dvh] w-full bg-backgroundOpacity backdrop-blur-sm"
         variants={backgroundFill}
       />
       <motion.button

@@ -306,6 +306,9 @@ body {
     .navbar:hover .link-text {
       display: block;
     }
+    .navbar > div {
+      transition: width 0.5s ease-in-out;
+    }
 
     .navbar:hover > div {
       width: 16rem;

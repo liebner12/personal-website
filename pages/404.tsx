@@ -18,7 +18,7 @@ const Error = ({ statusCode }: Props) => {
           className="flex h-full max-h-full w-full flex-col items-center justify-center gap-8 text-center md:flex-row md:gap-20 lg:gap-40"
           {...FADE_IN_FIRST}
         >
-          <div className="relative overflow-visible">
+          <div className="relative">
             <Image
               src={Stars}
               width={600}

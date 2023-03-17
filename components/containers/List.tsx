@@ -17,7 +17,7 @@ export const List = ({ children, isEmpty, color }: ListType) => {
       >
         {children}
         {isEmpty && (
-          <div className="col-span-3 m-auto overflow-hidden pt-20 text-center">
+          <div className="col-span-3 m-auto pt-20 text-center">
             <Missing color={color} />
           </div>
         )}
