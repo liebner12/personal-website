@@ -71,26 +71,22 @@
 }
 
 .hash-anchor {
-  @apply absolute inset-y-0 w-full bg-none focus:outline-none;
-  background-size: 0;
-  &:focus {
+  @apply absolute inset-y-0 w-full text-primary-main focus:outline-none;
+  &:focus,
+  &:hover {
     &:after {
       @apply invisible absolute -right-5 top-1/2 -translate-y-1/2 text-lg text-primary-main;
       content: '#';
     }
+    background-repeat: no-repeat;
+    background-image: linear-gradient(
+      to right,
+      hsl(var(--color-primary)),
+      hsl(var(--color-primary-light))
+    );
+    background-size: 100% 2px;
+    background-position: bottom;
   }
-}
-
-.hash-anchor:hover,
-.hash-anchor:focus {
-  background-repeat: no-repeat;
-  background-image: linear-gradient(
-    to right,
-    hsl(var(--color-primary)),
-    hsl(var(--color-primary-light))
-  );
-  background-size: 100% 2px;
-  background-position: bottom;
 }
 
 .hash-anchor:hover:after,

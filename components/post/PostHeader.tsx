@@ -38,7 +38,7 @@ export function PostHeader({
         <BackButton href={href} />
         <h1 className="text-4xl font-bold text-white">{title}</h1>
         {desc && <p className="mt-4 text-lg text-grey-300">{desc}</p>}
-        <div className="mt-3 flex flex-wrap items-center gap-2 text-base text-grey-300">
+        <div className="mt-3 flex flex-wrap items-center gap-2 text-base font-semibold text-grey-400">
           {readingTime && (
             <>
               <div className="flex items-center gap-1.5">
@@ -57,58 +57,47 @@ export function PostHeader({
             </>
           )}
         </div>
+        <div className="mt-8 flex flex-wrap gap-6 text-xl text-grey-300">
+          <div className="flex items-center gap-1">
+            ❤️ <span className="text-base">1</span>
+          </div>
+          <div className="flex items-center gap-1">
+            🤔 <span className="text-base">1</span>
+          </div>
+          <div className="flex items-center gap-1">
+            🎉 <span className="text-base">1</span>
+          </div>
+          <div className="flex items-center gap-1">
+            🚀 <span className="text-base">1</span>
+          </div>
+          <div className="flex items-center gap-1">
+            👀 <span className="text-base">1</span>
+          </div>
+        </div>
         {(url || repository) && (
-          <div className="mt-10 flex flex-row flex-wrap gap-4 gap-y-8">
-            <div className="mr-auto flex items-center gap-4">
-              {url && (
-                <Button
-                  href={url}
-                  target="_blank"
-                  StartIcon={BiLink}
-                  ariaLabel="Link to page"
-                />
-              )}
-              {repository && (
-                <Button
-                  ariaLabel="Github"
-                  variant="filled"
-                  StartIcon={FaGithub}
-                  href={repository}
-                  target="_blank"
-                />
-              )}
+          <div className="mt-8 flex items-center gap-4">
+            {url && (
               <Button
-                StartIcon={FaRegComments}
-                href="#comments"
-                ariaLabel="Comments"
+                href={url}
+                target="_blank"
+                StartIcon={BiLink}
+                ariaLabel="Link to page"
               />
-            </div>
-            <div className="flex flex-wrap gap-4 text-xl text-grey-300">
-              <div className="flex items-center">
-                👍 <span className="text-lg">20</span>
-              </div>
-              <div className="flex items-center">
-                👎 <span className="text-lg">1</span>
-              </div>
-              <div className="flex items-center">
-                😂 <span className="text-lg">1</span>
-              </div>
-              <div className="flex items-center">
-                🤔 <span className="text-lg">1</span>
-              </div>
-              <div className="flex items-center">
-                ❤️ <span className="text-lg">1</span>
-              </div>
-              <div className="flex items-center">
-                🎉 <span className="text-lg">1</span>
-              </div>
-              <div className="flex items-center">
-                🚀 <span className="text-lg">1</span>
-              </div>
-              <div className="flex items-center">
-                👀 <span className="text-lg">1</span>
-              </div>
-            </div>
+            )}
+            {repository && (
+              <Button
+                ariaLabel="Github"
+                variant="filled"
+                StartIcon={FaGithub}
+                href={repository}
+                target="_blank"
+              />
+            )}
+            <Button
+              StartIcon={FaRegComments}
+              href="#comments"
+              ariaLabel="Comments"
+            />
           </div>
         )}
       </motion.div>

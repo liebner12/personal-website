@@ -124,7 +124,7 @@ body {
 
 html {
   overflow-x: hidden;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
   scroll-padding-top: 80px;
 }
 
@@ -154,7 +154,7 @@ body {
 }
 
 .focus-state {
-  @apply focus:border-primary-main focus:outline-none focus:ring-2 focus:ring-primary-main focus:ring-opacity-75 focus:ring-offset-1 focus:ring-offset-primary-main;
+  @apply focus-within:outline-none focus-within:ring-offset-0 focus:border-primary-main focus:outline-none focus:ring-2 focus:ring-primary-main focus:ring-opacity-75;
 }
 
 .focus-state-bottom {
@@ -180,6 +180,10 @@ body {
     height: 100%;
     padding: 1.5rem 4.5rem;
   }
+}
+
+.side-bar {
+  height: calc(100vh - 100px);
 }
 
 .navbar .link-text {
@@ -311,7 +315,7 @@ body {
     }
 
     .navbar:hover > div {
-      width: 16rem;
+      width: 18rem;
       box-shadow: -32rem 0px 0px 32rem var(--color-background-opacity);
       background: var(--color-background-opacity);
       border-right: 2px solid var(--color-gray-900);

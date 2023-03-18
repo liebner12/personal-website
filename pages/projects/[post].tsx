@@ -7,7 +7,7 @@ import readingTime from 'reading-time';
 import useSWR from 'swr';
 import { getFileBySlugFrontmatter, getFiles, getPaths } from 'lib';
 import {
-  TableOfContents,
+  SideBar,
   PostBody,
   Seo,
   PostHeader,
@@ -45,7 +45,7 @@ const Project = ({
               gridTemplateColumns: 'minmax(0, 3fr) minmax(225px, 1fr)',
             }}
           >
-            <TableOfContents />
+            <SideBar />
             <div className="col-start-1 row-start-1">
               <PostHeader
                 title={title}

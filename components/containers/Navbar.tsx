@@ -46,7 +46,8 @@ export const NavbarLink = ({ path, text, isExact, icon, onClick }: Props) => {
         ariaLabel={text}
         isActive={isActive}
         StartIcon={icon}
-        className="z-20 h-6 text-xl font-bold"
+        color="text-white"
+        className="z-20 h-6 gap-3 text-xl font-bold"
         onClick={onClick}
       >
         <p className="link-text tracking-wide">{text}</p>
@@ -209,7 +210,7 @@ const MobileMenu = () => {
           />
           <motion.li
             variants={navigationItemVariants}
-            className="mx-auto pt-20"
+            className="mx-auto pt-10 pb-10"
           >
             <Button
               StartIcon={SiGithub}

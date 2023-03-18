@@ -13,7 +13,7 @@ export const Search = ({
   };
 
   return (
-    <div className="relative flex w-full items-center rounded-xl border-2 border-grey-800 bg-grey-900 transition-colors hover:border-grey-900 hover:bg-grey-800">
+    <div className="relative flex w-full items-center rounded-xl border-2 border-grey-800 bg-grey-900 transition-colors focus-within:border-primary-main hover:border-grey-900 hover:bg-grey-800">
       <label
         className="absolute pl-4 focus-visible:ring-2 focus-visible:ring-primary-main"
         htmlFor="search"

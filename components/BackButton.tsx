@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 import { ArrowLink } from './ArrowLink';
+import { FADE_IN_FIRST } from 'data';
 
 export const BackButton = ({
   text = 'Back to overview',
@@ -11,7 +13,10 @@ export const BackButton = ({
   const router = useRouter();
 
   return (
-    <div className="mb-12 text-grey-300 lg:col-span-12">
+    <motion.div
+      className="mb-12 text-grey-300 lg:col-span-12"
+      {...FADE_IN_FIRST}
+    >
       <ArrowLink
         direction="left"
         isCircle={false}
@@ -21,6 +26,6 @@ export const BackButton = ({
       >
         {text}
       </ArrowLink>
-    </div>
+    </motion.div>
   );
 };

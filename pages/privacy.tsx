@@ -6,7 +6,7 @@ import {
   StyledLink,
   Button,
   BackButton,
-  Heading,
+  Header,
 } from 'components';
 import { FADE_IN_SECOND } from 'data';
 import { usePushView } from 'hooks';
@@ -23,8 +23,8 @@ const Privacy = () => {
       <Container>
         <BackButton />
         <div className="prose prose-invert my-auto text-lg lg:!max-w-full">
-          <Heading>Privacy policy</Heading>
-          <motion.div className="prose prose-invert" {...FADE_IN_SECOND}>
+          <Header title="Privacy policy" />
+          <motion.div className="prose prose-invert mt-8" {...FADE_IN_SECOND}>
             <p>
               I want to assure visitors and subscribers that I do not use any
               cookies or other tracking technologies to collect personal
