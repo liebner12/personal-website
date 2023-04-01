@@ -39,6 +39,11 @@ export function CustomCode(
           </button>
         </CopyToClipboard>
       )}
+      {language && (
+        <span className="absolute right-4 bottom-4 text-primary-main">
+          {language}
+        </span>
+      )}
     </code>
   );
 }

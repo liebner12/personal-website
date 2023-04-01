@@ -15,3 +15,5 @@ export * from './ShareTweetButton';
 export * from './Missing';
 export * from './BackButton';
 export * from './Heading';
+export * from './Popover';
+export * from './Dialog';

@@ -124,7 +124,6 @@ body {
 
 html {
   overflow-x: hidden;
-  scroll-behavior: smooth !important;
   scroll-padding-top: 80px;
 }
 
@@ -135,8 +134,8 @@ body {
 .background-gradient {
   background: radial-gradient(
     100% 95% at 100% 5%,
-    hsl(var(--color-secondary-dark)) 0%,
-    hsl(var(--color-primary-background)) 50%,
+    hsl(var(--color-secondary-dark) / 40%) 0%,
+    hsl(var(--color-primary-background) / 40%) 50%,
     transparent 100%
   );
 }

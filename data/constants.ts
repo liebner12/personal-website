@@ -90,3 +90,11 @@ export const navigationListVariants: Variants = {
     transition: { staggerChildren: 0.05, staggerDirection: -1 },
   },
 };
+
+export const REACTIONS_LIST = [
+  { name: 'like', icon: '❤️' },
+  { name: 'thinking', icon: '🤔' },
+  { name: 'cool', icon: '🎉' },
+  { name: 'to the moon', icon: '🚀' },
+  { name: 'interesting', icon: '👀' },
+];

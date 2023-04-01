@@ -4,9 +4,10 @@ import { motion } from 'framer-motion';
 import { BiLink } from 'react-icons/bi';
 import { format } from 'date-fns';
 import Image from 'next/image';
-import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_X } from 'data';
+import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_X, REACTIONS_LIST } from 'data';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
 import { Button, BackButton } from 'components';
+import { Tooltip } from 'components/Tooltip';
 
 export type PostHeader = Partial<
   Pick<BlogFrontmatter, 'title' | 'readingTime' | 'views' | 'publishedAt'> &
@@ -57,22 +58,14 @@ export function PostHeader({
             </>
           )}
         </div>
-        <div className="mt-8 flex flex-wrap gap-6 text-xl text-grey-300">
-          <div className="flex items-center gap-1">
-            ❤️ <span className="text-base">1</span>
-          </div>
-          <div className="flex items-center gap-1">
-            🤔 <span className="text-base">1</span>
-          </div>
-          <div className="flex items-center gap-1">
-            🎉 <span className="text-base">1</span>
-          </div>
-          <div className="flex items-center gap-1">
-            🚀 <span className="text-base">1</span>
-          </div>
-          <div className="flex items-center gap-1">
-            👀 <span className="text-base">1</span>
-          </div>
+        <div className="mt-8 flex flex-wrap gap-6 text-xl text-grey-300 lg:gap-8">
+          {REACTIONS_LIST.map(({ icon, name }) => (
+            <Tooltip content={name} key={name} size="sm">
+              <div className="flex cursor-default items-center gap-1">
+                {icon} <span className="text-base">1</span>
+              </div>
+            </Tooltip>
+          ))}
         </div>
         {(url || repository) && (
           <div className="mt-8 flex items-center gap-4">

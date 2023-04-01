@@ -2,6 +2,7 @@ import { ReactNode, forwardRef, CSSProperties } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { IconType } from 'react-icons/lib';
+import { motion } from 'framer-motion';
 
 export type StyledLink = {
   className?: string;
@@ -9,6 +10,9 @@ export type StyledLink = {
   StartIcon?: IconType;
   EndIcon?: IconType;
   onClick?: () => void;
+  onHoverStart?: () => void;
+  onHoverEnd?: () => void;
+  onBlur?: () => void;
   href?: string;
   isActive?: boolean;
   color?: string;
@@ -47,6 +51,9 @@ export const StyledLink = forwardRef<
       size = 'md',
       style,
       as = 'Link',
+      onHoverEnd,
+      onHoverStart,
+      onBlur,
     },
     ref
   ) => {
@@ -55,7 +62,10 @@ export const StyledLink = forwardRef<
 
     if (as === 'button') {
       return (
-        <button
+        <motion.button
+          onBlur={onBlur}
+          onHoverStart={onHoverStart}
+          onHoverEnd={onHoverEnd}
           ref={ref}
           onClick={onClick}
           className={clsx(
@@ -74,7 +84,7 @@ export const StyledLink = forwardRef<
           {startIcon}
           {children}
           {endIcon}
-        </button>
+        </motion.button>
       );
     }
 
