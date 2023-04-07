@@ -1,11 +1,11 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import {
-  Header,
   Container,
   List,
   SearchContainer,
   Card,
   Seo,
+  Heading,
 } from 'components';
 import { getAllFilesFrontmatter, getTags } from 'lib';
 import { checkTagged, sortByDate } from 'utils';
@@ -27,7 +27,10 @@ const Projects = ({
     <>
       <Seo templateTitle="Projects" description={description} />
       <Container isGrid>
-        <Header title="Projects" desc={description} />
+        <Heading className="col-span-1 mb-8 lg:col-span-8" size="sm">
+          My personal<span className="text-primary-main"> journey</span> as a
+          <span className="text-primary-main"> frontend</span> developer
+        </Heading>
         <SearchContainer
           toggleTag={toggleTag}
           tags={tags}

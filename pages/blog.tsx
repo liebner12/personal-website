@@ -1,18 +1,18 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import {
   Seo,
-  Header,
   Container,
   List,
   SearchContainer,
   Card,
+  Heading,
 } from 'components';
 import { getTags, getAllFilesFrontmatter } from 'lib';
 import { useSelectedPosts, useInjectContent, usePushView } from 'hooks';
 import { checkTagged, sortByDate } from 'utils';
 import { theme } from 'tailwind.config';
 
-const description = 'My thoughts, implementations in Javascript ecosystem.';
+const description = 'Thoughts on modern development and web standards';
 
 const Blog = ({
   blogs,
@@ -27,7 +27,11 @@ const Blog = ({
     <>
       <Seo templateTitle="Blog" description={description} />
       <Container isGrid>
-        <Header title="Blog" desc={description} />
+        <Heading className="col-span-1 mb-8 lg:col-span-8" size="sm">
+          <span className="text-primary-main">Thoughts</span> on modern
+          development and web
+          <span className="text-primary-main"> standards</span>
+        </Heading>
         <SearchContainer
           toggleTag={toggleTag}
           tags={tags}

@@ -50,8 +50,8 @@ const CardImage = ({ image, title, blurDataURL, overlay }: CardImage) => {
         blurDataURL={blurDataURL}
         src={image}
         alt={title}
-        width={400}
-        height={225}
+        width={560}
+        height={315}
         className="rounded-t-xl"
       />
       {overlay && <div className="absolute inset-0 z-10">{overlay}</div>}
@@ -66,7 +66,7 @@ export type CardDate = Pick<
 
 const CardDate = ({ publishedAt, readingTime }: CardDate) => {
   return (
-    <div className="mx-4 mt-4 mb-1 flex items-center gap-2 text-sm font-semibold text-grey-400">
+    <div className="mx-4 mt-4 mb-1 flex items-center gap-2 text-sm font-semibold text-slate-200">
       <span>{format(new Date(publishedAt), 'dd MMM yyyy')}</span>-
       <div className="flex items-center gap-1">
         <HiClock className="h-4 w-4" />

@@ -7,12 +7,12 @@ import readingTime from 'reading-time';
 import useSWR from 'swr';
 import { getFileBySlugFrontmatter, getFiles, getPaths } from 'lib';
 import {
-  SideBar,
   PostBody,
   Seo,
   PostHeader,
   Container,
   PostFooter,
+  ShortcutsBar,
 } from 'components';
 import { StaticParams } from 'types';
 import { usePushView } from 'hooks';
@@ -45,11 +45,10 @@ const Project = ({
               gridTemplateColumns: 'minmax(0, 3fr) minmax(225px, 1fr)',
             }}
           >
-            <SideBar />
+            <ShortcutsBar />
             <div className="col-start-1 row-start-1">
               <PostHeader
                 title={title}
-                desc={desc}
                 url={url}
                 readingTime={readingTime}
                 repository={repository}

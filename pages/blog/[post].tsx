@@ -41,7 +41,6 @@ const Blog = ({
             <div className="col-start-1 row-start-1">
               <PostHeader
                 title={title}
-                desc={desc}
                 readingTime={readingTime}
                 publishedAt={publishedAt}
                 views={data?.views}

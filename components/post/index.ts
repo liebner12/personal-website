@@ -6,4 +6,4 @@ export * from './PostBody';
 export * from './PostHeader';
 export * from './PostFooter';
 export * from './CloudinaryImage';
-export * from './SideBar';
+export * from './Shortcuts';

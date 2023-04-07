@@ -37,6 +37,9 @@ module.exports = {
         800: 'var(--color-gray-800)',
         900: 'var(--color-gray-900)',
       },
+      slate: {
+        200: '#e2e8f0',
+      },
       white: 'var(--color-white)',
       black: 'var(--color-black)',
       transparent: 'var(--color-transparent)',

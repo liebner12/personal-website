@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { ReactNode, useRef, useState } from 'react';
 
 type Props = {
-  children: JSX.Element[] | JSX.Element;
+  children: ReactNode;
   content: string;
   tabIndex?: number;
   size?: 'sm' | 'md';

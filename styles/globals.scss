@@ -133,7 +133,7 @@ body {
 
 .background-gradient {
   background: radial-gradient(
-    100% 95% at 100% 5%,
+    80% 60% at 100% 5%,
     hsl(var(--color-secondary-dark) / 40%) 0%,
     hsl(var(--color-primary-background) / 40%) 50%,
     transparent 100%
@@ -298,6 +298,17 @@ body {
       50% calc(50% + 22px) / 144px 44px;
   -webkit-mask: var(--mask);
   mask: var(--mask);
+}
+
+@media (min-width: 768px) {
+  .background-gradient {
+    background: radial-gradient(
+      80% 450px at 100% 5%,
+      hsl(var(--color-secondary-dark) / 40%) 0%,
+      hsl(var(--color-primary-background) / 40%) 50%,
+      transparent 100%
+    );
+  }
 }
 
 @media (hover: hover) {

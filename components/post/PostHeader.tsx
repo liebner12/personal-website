@@ -11,10 +11,7 @@ import { Tooltip } from 'components/Tooltip';
 
 export type PostHeader = Partial<
   Pick<BlogFrontmatter, 'title' | 'readingTime' | 'views' | 'publishedAt'> &
-    Pick<
-      ProjectFrontmatter,
-      'title' | 'desc' | 'repository' | 'url' | 'publishedAt' | 'blurDataURL'
-    >
+    Pick<ProjectFrontmatter, 'title' | 'repository' | 'url' | 'publishedAt'>
 > & {
   image: string;
   blurDataURL: string;
@@ -23,7 +20,6 @@ export type PostHeader = Partial<
 
 export function PostHeader({
   title,
-  desc,
   publishedAt,
   repository,
   readingTime,
@@ -38,8 +34,7 @@ export function PostHeader({
       <motion.div className="mb-12" {...FADE_IN_FIRST}>
         <BackButton href={href} />
         <h1 className="text-4xl font-bold text-white">{title}</h1>
-        {desc && <p className="mt-4 text-lg text-grey-300">{desc}</p>}
-        <div className="mt-3 flex flex-wrap items-center gap-2 text-base font-semibold text-grey-400">
+        <div className="mt-3 flex flex-wrap items-center gap-2 text-base font-semibold text-slate-200">
           {readingTime && (
             <>
               <div className="flex items-center gap-1.5">
@@ -58,17 +53,18 @@ export function PostHeader({
             </>
           )}
         </div>
-        <div className="mt-8 flex flex-wrap gap-6 text-xl text-grey-300 lg:gap-8">
+        <div className="mt-4 flex flex-wrap gap-6 lg:gap-8">
           {REACTIONS_LIST.map(({ icon, name }) => (
-            <Tooltip content={name} key={name} size="sm">
-              <div className="flex cursor-default items-center gap-1">
-                {icon} <span className="text-base">1</span>
+            <Tooltip content={name} key={name} size="sm" tabIndex={-1}>
+              <div className="flex cursor-default items-center gap-1 text-xl">
+                {icon}
+                <span className="text-base text-white">1</span>
               </div>
             </Tooltip>
           ))}
         </div>
         {(url || repository) && (
-          <div className="mt-8 flex items-center gap-4">
+          <div className="mt-6 flex items-center gap-4">
             {url && (
               <Button
                 href={url}

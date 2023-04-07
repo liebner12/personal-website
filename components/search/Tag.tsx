@@ -16,7 +16,7 @@ export const Tag = ({
           'focus-state rounded-full py-3 px-6 ring-offset-primary-main focus:bg-grey-800',
           {
             'text-primary-main ring-0 ring-offset-2 ': checkTagged(name),
-            'text-grey-300 !ring-0 !ring-offset-0': !checkTagged(name),
+            'text-white !ring-0 !ring-offset-0': !checkTagged(name),
           }
         )}
         type="button"

@@ -13,15 +13,13 @@ export const BackButton = ({
   const router = useRouter();
 
   return (
-    <motion.div
-      className="mb-12 text-grey-300 lg:col-span-12"
-      {...FADE_IN_FIRST}
-    >
+    <motion.div className="mb-12  lg:col-span-12" {...FADE_IN_FIRST}>
       <ArrowLink
         direction="left"
         isCircle={false}
         onClick={() => (href ? {} : router.back())}
         href={href}
+        color="text-white"
         as={href ? 'link' : 'button'}
       >
         {text}

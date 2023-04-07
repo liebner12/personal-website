@@ -12,7 +12,7 @@ export const Container = ({
 }): JSX.Element => {
   const withGrid = useCallback((children: ReactNode) => {
     return (
-      <div className="mb-auto grid h-full gap-6 lg:grid-cols-12 lg:gap-10 xl:gap-y-6">
+      <div className="mb-auto grid h-full gap-6 lg:grid-cols-12 lg:grid-rows-[auto_minmax(auto,_1fr)] lg:gap-10 lg:gap-x-14 xl:gap-y-6">
         {children}
       </div>
     );

@@ -25,7 +25,7 @@ export function TableOfContents() {
   }, []);
 
   return (
-    <div className="hidden w-full max-w-[300px] pb-4 lg:block">
+    <div className="w-full max-w-[300px] pb-4">
       <h3 className="mb-8 text-2xl font-bold text-white">Table of Contents</h3>
       <ul className="flex flex-col gap-3 text-sm text-grey-300">
         {toc?.map(({ id, level, text }) => (
