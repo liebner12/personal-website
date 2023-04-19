@@ -70,12 +70,12 @@ export const DesktopPopover = ({
         {isHovered && (
           <motion.div className="absolute right-[120%] bottom-1/2 -z-50 translate-y-1/2">
             <motion.div
-              className="flex items-center gap-3 rounded-full border-2 border-grey-800 bg-grey-900 py-3 px-6"
+              className="rounded-full border-2 border-grey-800 bg-grey-900 py-3 px-6"
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: 20, opacity: 0 }}
               transition={{
-                duration: 0.25,
+                duration: 0.2,
               }}
             >
               {children}
@@ -90,14 +90,16 @@ export const DesktopPopover = ({
 const PopoverButton = ({
   variant = 'secondary',
   StartIcon,
+  ariaLabel,
   className,
-}: Pick<ButtonProps, 'variant' | 'StartIcon' | 'className'>) => {
+}: Pick<ButtonProps, 'variant' | 'StartIcon' | 'className' | 'ariaLabel'>) => {
   return (
     <Button
       as="button"
       variant={variant}
       StartIcon={StartIcon}
       size="circle"
+      ariaLabel={ariaLabel}
       className={clsx(
         'transition-colors hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main',
         className

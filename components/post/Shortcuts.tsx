@@ -32,7 +32,8 @@ const SocialButtons = ({
           variant={variant}
           StartIcon={MdComment}
           size="circle"
-          href="#comments"
+          ariaLabel="Comments"
+          href="#comments-github"
           className="hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main"
         />
       </Tooltip>
@@ -42,6 +43,7 @@ const SocialButtons = ({
           StartIcon={MdShare}
           size="circle"
           as="button"
+          ariaLabel="Copy to clipboard"
           onClick={() => {
             setIsToggleActive(true);
             navigator.clipboard.writeText(window.location.href);
@@ -56,11 +58,11 @@ const SocialButtons = ({
   );
 };
 
-export type Reactions = { onClick: () => void };
+export type Reactions = { onClick?: () => void };
 
-const Reactions = ({ onClick }: { onClick: () => void }) => {
+const Reactions = ({ onClick }: Reactions) => {
   return (
-    <>
+    <ul className="flex items-center gap-3">
       {REACTIONS_LIST.map(({ name, icon }) => (
         <Tooltip key={name} content={name} size="sm" tabIndex={-1}>
           <Button
@@ -72,22 +74,22 @@ const Reactions = ({ onClick }: { onClick: () => void }) => {
             onClick={onClick}
           >
             <div className="flex flex-col justify-center">
-              <span>{icon}</span>
+              <span className="text-2xl">{icon}</span>
               <span className="text-base text-slate-200">0</span>
             </div>
           </Button>
         </Tooltip>
       ))}
-    </>
+    </ul>
   );
 };
 
 const MobileShortcuts = () => {
   return (
-    <>
+    <ul className="flex justify-around">
       <MobilePopover Icon={RiHeartAddFill} Reactions={Reactions} />
       <SocialButtons variant="transparent" />
-    </>
+    </ul>
   );
 };
 
@@ -95,34 +97,22 @@ const Shortcuts = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <>
+    <ul className="mt-6 flex gap-6">
       <DesktopPopover
         isHovered={isHovered}
         setIsHovered={setIsHovered}
         button={
-          <DesktopPopover.Button variant="filled" StartIcon={RiHeartAddFill} />
+          <DesktopPopover.Button
+            variant="filled"
+            StartIcon={RiHeartAddFill}
+            ariaLabel="Add reaction"
+          />
         }
       >
-        {REACTIONS_LIST.map(({ name, icon }) => (
-          <Tooltip key={name} content={name} size="sm" tabIndex={-1}>
-            <Button
-              as="button"
-              variant="transparent"
-              size="xs"
-              wrapperProps={HOVER_LARGE_SCALE}
-              className="hover:bg-grey-800 focus:bg-grey-800"
-              onClick={() => setIsHovered(false)}
-            >
-              <div>
-                <span>{icon}</span>
-                <span className="text-base text-grey-400">0</span>
-              </div>
-            </Button>
-          </Tooltip>
-        ))}
+        <Reactions />
       </DesktopPopover>
       <SocialButtons />
-    </>
+    </ul>
   );
 };
 
@@ -135,12 +125,10 @@ export function ShortcutsBar() {
           {...FADE_IN_X}
         >
           <TableOfContents />
-          <div className="mt-6 flex w-full gap-6">
-            <Shortcuts />
-          </div>
+          <Shortcuts />
         </motion.div>
       </div>
-      <div className="fixed bottom-0 left-0 z-20 flex w-full justify-around border-t-2 border-grey-500 bg-backgroundOpacity py-1 backdrop-blur lg:hidden">
+      <div className="fixed bottom-0 left-0 z-20 w-full border-t-2 border-grey-500 bg-backgroundOpacity py-1 backdrop-blur lg:hidden">
         <MobileShortcuts />
       </div>
     </>

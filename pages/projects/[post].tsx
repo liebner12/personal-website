@@ -5,6 +5,7 @@ import type {
 } from 'next';
 import readingTime from 'reading-time';
 import useSWR from 'swr';
+import { useEffect } from 'react';
 import { getFileBySlugFrontmatter, getFiles, getPaths } from 'lib';
 import {
   PostBody,
@@ -33,6 +34,20 @@ const Project = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { data } = useSWR(`/api/views/${slug}`);
   usePushView(slug);
+  useEffect(() => {
+    // Define an async function to fetch data
+    async function fetchData() {
+      // Use fetch API to make a GET request to the API route
+      const response = await fetch(`/api/github/discussions`);
+      // Parse the response as JSON
+      const data = await response.json();
+      // Set the data to the state variable
+      console.log(data);
+    }
+
+    // Call the async function
+    fetchData();
+  }, [title]);
 
   return (
     <>

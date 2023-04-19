@@ -11,7 +11,7 @@ export const PostFooter = ({
   return (
     <div
       className="px-4 pb-24 md:px-12 lg:ml-32 lg:px-12 lg:pl-4 lg:pr-20 xl:ml-44"
-      id="comments"
+      id="comments-github"
     >
       <div
         className="relative lg:grid lg:gap-12"

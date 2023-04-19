@@ -53,7 +53,7 @@ export function PostHeader({
             </>
           )}
         </div>
-        <div className="mt-4 flex flex-wrap gap-6 lg:gap-8">
+        <ul className="mt-4 flex flex-wrap gap-6 lg:gap-8">
           {REACTIONS_LIST.map(({ icon, name }) => (
             <Tooltip content={name} key={name} size="sm" tabIndex={-1}>
               <div className="flex cursor-default items-center gap-1 text-xl">
@@ -62,32 +62,38 @@ export function PostHeader({
               </div>
             </Tooltip>
           ))}
-        </div>
+        </ul>
         {(url || repository) && (
-          <div className="mt-6 flex items-center gap-4">
+          <ul className="mt-6 flex items-center gap-4">
             {url && (
-              <Button
-                href={url}
-                target="_blank"
-                StartIcon={BiLink}
-                ariaLabel="Link to page"
-              />
+              <Tooltip content="Link to the page">
+                <Button
+                  href={url}
+                  target="_blank"
+                  StartIcon={BiLink}
+                  ariaLabel="Link to the page"
+                />
+              </Tooltip>
             )}
             {repository && (
-              <Button
-                ariaLabel="Github"
-                variant="filled"
-                StartIcon={FaGithub}
-                href={repository}
-                target="_blank"
-              />
+              <Tooltip content="Repository">
+                <Button
+                  ariaLabel="Github"
+                  variant="filled"
+                  StartIcon={FaGithub}
+                  href={repository}
+                  target="_blank"
+                />
+              </Tooltip>
             )}
-            <Button
-              StartIcon={FaRegComments}
-              href="#comments"
-              ariaLabel="Comments"
-            />
-          </div>
+            <Tooltip content="Comments">
+              <Button
+                StartIcon={FaRegComments}
+                href="#comments-github"
+                ariaLabel="Comments"
+              />
+            </Tooltip>
+          </ul>
         )}
       </motion.div>
       <motion.div {...FADE_IN_SECOND} className="relative">
