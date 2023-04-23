@@ -64,6 +64,7 @@ const Blog = ({
                 />
                 <Card.Text title={title} desc={desc} />
                 <Card.Footer
+                  title={title}
                   slug={slug}
                   tags={tags}
                   checkTagged={(tag) => checkTagged(tags, tag, search)}

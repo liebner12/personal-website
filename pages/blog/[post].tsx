@@ -3,7 +3,6 @@ import type {
   GetStaticProps,
   InferGetStaticPropsType,
 } from 'next';
-import useSWR from 'swr';
 import readingTime from 'reading-time';
 import { getFileBySlugFrontmatter, getFiles, getPaths } from 'lib';
 import {
@@ -23,7 +22,6 @@ const Blog = ({
   mdxSource,
   readingTime,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { data } = useSWR(`/api/views/${slug}`);
   usePushView(slug);
 
   return (
@@ -43,10 +41,10 @@ const Blog = ({
                 title={title}
                 readingTime={readingTime}
                 publishedAt={publishedAt}
-                views={data?.views}
                 image={image}
                 blurDataURL={blurDataURL}
                 href="/blog"
+                slug={slug}
               />
               <PostBody mdxSource={mdxSource} />
             </div>

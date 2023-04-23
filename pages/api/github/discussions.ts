@@ -47,7 +47,7 @@ const client = new ApolloClient({
 const GET_DISCUSSIONS = gql`
   query GetDiscussions($repoOwner: String!, $repoName: String!) {
     repository(owner: $repoOwner, name: $repoName) {
-      discussions(first: 10) {
+      discussions(first: 8) {
         nodes {
           title
           comments {

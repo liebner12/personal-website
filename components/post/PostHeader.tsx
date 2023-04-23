@@ -4,14 +4,19 @@ import { motion } from 'framer-motion';
 import { BiLink } from 'react-icons/bi';
 import { format } from 'date-fns';
 import Image from 'next/image';
+import useSWR from 'swr';
+import clsx from 'clsx';
 import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_X, REACTIONS_LIST } from 'data';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
 import { Button, BackButton } from 'components';
 import { Tooltip } from 'components/Tooltip';
 
 export type PostHeader = Partial<
-  Pick<BlogFrontmatter, 'title' | 'readingTime' | 'views' | 'publishedAt'> &
-    Pick<ProjectFrontmatter, 'title' | 'repository' | 'url' | 'publishedAt'>
+  Pick<BlogFrontmatter, 'title' | 'readingTime' | 'publishedAt' | 'slug'> &
+    Pick<
+      ProjectFrontmatter,
+      'title' | 'repository' | 'url' | 'publishedAt' | 'slug'
+    >
 > & {
   image: string;
   blurDataURL: string;
@@ -24,11 +29,13 @@ export function PostHeader({
   repository,
   readingTime,
   url,
-  views,
   blurDataURL,
   image,
   href,
+  slug,
 }: PostHeader) {
+  const { data, isLoading } = useSWR(`/api/views/${slug}`);
+
   return (
     <>
       <motion.div className="mb-12" {...FADE_IN_FIRST}>
@@ -97,14 +104,20 @@ export function PostHeader({
         )}
       </motion.div>
       <motion.div {...FADE_IN_SECOND} className="relative">
-        {views && (
-          <motion.div
-            {...FADE_IN_X}
-            className="absolute top-2 right-2 flex items-center gap-2 rounded-full bg-blured py-1.5 px-4 font-semibold text-white backdrop-blur md:top-4 md:right-4"
-          >
-            <MdRemoveRedEye className="text-primary-main" /> {views} views
-          </motion.div>
-        )}
+        <motion.div
+          {...FADE_IN_X}
+          className={clsx(
+            'absolute top-2 right-2 flex h-8 items-center gap-2 rounded-full bg-blured py-1.5 px-4 font-semibold text-white backdrop-blur md:top-4 md:right-4',
+            { 'animate-pulse': isLoading }
+          )}
+        >
+          {data?.views && (
+            <>
+              <MdRemoveRedEye className="text-primary-main" /> {data.views}{' '}
+              views
+            </>
+          )}
+        </motion.div>
         <Image
           placeholder="blur"
           blurDataURL={blurDataURL}

@@ -12,6 +12,7 @@ import { AiFillEye } from 'react-icons/ai';
 import { Icons, IconsList } from './Icons';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types/frontmatters';
 import { FADE_IN_VIEW, HOVER_SCALE } from 'data';
+import { MappedDiscussion } from 'pages/api/github/discussions';
 
 type Card = Pick<ProjectFrontmatter & BlogFrontmatter, 'slug'> & {
   children: JSX.Element[] | JSX.Element;
@@ -87,15 +88,19 @@ const CardText = ({ title, desc }: CardText) => {
   );
 };
 
-export type CardFooter = Pick<ProjectFrontmatter & BlogFrontmatter, 'slug'> & {
+export type CardFooter = Pick<
+  ProjectFrontmatter & BlogFrontmatter,
+  'slug' | 'title'
+> & {
   checkTagged?: (tag: string) => boolean;
   icons?: Array<IconsList>;
   tags?: Array<string>;
 };
 
-const CardFooter = ({ icons, tags, slug, checkTagged }: CardFooter) => {
-  const { data } = useSWR(`/api/views/${slug}`);
-
+const CardFooter = ({ icons, tags, slug, title, checkTagged }: CardFooter) => {
+  const views = useSWR(`/api/views/${slug}`);
+  const discussions = useSWR<MappedDiscussion[]>('/api/github/discussions');
+  const isLoading = views.isLoading || discussions.isLoading;
   return (
     <div className="mx-4 mt-auto">
       {icons && <Icons icons={icons} checkTagged={checkTagged} />}
@@ -116,17 +121,32 @@ const CardFooter = ({ icons, tags, slug, checkTagged }: CardFooter) => {
           ))}
         </ul>
       )}
-      <ul className="mt-6 flex items-center justify-center gap-4 rounded-lg bg-primary-dark px-4 py-1.5 font-mono text-sm text-grey-300">
-        <li className="flex items-center gap-1">
-          <AiFillEye className="h-4 w-4" />
-          {data?.views}
-        </li>
-        <li className="flex items-center gap-1">
-          <FaCommentDots className="h-4 w-4" /> 0
-        </li>
-        <li className="flex items-center gap-1">
-          <MdFavorite className="h-4 w-4" /> 0
-        </li>
+      <ul
+        className={clsx(
+          'mt-6 flex h-8 items-center justify-center gap-4 rounded-lg bg-primary-dark px-4 py-1.5 font-mono text-sm text-grey-300',
+          {
+            'animate-pulse bg-grey-800': isLoading,
+          },
+          { 'bg-primary-dark': !isLoading }
+        )}
+      >
+        {!isLoading && (
+          <>
+            <li className="flex items-center gap-1">
+              <AiFillEye className="h-4 w-4" />
+              {views.data?.views}
+            </li>
+            <li className="flex items-center gap-1">
+              <FaCommentDots className="h-4 w-4" />
+              {discussions.data?.find((discussion) => {
+                return discussion.title === title;
+              })?.numberOfComments || 0}
+            </li>
+            <li className="flex items-center gap-1">
+              <MdFavorite className="h-4 w-4" /> 0
+            </li>
+          </>
+        )}
       </ul>
     </div>
   );

@@ -4,7 +4,6 @@ import type {
   InferGetStaticPropsType,
 } from 'next';
 import readingTime from 'reading-time';
-import useSWR from 'swr';
 import { useEffect } from 'react';
 import { getFileBySlugFrontmatter, getFiles, getPaths } from 'lib';
 import {
@@ -32,7 +31,6 @@ const Project = ({
   mdxSource,
   readingTime,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { data } = useSWR(`/api/views/${slug}`);
   usePushView(slug);
   useEffect(() => {
     // Define an async function to fetch data
@@ -64,11 +62,11 @@ const Project = ({
             <div className="col-start-1 row-start-1">
               <PostHeader
                 title={title}
+                slug={slug}
                 url={url}
                 readingTime={readingTime}
                 repository={repository}
                 publishedAt={publishedAt}
-                views={data?.views}
                 image={image}
                 blurDataURL={blurDataURL}
                 href="/projects"
