@@ -77,7 +77,7 @@ export const CardsRange = ({ posts }: { posts: Array<ProjectFrontmatter> }) => {
                       readingTime={readingTime}
                     />
                     <Card.Text title={title} desc={desc} />
-                    <Card.Footer slug={slug} icons={tags} />
+                    <Card.Footer slug={slug} icons={tags} title={title} />
                   </Card>
                 </ul>
               </motion.li>
