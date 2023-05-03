@@ -1,9 +1,9 @@
 import { Variants } from 'framer-motion';
-import ExplodingHead from 'assets/icons/Exploding-Head.webp';
+import ExplodingHead from 'assets/icons/Exploding.webp';
 import Rocket from 'assets/icons/Rocket.webp';
 import Fire from 'assets/icons/Fire.webp';
-import RedHeart from 'assets/icons/Red-Heart.webp';
-import ThinkingFace from 'assets/icons/Thinking-Face.webp';
+import RedHeart from 'assets/icons/Heart.webp';
+import ThinkingFace from 'assets/icons/Thinking.webp';
 
 export const THEMES = {
   about: 'theme-about',
