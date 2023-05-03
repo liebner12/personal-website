@@ -113,7 +113,10 @@ export const MobilePopover = ({
             </div>
           </div>
         </Popover.Panel>
-        <Popover.Button className="focus-state rounded-full p-2 text-white hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main sm:p-3">
+        <Popover.Button
+          aria-label="Add reactions"
+          className="focus-state rounded-full p-2 text-white hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main sm:p-3"
+        >
           <ButtonIcon className="h-6 w-6" />
         </Popover.Button>
       </Popover>
