@@ -1,4 +1,9 @@
 import { Variants } from 'framer-motion';
+import ExploadingHead from 'assets/icons/Exploding-Head.png';
+import Rocket from 'assets/icons/Rocket.png';
+import Fire from 'assets/icons/Fire.png';
+import RedHeart from 'assets/icons/Red-Heart.png';
+import ThinkingFace from 'assets/icons/Thinking-Face.png';
 
 export const THEMES = {
   about: 'theme-about',
@@ -92,11 +97,11 @@ export const navigationListVariants: Variants = {
 };
 
 export const REACTIONS_LIST = {
-  like: '❤️‍🔥',
-  cool: '🔥',
-  'exploading head': '🤯',
-  'to the moon': '🚀',
-  interesting: '🤔',
+  like: RedHeart,
+  cool: Fire,
+  'exploading head': ExploadingHead,
+  'to the moon': Rocket,
+  interesting: ThinkingFace,
 };
 
 export const REACTIONS_PRIORITIES = {

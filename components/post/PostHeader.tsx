@@ -68,7 +68,7 @@ export function PostHeader({
           <div className="mt-4 h-6 w-80 animate-pulse rounded-full bg-grey-800" />
         )}
         {reactions && (
-          <ul className="mt-4 flex flex-wrap gap-4d lg:gap-8">
+          <ul className="mt-4 flex flex-wrap gap-6d lg:gap-8">
             {(Object.entries(reactions) as [ReactionsKeys, Reaction][])
               .filter(([, { count }]) => count)
               .sort(
@@ -77,7 +77,12 @@ export function PostHeader({
               .map(([key, reaction]) => (
                 <Tooltip content={key} key={key} size="sm" tabIndex={-1}>
                   <div className="flex cursor-default items-center gap-0.5 text-2xld">
-                    {REACTIONS_LIST[key]}
+                    <Image
+                      src={REACTIONS_LIST[key]}
+                      alt={key}
+                      width={32}
+                      height={32}
+                    />
                     <span className="text-lg text-white">{reaction.count}</span>
                   </div>
                 </Tooltip>

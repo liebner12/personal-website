@@ -12,7 +12,7 @@ const sizeVariants = {
   md: 'px-6 py-2',
   sm: 'px-4 py-1',
   xs: 'px-1 py-0.5',
-  circle: 'p-3',
+  circle: 'p-2 sm:p-3',
 };
 
 type Props = {

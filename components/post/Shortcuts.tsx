@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from 'react';
 import { BiLink } from 'react-icons/bi';
 import clsx from 'clsx';
 import { Popover } from '@headlessui/react';
+import Image, { StaticImageData } from 'next/dist/client/image';
 import {
   FADE_IN_X,
   ReactionsKeys,
@@ -84,8 +85,8 @@ const Reactions = () => {
     });
   };
   return (
-    <ul className="relative flex flex-wrap items-center gap-1.5d sm:flex-nowrap sm:gap-2">
-      {(Object.entries(REACTIONS_LIST) as [ReactionsKeys, string][])
+    <ul className="relative flex flex-wrap items-center gap-2 sm:flex-nowrap sm:gap-2">
+      {(Object.entries(REACTIONS_LIST) as [ReactionsKeys, StaticImageData][])
         .sort(([a], [b]) => REACTIONS_PRIORITIES[a] - REACTIONS_PRIORITIES[b])
         .map(([key, icon]) => (
           <Tooltip key={key} content={key} size="sm" tabIndex={-1}>
@@ -95,13 +96,13 @@ const Reactions = () => {
               size="xs"
               disabled={isLoading}
               wrapperProps={HOVER_LARGE_SCALE}
-              className={clsx('pt-2 pb-2 hover:bg-grey-800 focus:bg-grey-800', {
+              className={clsx('pt-1 pb-1 hover:bg-grey-800 focus:bg-grey-800', {
                 'bg-grey-800': reactions?.[key]?.hasBeenSelected,
               })}
               onClick={() => handleClick(key)}
             >
               <div className="flex flex-col justify-center gap-0.5">
-                <span className="text-3xld">{icon}</span>
+                <Image src={icon} alt={key} width={40} height={40} />
                 <span
                   className={clsx(
                     'text-base',
@@ -155,7 +156,7 @@ const MobileShortcuts = () => {
             }
           )}
         >
-          <div className="flex justify-center rounded-2xl border-2 border-grey-800 bg-greyOpacity px-6d py-1 shadow-lg backdrop-blur-sm">
+          <div className="flex justify-center rounded-2xl border-2 border-grey-800 bg-grey-900 px-4d py-1 shadow-lg backdrop-blur-sm">
             <Reactions />
           </div>
         </div>
@@ -170,7 +171,7 @@ const MobileShortcuts = () => {
       >
         <div className="mx-4 flex-1 rounded-full border-2 border-grey-800 bg-greyOpacity py-1 shadow-lg backdrop-blur-sm">
           <ul className="mx-4 flex justify-around">
-            <Popover.Button className="focus-state rounded-full p-3 text-grey-300 hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main">
+            <Popover.Button className="focus-state rounded-full p-2 text-grey-300 hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main">
               <RiHeartAddFill className="h-6 w-6" />
             </Popover.Button>
             <SocialButtons variant="transparent" />
