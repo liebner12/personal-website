@@ -111,6 +111,7 @@ const CardFooter = ({ icons, tags, slug, title, checkTagged }: CardFooter) => {
 
     return sum;
   }, [isLoading, posts?.data?.post?.reactions]);
+
   return (
     <div className="mx-4 mt-auto">
       {icons && <Icons icons={icons} checkTagged={checkTagged} />}
@@ -135,9 +136,9 @@ const CardFooter = ({ icons, tags, slug, title, checkTagged }: CardFooter) => {
         className={clsx(
           'mt-6 flex h-8 items-center justify-center gap-4 rounded-lg px-4 py-1.5 font-mono text-sm text-grey-300',
           {
-            'animate-pulse bg-grey-800': isLoading && !posts?.data,
+            'animate-pulse bg-grey-800': isLoading || !posts?.data,
           },
-          { 'bg-primary-dark': !isLoading && posts?.data }
+          { 'bg-primary-dark': !isLoading || posts?.data }
         )}
       >
         {!isLoading && posts?.data && (
