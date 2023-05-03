@@ -25,7 +25,7 @@ export function Dialog({
   }
 
   return (
-    <div className="fixed bottom-20 left-1/2 flex w-full -translate-x-1/2">
+    <div className="fixed bottom-24 left-1/2 flex w-full -translate-x-1/2">
       <motion.div
         className="mx-auto flex items-center gap-2 rounded-full bg-primary-main px-6 py-2 text-base font-bold text-black"
         {...FADE_IN_VIEW}

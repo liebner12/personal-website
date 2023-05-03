@@ -76,6 +76,7 @@ const PopoverButton = ({
       StartIcon={StartIcon}
       size="circle"
       ariaLabel={ariaLabel}
+      color="text-white"
       className={clsx(
         'transition-colors hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main',
         className
@@ -112,8 +113,8 @@ export const MobilePopover = ({
             </div>
           </div>
         </Popover.Panel>
-        <Popover.Button className="focus-state rounded-full p-2 text-grey-300 hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main sm:p-3">
-          <ButtonIcon className="h-6 w-6 text-white" />
+        <Popover.Button className="focus-state rounded-full p-2 text-white hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main sm:p-3">
+          <ButtonIcon className="h-6 w-6" />
         </Popover.Button>
       </Popover>
     </li>

@@ -42,7 +42,8 @@ const SocialButtons = ({
           size="circle"
           ariaLabel="Comments"
           href="#comments-github"
-          className="text-white hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main"
+          color="text-white"
+          className="hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main"
         />
       </Tooltip>
       <Tooltip content="Share" tabIndex={-1} size="sm">
@@ -56,7 +57,8 @@ const SocialButtons = ({
             setIsToggleActive(true);
             navigator.clipboard.writeText(window.location.href);
           }}
-          className="text-white hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main"
+          color="text-white"
+          className="hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main"
         />
       </Tooltip>
       <Dialog isVisible={isToggleActive} setIsVisible={setIsToggleActive}>
@@ -94,6 +96,7 @@ const Reactions = () => {
               as="button"
               variant="transparent"
               size="xs"
+              color="text-white"
               disabled={isLoading}
               wrapperProps={HOVER_LARGE_SCALE}
               className={clsx(
