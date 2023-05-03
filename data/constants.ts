@@ -19,9 +19,9 @@ export const BLOG_SORT_LIST = ['date', 'views'];
 export const MAX_WIDTH = 1536;
 
 export const FADE_IN_FIRST = {
-  initial: { y: 100, opacity: 0.1 },
+  initial: { y: 100, opacity: 0.01 },
   animate: { y: 0, opacity: 1 },
-  exit: { y: 100, opacity: 0.1 },
+  exit: { y: 100, opacity: 0.01 },
   transition: {
     duration: 0.5,
   },
