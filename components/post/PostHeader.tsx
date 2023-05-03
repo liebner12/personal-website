@@ -42,7 +42,7 @@ export function PostHeader({
 
   return (
     <>
-      <motion.div className="mb-12" {...FADE_IN_FIRST}>
+      <motion.div className="mb-8" {...FADE_IN_FIRST}>
         <BackButton href={href} />
         <h1 className="text-4xl font-bold text-white">{title}</h1>
         <div className="mt-3 flex flex-wrap items-center gap-2 text-base font-semibold text-slate-200">
@@ -82,6 +82,7 @@ export function PostHeader({
                       alt={key}
                       width={32}
                       height={32}
+                      unoptimized
                     />
                     <span className="text-lg text-white">{reaction.count}</span>
                   </div>

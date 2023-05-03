@@ -102,7 +102,13 @@ const Reactions = () => {
               onClick={() => handleClick(key)}
             >
               <div className="flex flex-col justify-center gap-0.5">
-                <Image src={icon} alt={key} width={40} height={40} />
+                <Image
+                  src={icon}
+                  alt={key}
+                  width={40}
+                  height={40}
+                  unoptimized
+                />
                 <span
                   className={clsx(
                     'text-base',

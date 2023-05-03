@@ -13,7 +13,7 @@ export const BackButton = ({
   const router = useRouter();
 
   return (
-    <motion.div className="mb-12  lg:col-span-12" {...FADE_IN_FIRST}>
+    <motion.div className="mb-8 lg:col-span-12" {...FADE_IN_FIRST}>
       <ArrowLink
         direction="left"
         isCircle={false}
