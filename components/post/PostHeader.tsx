@@ -82,7 +82,6 @@ export function PostHeader({
                       alt={key}
                       width={32}
                       height={32}
-                      placeholder="blur"
                     />
                     <span className="text-lg text-white">{reaction.count}</span>
                   </div>
