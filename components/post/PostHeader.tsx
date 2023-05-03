@@ -11,7 +11,7 @@ import {
   FADE_IN_SECOND,
   FADE_IN_X,
   ReactionsKeys,
-  REACTIONS_LIST,
+  REACTIONS_LIST_SM,
   REACTIONS_PRIORITIES,
 } from 'data';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
@@ -78,7 +78,7 @@ export function PostHeader({
                 <Tooltip content={key} key={key} size="sm" tabIndex={-1}>
                   <div className="flex cursor-default items-center gap-0.5 text-2xld">
                     <Image
-                      src={REACTIONS_LIST[key]}
+                      src={REACTIONS_LIST_SM[key]}
                       alt={key}
                       width={32}
                       height={32}

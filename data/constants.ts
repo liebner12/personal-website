@@ -4,6 +4,11 @@ import Rocket from 'assets/icons/Rocket.webp';
 import Fire from 'assets/icons/Fire.webp';
 import RedHeart from 'assets/icons/Heart.webp';
 import ThinkingFace from 'assets/icons/Thinking.webp';
+import ExplodingHeadSm from 'assets/icons/sm/Exploding.webp';
+import RocketSm from 'assets/icons/sm/Rocket.webp';
+import FireSm from 'assets/icons/sm/Fire.webp';
+import RedHeartSm from 'assets/icons/sm/Heart.webp';
+import ThinkingFaceSm from 'assets/icons/sm/Thinking.webp';
 
 export const THEMES = {
   about: 'theme-about',
@@ -94,6 +99,14 @@ export const navigationListVariants: Variants = {
   closed: {
     transition: { staggerChildren: 0.05, staggerDirection: -1 },
   },
+};
+
+export const REACTIONS_LIST_SM = {
+  like: RedHeartSm,
+  cool: FireSm,
+  'exploding head': ExplodingHeadSm,
+  'to the moon': RocketSm,
+  interesting: ThinkingFaceSm,
 };
 
 export const REACTIONS_LIST = {

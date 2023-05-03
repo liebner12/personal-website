@@ -109,7 +109,7 @@ const Reactions = () => {
             >
               <div className="flex flex-shrink-0 flex-col justify-center gap-0.5">
                 <div className="flex-shrink-0">
-                  <Image src={icon} alt={key} width={40} height={40} />
+                  <Image src={icon} alt={key} width={64} height={64} />
                 </div>
                 <span
                   className={clsx(
