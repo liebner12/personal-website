@@ -11,7 +11,7 @@ const sizeVariants = {
   lg: 'px-10 py-4',
   md: 'px-6 py-2',
   sm: 'px-4 py-1',
-  xs: 'px-2 py-0.5',
+  xs: 'px-1 py-0.5',
   circle: 'p-3',
 };
 

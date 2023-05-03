@@ -8,7 +8,7 @@ import { ProjectWithMeta } from 'types';
 export function useInjectContent(
   frontmatter: Array<BlogFrontmatter & ProjectFrontmatter>
 ) {
-  const { data } = useSWR<Array<ViewCount>>('/api/views');
+  const { data } = useSWR<Array<ViewCount>>('/api/posts');
   const [populatedContent, setPopulatedContent] =
     useState<Array<BlogWithMeta & ProjectWithMeta>>(frontmatter);
 

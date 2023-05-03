@@ -17,6 +17,7 @@ export type StyledLink = {
   isActive?: boolean;
   color?: string;
   ariaLabel?: string;
+  disabled?: boolean;
   target?: '_blank' | undefined;
   focusState?: 'focus-state-bottom' | 'focus-state' | '';
   size?: 'xl' | 'lg' | 'md' | 'sm';
@@ -50,6 +51,7 @@ export const StyledLink = forwardRef<
       focusState = 'focus-state-bottom',
       size = 'md',
       style,
+      disabled,
       as = 'Link',
       onHoverEnd,
       onHoverStart,
@@ -67,6 +69,7 @@ export const StyledLink = forwardRef<
           onHoverStart={onHoverStart}
           onHoverEnd={onHoverEnd}
           ref={ref}
+          disabled={disabled}
           onClick={onClick}
           className={clsx(
             {
@@ -75,6 +78,7 @@ export const StyledLink = forwardRef<
             },
             focusState,
             className,
+            { 'opacity-60': disabled },
             { 'flex items-center gap-2': StartIcon || EndIcon },
             { 'inline-block': !StartIcon && !EndIcon }
           )}

@@ -1,10 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getViews, registerView } from 'lib/getViews';
+import { getPost, Post, registerReaction, registerView } from 'lib/getPost';
 
 interface Data {
   message?: string;
   status?: number;
-  views?: number;
+  post?: Post;
 }
 
 export default async function handler(
@@ -17,10 +17,14 @@ export default async function handler(
     return res.status(400).json({ message: `invalid slug` });
   }
 
-  if (req.method == `POST`) {
+  if (req.method == 'POST') {
     await registerView(slug);
   }
 
-  const views = await getViews(slug);
-  return res.status(200).json({ views: views });
+  if (req.method == 'PUT') {
+    await registerReaction(slug, req.body);
+  }
+
+  const post = await getPost(slug);
+  return res.status(200).json({ post });
 }

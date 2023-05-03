@@ -6,7 +6,7 @@ export const usePushView = (name: string) => {
       return;
     }
 
-    fetch(`/api/views/${name}`, {
+    fetch(`/api/posts/${name}`, {
       method: 'POST',
     });
   }, [name]);

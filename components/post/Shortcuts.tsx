@@ -1,15 +1,22 @@
 import { motion } from 'framer-motion';
 import { MdComment, MdShare } from 'react-icons/md';
 import { RiHeartAddFill } from 'react-icons/ri';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { BiLink } from 'react-icons/bi';
-import { FADE_IN_X, REACTIONS_LIST } from 'data';
+import clsx from 'clsx';
+import { Popover } from '@headlessui/react';
+import {
+  FADE_IN_X,
+  ReactionsKeys,
+  REACTIONS_LIST,
+  REACTIONS_PRIORITIES,
+} from 'data';
 import {
   Button,
   ButtonProps,
   DesktopPopover,
   Dialog,
-  MobilePopover,
+  PostContext,
   TableOfContents,
 } from 'components';
 import { Tooltip } from 'components/Tooltip';
@@ -58,38 +65,119 @@ const SocialButtons = ({
   );
 };
 
-export type Reactions = { onClick?: () => void };
+const Reactions = () => {
+  const { setReactions, reactions, isLoading } = useContext(PostContext);
+  const handleClick = (reaction: ReactionsKeys) => {
+    if (!reactions) {
+      return;
+    }
 
-const Reactions = ({ onClick }: Reactions) => {
+    const { hasBeenSelected } = reactions[reaction];
+    setReactions?.({
+      ...reactions,
+      [reaction]: {
+        count: hasBeenSelected
+          ? reactions[reaction].count - 1
+          : reactions[reaction].count + 1,
+        hasBeenSelected: !hasBeenSelected,
+      },
+    });
+  };
   return (
-    <ul className="flex items-center gap-3">
-      {REACTIONS_LIST.map(({ name, icon }) => (
-        <Tooltip key={name} content={name} size="sm" tabIndex={-1}>
-          <Button
-            as="button"
-            variant="transparent"
-            size="xs"
-            wrapperProps={HOVER_LARGE_SCALE}
-            className="hover:bg-grey-800 focus:bg-grey-800"
-            onClick={onClick}
-          >
-            <div className="flex flex-col justify-center">
-              <span className="text-2xl">{icon}</span>
-              <span className="text-base text-slate-200">0</span>
-            </div>
-          </Button>
-        </Tooltip>
-      ))}
+    <ul className="relative flex flex-wrap items-center gap-1.5d sm:flex-nowrap sm:gap-2">
+      {(Object.entries(REACTIONS_LIST) as [ReactionsKeys, string][])
+        .sort(([a], [b]) => REACTIONS_PRIORITIES[a] - REACTIONS_PRIORITIES[b])
+        .map(([key, icon]) => (
+          <Tooltip key={key} content={key} size="sm" tabIndex={-1}>
+            <Button
+              as="button"
+              variant="transparent"
+              size="xs"
+              disabled={isLoading}
+              wrapperProps={HOVER_LARGE_SCALE}
+              className={clsx('pt-2 pb-2 hover:bg-grey-800 focus:bg-grey-800', {
+                'bg-grey-800': reactions?.[key]?.hasBeenSelected,
+              })}
+              onClick={() => handleClick(key)}
+            >
+              <div className="flex flex-col justify-center gap-0.5">
+                <span className="text-3xld">{icon}</span>
+                <span
+                  className={clsx(
+                    'text-base',
+                    {
+                      'w-8 animate-pulse rounded-full bg-grey-700 text-transparent':
+                        isLoading,
+                    },
+                    {
+                      'font-bold text-primary-main':
+                        reactions?.[key]?.hasBeenSelected,
+                    },
+                    { 'text-slate-200': !reactions?.[key]?.hasBeenSelected }
+                  )}
+                >
+                  {reactions?.[key].count || 0}
+                </span>
+              </div>
+            </Button>
+          </Tooltip>
+        ))}
     </ul>
   );
 };
 
 const MobileShortcuts = () => {
+  const [scrollPos, setScrollPos] = useState(0);
+  const [navbarHidden, setNavbarHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const scrollingDown = currentScrollPos > scrollPos;
+
+      setNavbarHidden(scrollingDown);
+      setScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [scrollPos]);
+
   return (
-    <ul className="flex justify-around">
-      <MobilePopover Icon={RiHeartAddFill} Reactions={Reactions} />
-      <SocialButtons variant="transparent" />
-    </ul>
+    <Popover>
+      <Popover.Panel>
+        <div
+          className={clsx(
+            'fixed bottom-24 left-1/2 z-20 flex w-full -translate-x-1/2 justify-center transition-transform',
+            {
+              'translate-y-[calc(100%+6rem)]': navbarHidden,
+            }
+          )}
+        >
+          <div className="flex justify-center rounded-2xl border-2 border-grey-800 bg-greyOpacity px-6d py-1 shadow-lg backdrop-blur-sm">
+            <Reactions />
+          </div>
+        </div>
+      </Popover.Panel>
+      <div
+        className={clsx(
+          'fixed bottom-6 left-0 z-20 flex w-full transition-transform lg:hidden',
+          {
+            'translate-y-[calc(100%+1.5rem)]': navbarHidden,
+          }
+        )}
+      >
+        <div className="mx-4 flex-1 rounded-full border-2 border-grey-800 bg-greyOpacity py-1 shadow-lg backdrop-blur-sm">
+          <ul className="mx-4 flex justify-around">
+            <Popover.Button className="focus-state rounded-full p-3 text-grey-300 hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main">
+              <RiHeartAddFill className="h-6 w-6" />
+            </Popover.Button>
+            <SocialButtons variant="transparent" />
+          </ul>
+        </div>
+      </div>
+    </Popover>
   );
 };
 
@@ -128,9 +216,7 @@ export function ShortcutsBar() {
           <Shortcuts />
         </motion.div>
       </div>
-      <div className="fixed bottom-0 left-0 z-20 w-full border-t-2 border-grey-500 bg-backgroundOpacity py-1 backdrop-blur lg:hidden">
-        <MobileShortcuts />
-      </div>
+      <MobileShortcuts />
     </>
   );
 }

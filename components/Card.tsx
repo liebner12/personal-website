@@ -98,9 +98,9 @@ export type CardFooter = Pick<
 };
 
 const CardFooter = ({ icons, tags, slug, title, checkTagged }: CardFooter) => {
-  const views = useSWR(`/api/views/${slug}`);
+  const posts = useSWR(`/api/posts/${slug}`);
   const discussions = useSWR<MappedDiscussion[]>('/api/github/discussions');
-  const isLoading = views.isLoading || discussions.isLoading;
+  const isLoading = posts.isLoading || discussions.isLoading;
   return (
     <div className="mx-4 mt-auto">
       {icons && <Icons icons={icons} checkTagged={checkTagged} />}
@@ -123,7 +123,7 @@ const CardFooter = ({ icons, tags, slug, title, checkTagged }: CardFooter) => {
       )}
       <ul
         className={clsx(
-          'mt-6 flex h-8 items-center justify-center gap-4 rounded-lg bg-primary-dark px-4 py-1.5 font-mono text-sm text-grey-300',
+          'mt-6 flex h-8 items-center justify-center gap-4 rounded-lg px-4 py-1.5 font-mono text-sm text-grey-300',
           {
             'animate-pulse bg-grey-800': isLoading,
           },
@@ -134,7 +134,7 @@ const CardFooter = ({ icons, tags, slug, title, checkTagged }: CardFooter) => {
           <>
             <li className="flex items-center gap-1">
               <AiFillEye className="h-4 w-4" />
-              {views.data?.views}
+              {posts.data.post.count}
             </li>
             <li className="flex items-center gap-1">
               <FaCommentDots className="h-4 w-4" />

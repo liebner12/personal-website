@@ -4,19 +4,24 @@ import { motion } from 'framer-motion';
 import { BiLink } from 'react-icons/bi';
 import { format } from 'date-fns';
 import Image from 'next/image';
-import useSWR from 'swr';
 import clsx from 'clsx';
-import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_X, REACTIONS_LIST } from 'data';
+import { useContext } from 'react';
+import {
+  FADE_IN_FIRST,
+  FADE_IN_SECOND,
+  FADE_IN_X,
+  ReactionsKeys,
+  REACTIONS_LIST,
+  REACTIONS_PRIORITIES,
+} from 'data';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types';
-import { Button, BackButton } from 'components';
+import { Button, BackButton, PostContext } from 'components';
 import { Tooltip } from 'components/Tooltip';
+import { Reaction } from 'lib';
 
 export type PostHeader = Partial<
-  Pick<BlogFrontmatter, 'title' | 'readingTime' | 'publishedAt' | 'slug'> &
-    Pick<
-      ProjectFrontmatter,
-      'title' | 'repository' | 'url' | 'publishedAt' | 'slug'
-    >
+  Pick<BlogFrontmatter, 'title' | 'readingTime' | 'publishedAt'> &
+    Pick<ProjectFrontmatter, 'title' | 'repository' | 'url' | 'publishedAt'>
 > & {
   image: string;
   blurDataURL: string;
@@ -32,9 +37,8 @@ export function PostHeader({
   blurDataURL,
   image,
   href,
-  slug,
 }: PostHeader) {
-  const { data, isLoading } = useSWR(`/api/views/${slug}`);
+  const { reactions, views, isLoading } = useContext(PostContext);
 
   return (
     <>
@@ -60,16 +64,26 @@ export function PostHeader({
             </>
           )}
         </div>
-        <ul className="mt-4 flex flex-wrap gap-6 lg:gap-8">
-          {REACTIONS_LIST.map(({ icon, name }) => (
-            <Tooltip content={name} key={name} size="sm" tabIndex={-1}>
-              <div className="flex cursor-default items-center gap-1 text-xl">
-                {icon}
-                <span className="text-base text-white">1</span>
-              </div>
-            </Tooltip>
-          ))}
-        </ul>
+        {isLoading && (
+          <div className="mt-4 h-6 w-80 animate-pulse rounded-full bg-grey-800" />
+        )}
+        {reactions && (
+          <ul className="mt-4 flex flex-wrap gap-4d lg:gap-8">
+            {(Object.entries(reactions) as [ReactionsKeys, Reaction][])
+              .filter(([, { count }]) => count)
+              .sort(
+                ([a], [b]) => REACTIONS_PRIORITIES[a] - REACTIONS_PRIORITIES[b]
+              )
+              .map(([key, reaction]) => (
+                <Tooltip content={key} key={key} size="sm" tabIndex={-1}>
+                  <div className="flex cursor-default items-center gap-0.5 text-2xld">
+                    {REACTIONS_LIST[key]}
+                    <span className="text-lg text-white">{reaction.count}</span>
+                  </div>
+                </Tooltip>
+              ))}
+          </ul>
+        )}
         {(url || repository) && (
           <ul className="mt-6 flex items-center gap-4">
             {url && (
@@ -111,10 +125,9 @@ export function PostHeader({
             { 'animate-pulse': isLoading }
           )}
         >
-          {data?.views && (
+          {views && (
             <>
-              <MdRemoveRedEye className="text-primary-main" /> {data.views}{' '}
-              views
+              <MdRemoveRedEye className="text-primary-main" /> {views} views
             </>
           )}
         </motion.div>

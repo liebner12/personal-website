@@ -18,6 +18,15 @@ $color-contact: 250 100% 70%;
 }
 
 :root {
+  // Text size
+  --text-2xld: clamp(1rem, 6.2vw, 1.5rem);
+  --text-3xld: clamp(1.125rem, 8vw, 1.875rem);
+  // Spacing
+  --spacing-1-5d: clamp(0.125rem, 1.6vw, 0.375rem);
+  --spacing-4d: clamp(0.25rem, 4.1vw, 1rem);
+  --spacing-6d: clamp(0.5rem, 6.2vw, 1.5rem);
+  --spacing-8d: clamp(1rem, 8.2vw, 2rem);
+  // Colors
   --color-error: #{$color-error};
   --color-home: #{$color-home};
   --color-about: #{$color-about};
@@ -38,6 +47,7 @@ $color-contact: 250 100% 70%;
   --color-gray-900: #1f2028;
   --color-background: rgb(18, 20, 27);
   --color-background-opacity: rgba(18, 20, 27, 0.95);
+  --color-grey-opacity: rgba(26, 32, 36, 0.92);
   --color-transparent: transparent;
   --color-blured: rgba(0, 0, 0, 0.6);
   --color-home-light: hsl(30, 100%, 90%);
@@ -326,7 +336,6 @@ body {
 
     .navbar:hover > div {
       width: 18rem;
-      box-shadow: -32rem 0px 0px 32rem var(--color-background-opacity);
       background: var(--color-background-opacity);
       border-right: 2px solid var(--color-gray-900);
       backdrop-filter: blur(4px);

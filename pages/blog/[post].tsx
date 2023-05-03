@@ -10,8 +10,9 @@ import {
   PostBody,
   Seo,
   Container,
-  TableOfContents,
   PostFooter,
+  PostProvider,
+  ShortcutsBar,
 } from 'components';
 import { StaticParams } from 'types';
 import { usePushView } from 'hooks';
@@ -28,29 +29,30 @@ const Blog = ({
     <>
       <Seo templateTitle={title} description={desc} image={image} />
       <div>
-        <Container className="!pb-0">
-          <div
-            className="relative w-full lg:grid lg:gap-16"
-            style={{
-              gridTemplateColumns: 'minmax(0, 3fr) minmax(225px, 1fr)',
-            }}
-          >
-            <TableOfContents />
-            <div className="col-start-1 row-start-1">
-              <PostHeader
-                title={title}
-                readingTime={readingTime}
-                publishedAt={publishedAt}
-                image={image}
-                blurDataURL={blurDataURL}
-                href="/blog"
-                slug={slug}
-              />
-              <PostBody mdxSource={mdxSource} />
+        <PostProvider slug={slug}>
+          <Container className="!pb-0">
+            <div
+              className="relative w-full lg:grid lg:gap-16"
+              style={{
+                gridTemplateColumns: 'minmax(0, 3fr) minmax(225px, 1fr)',
+              }}
+            >
+              <ShortcutsBar />
+              <div className="col-start-1 row-start-1">
+                <PostHeader
+                  title={title}
+                  readingTime={readingTime}
+                  publishedAt={publishedAt}
+                  image={image}
+                  blurDataURL={blurDataURL}
+                  href="/blog"
+                />
+                <PostBody mdxSource={mdxSource} />
+              </div>
             </div>
-          </div>
-        </Container>
-        <PostFooter title={title} type="blog" />
+          </Container>
+          <PostFooter title={title} type="blog" />
+        </PostProvider>
       </div>
     </>
   );

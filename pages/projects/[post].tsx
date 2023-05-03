@@ -4,7 +4,6 @@ import type {
   InferGetStaticPropsType,
 } from 'next';
 import readingTime from 'reading-time';
-import { useEffect } from 'react';
 import { getFileBySlugFrontmatter, getFiles, getPaths } from 'lib';
 import {
   PostBody,
@@ -13,6 +12,7 @@ import {
   Container,
   PostFooter,
   ShortcutsBar,
+  PostProvider,
 } from 'components';
 import { StaticParams } from 'types';
 import { usePushView } from 'hooks';
@@ -32,50 +32,37 @@ const Project = ({
   readingTime,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   usePushView(slug);
-  useEffect(() => {
-    // Define an async function to fetch data
-    async function fetchData() {
-      // Use fetch API to make a GET request to the API route
-      const response = await fetch(`/api/github/discussions`);
-      // Parse the response as JSON
-      const data = await response.json();
-      // Set the data to the state variable
-      console.log(data);
-    }
-
-    // Call the async function
-    fetchData();
-  }, [title]);
 
   return (
     <>
       <Seo templateTitle={title} description={desc} image={image} />
       <div>
-        <Container className="!pb-0">
-          <div
-            className="relative lg:grid lg:gap-16"
-            style={{
-              gridTemplateColumns: 'minmax(0, 3fr) minmax(225px, 1fr)',
-            }}
-          >
-            <ShortcutsBar />
-            <div className="col-start-1 row-start-1">
-              <PostHeader
-                title={title}
-                slug={slug}
-                url={url}
-                readingTime={readingTime}
-                repository={repository}
-                publishedAt={publishedAt}
-                image={image}
-                blurDataURL={blurDataURL}
-                href="/projects"
-              />
-              <PostBody mdxSource={mdxSource} />
+        <PostProvider slug={slug}>
+          <Container className="!pb-0">
+            <div
+              className="relative lg:grid lg:gap-16"
+              style={{
+                gridTemplateColumns: 'minmax(0, 3fr) minmax(225px, 1fr)',
+              }}
+            >
+              <ShortcutsBar />
+              <div className="col-start-1 row-start-1">
+                <PostHeader
+                  title={title}
+                  url={url}
+                  readingTime={readingTime}
+                  repository={repository}
+                  publishedAt={publishedAt}
+                  image={image}
+                  blurDataURL={blurDataURL}
+                  href="/projects"
+                />
+                <PostBody mdxSource={mdxSource} />
+              </div>
             </div>
-          </div>
-        </Container>
-        <PostFooter title={title} type="projects" />
+          </Container>
+          <PostFooter title={title} type="projects" />
+        </PostProvider>
       </div>
     </>
   );

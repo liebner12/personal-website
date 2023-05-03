@@ -15,6 +15,16 @@ module.exports = {
       animation: {
         'spin-slow': 'spin 5s linear infinite',
       },
+      spacing: {
+        '1.5d': 'var(--spacing-1-5d)',
+        '4d': 'var(--spacing-4d)',
+        '6d': 'var(--spacing-6d)',
+        '8d': 'var(--spacing-8d)',
+      },
+      fontSize: {
+        '2xld': 'var(--text-2xld)',
+        '3xld': 'var(--text-3xld)',
+      },
     },
     colors: {
       primary: {
@@ -45,6 +55,7 @@ module.exports = {
       transparent: 'var(--color-transparent)',
       background: 'var(--color-background)',
       backgroundOpacity: 'var(--color-background-opacity)',
+      greyOpacity: 'var(--color-grey-opacity)',
       error: '#ff6666',
       home: '#ffb366',
       about: '#ffff66',

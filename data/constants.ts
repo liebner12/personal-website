@@ -91,10 +91,20 @@ export const navigationListVariants: Variants = {
   },
 };
 
-export const REACTIONS_LIST = [
-  { name: 'like', icon: '❤️' },
-  { name: 'thinking', icon: '🤔' },
-  { name: 'cool', icon: '🎉' },
-  { name: 'to the moon', icon: '🚀' },
-  { name: 'interesting', icon: '👀' },
-];
+export const REACTIONS_LIST = {
+  like: '❤️‍🔥',
+  cool: '🔥',
+  'exploading head': '🤯',
+  'to the moon': '🚀',
+  interesting: '🤔',
+};
+
+export const REACTIONS_PRIORITIES = {
+  like: 1,
+  cool: 2,
+  'exploading head': 3,
+  'to the moon': 4,
+  interesting: 5,
+};
+
+export type ReactionsKeys = keyof typeof REACTIONS_LIST;

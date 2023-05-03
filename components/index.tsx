@@ -17,3 +17,4 @@ export * from './BackButton';
 export * from './Heading';
 export * from './Popover';
 export * from './Dialog';
+export * from './PostProvider';
