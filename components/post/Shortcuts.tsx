@@ -4,7 +4,6 @@ import { RiHeartAddFill } from 'react-icons/ri';
 import { useContext, useEffect, useState } from 'react';
 import { BiLink } from 'react-icons/bi';
 import clsx from 'clsx';
-import { Popover } from '@headlessui/react';
 import Image, { StaticImageData } from 'next/dist/client/image';
 import {
   FADE_IN_X,
@@ -17,6 +16,7 @@ import {
   ButtonProps,
   DesktopPopover,
   Dialog,
+  MobilePopover,
   PostContext,
   TableOfContents,
 } from 'components';
@@ -42,7 +42,7 @@ const SocialButtons = ({
           size="circle"
           ariaLabel="Comments"
           href="#comments-github"
-          className="hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main"
+          className="text-white hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main"
         />
       </Tooltip>
       <Tooltip content="Share" tabIndex={-1} size="sm">
@@ -56,7 +56,7 @@ const SocialButtons = ({
             setIsToggleActive(true);
             navigator.clipboard.writeText(window.location.href);
           }}
-          className="hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main"
+          className="text-white hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main"
         />
       </Tooltip>
       <Dialog isVisible={isToggleActive} setIsVisible={setIsToggleActive}>
@@ -85,7 +85,7 @@ const Reactions = () => {
     });
   };
   return (
-    <ul className="relative flex flex-wrap items-center gap-2 sm:flex-nowrap sm:gap-2">
+    <ul className="relative flex flex-wrap items-center gap-2 sm:flex-nowrap">
       {(Object.entries(REACTIONS_LIST) as [ReactionsKeys, StaticImageData][])
         .sort(([a], [b]) => REACTIONS_PRIORITIES[a] - REACTIONS_PRIORITIES[b])
         .map(([key, icon]) => (
@@ -96,19 +96,24 @@ const Reactions = () => {
               size="xs"
               disabled={isLoading}
               wrapperProps={HOVER_LARGE_SCALE}
-              className={clsx('pt-1 pb-1 hover:bg-grey-800 focus:bg-grey-800', {
-                'bg-grey-800': reactions?.[key]?.hasBeenSelected,
-              })}
+              className={clsx(
+                'w-12 pt-1 pb-1 hover:bg-grey-800 focus:bg-grey-800',
+                {
+                  'bg-grey-800': reactions?.[key]?.hasBeenSelected,
+                }
+              )}
               onClick={() => handleClick(key)}
             >
-              <div className="flex flex-col justify-center gap-0.5">
-                <Image
-                  src={icon}
-                  alt={key}
-                  width={40}
-                  height={40}
-                  unoptimized
-                />
+              <div className="flex flex-shrink-0 flex-col justify-center gap-0.5">
+                <div className="flex-shrink-0">
+                  <Image
+                    src={icon}
+                    alt={key}
+                    width={40}
+                    height={40}
+                    unoptimized
+                  />
+                </div>
                 <span
                   className={clsx(
                     'text-base',
@@ -135,14 +140,14 @@ const Reactions = () => {
 
 const MobileShortcuts = () => {
   const [scrollPos, setScrollPos] = useState(0);
-  const [navbarHidden, setNavbarHidden] = useState(false);
+  const [isNavbarHidden, setIsNavbarHidden] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
       const scrollingDown = currentScrollPos > scrollPos;
 
-      setNavbarHidden(scrollingDown);
+      setIsNavbarHidden(scrollingDown);
       setScrollPos(currentScrollPos);
     };
 
@@ -152,39 +157,26 @@ const MobileShortcuts = () => {
   }, [scrollPos]);
 
   return (
-    <Popover>
-      <Popover.Panel>
-        <div
-          className={clsx(
-            'fixed bottom-24 left-1/2 z-20 flex w-full -translate-x-1/2 justify-center transition-transform',
-            {
-              'translate-y-[calc(100%+6rem)]': navbarHidden,
-            }
-          )}
-        >
-          <div className="flex justify-center rounded-2xl border-2 border-grey-800 bg-grey-900 px-4d py-1 shadow-lg backdrop-blur-sm">
+    <div
+      className={clsx(
+        'fixed bottom-6 right-0 z-20 flex w-full transition-transform sm:max-w-sm lg:hidden',
+        {
+          'translate-y-[calc(100%+1.5rem)]': isNavbarHidden,
+        }
+      )}
+    >
+      <div className="mx-4 flex-1 rounded-full border-2 border-grey-800 bg-grey-900 py-1.5 shadow-lg sm:mx-8d">
+        <ul className="mx-4 flex justify-around">
+          <MobilePopover
+            ButtonIcon={RiHeartAddFill}
+            isNavbarHidden={isNavbarHidden}
+          >
             <Reactions />
-          </div>
-        </div>
-      </Popover.Panel>
-      <div
-        className={clsx(
-          'fixed bottom-6 left-0 z-20 flex w-full transition-transform lg:hidden',
-          {
-            'translate-y-[calc(100%+1.5rem)]': navbarHidden,
-          }
-        )}
-      >
-        <div className="mx-4 flex-1 rounded-full border-2 border-grey-800 bg-greyOpacity py-1 shadow-lg backdrop-blur-sm">
-          <ul className="mx-4 flex justify-around">
-            <Popover.Button className="focus-state rounded-full p-2 text-grey-300 hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main">
-              <RiHeartAddFill className="h-6 w-6" />
-            </Popover.Button>
-            <SocialButtons variant="transparent" />
-          </ul>
-        </div>
+          </MobilePopover>
+          <SocialButtons variant="transparent" />
+        </ul>
       </div>
-    </Popover>
+    </div>
   );
 };
 

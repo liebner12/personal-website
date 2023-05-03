@@ -9,7 +9,7 @@ const supabase = createClient(
 export type Reaction = { count: number; hasBeenSelected: boolean };
 
 export type Post =
-  | { reactions: Record<ReactionsKeys, Reaction>; count: number }
+  | { reactions: Record<ReactionsKeys, number>; count: number }
   | Record<string, never>;
 
 export const getPost = async (slug: string): Promise<Post> => {

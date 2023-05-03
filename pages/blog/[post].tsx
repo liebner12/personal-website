@@ -30,7 +30,7 @@ const Blog = ({
       <Seo templateTitle={title} description={desc} image={image} />
       <div>
         <PostProvider slug={slug}>
-          <Container className="!pb-0">
+          <Container className="!pb-0 !pt-0 md:!pt-[5%]">
             <div
               className="relative w-full lg:grid lg:gap-16"
               style={{

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import React from 'react';
+import React, { useMemo } from 'react';
 import Link from 'next/link';
 import { format } from 'date-fns';
 import useSWR from 'swr';
@@ -13,6 +13,7 @@ import { Icons, IconsList } from './Icons';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types/frontmatters';
 import { FADE_IN_VIEW, HOVER_SCALE } from 'data';
 import { MappedDiscussion } from 'pages/api/github/discussions';
+import { Post } from 'lib';
 
 type Card = Pick<ProjectFrontmatter & BlogFrontmatter, 'slug'> & {
   children: JSX.Element[] | JSX.Element;
@@ -98,9 +99,18 @@ export type CardFooter = Pick<
 };
 
 const CardFooter = ({ icons, tags, slug, title, checkTagged }: CardFooter) => {
-  const posts = useSWR(`/api/posts/${slug}`);
+  const posts = useSWR<Record<string, Post>>(`/api/posts/${slug}`);
   const discussions = useSWR<MappedDiscussion[]>('/api/github/discussions');
   const isLoading = posts.isLoading || discussions.isLoading;
+  const summedReactions = useMemo(() => {
+    if (isLoading || !posts?.data?.post.reactions) return 0;
+    let sum = 0;
+    Object.values(posts.data.post.reactions).forEach((val) => {
+      sum += val;
+    });
+
+    return sum;
+  }, [isLoading, posts?.data?.post?.reactions]);
   return (
     <div className="mx-4 mt-auto">
       {icons && <Icons icons={icons} checkTagged={checkTagged} />}
@@ -125,12 +135,12 @@ const CardFooter = ({ icons, tags, slug, title, checkTagged }: CardFooter) => {
         className={clsx(
           'mt-6 flex h-8 items-center justify-center gap-4 rounded-lg px-4 py-1.5 font-mono text-sm text-grey-300',
           {
-            'animate-pulse bg-grey-800': isLoading,
+            'animate-pulse bg-grey-800': isLoading && !posts?.data,
           },
-          { 'bg-primary-dark': !isLoading }
+          { 'bg-primary-dark': !isLoading && posts?.data }
         )}
       >
-        {!isLoading && (
+        {!isLoading && posts?.data && (
           <>
             <li className="flex items-center gap-1">
               <AiFillEye className="h-4 w-4" />
@@ -143,7 +153,7 @@ const CardFooter = ({ icons, tags, slug, title, checkTagged }: CardFooter) => {
               })?.numberOfComments || 0}
             </li>
             <li className="flex items-center gap-1">
-              <MdFavorite className="h-4 w-4" /> 0
+              <MdFavorite className="h-4 w-4" /> {summedReactions}
             </li>
           </>
         )}

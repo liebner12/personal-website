@@ -1,5 +1,5 @@
 import { Variants } from 'framer-motion';
-import ExploadingHead from 'assets/icons/Exploding-Head.png';
+import ExplodingHead from 'assets/icons/Exploding-Head.png';
 import Rocket from 'assets/icons/Rocket.png';
 import Fire from 'assets/icons/Fire.png';
 import RedHeart from 'assets/icons/Red-Heart.png';
@@ -99,7 +99,7 @@ export const navigationListVariants: Variants = {
 export const REACTIONS_LIST = {
   like: RedHeart,
   cool: Fire,
-  'exploading head': ExploadingHead,
+  'exploding head': ExplodingHead,
   'to the moon': Rocket,
   interesting: ThinkingFace,
 };
@@ -107,7 +107,7 @@ export const REACTIONS_LIST = {
 export const REACTIONS_PRIORITIES = {
   like: 1,
   cool: 2,
-  'exploading head': 3,
+  'exploding head': 3,
   'to the moon': 4,
   interesting: 5,
 };

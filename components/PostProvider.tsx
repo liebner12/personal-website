@@ -67,21 +67,18 @@ export const PostProvider = ({
     setReactions(formatReactions());
   }, [slug, data?.post?.reactions, isLoading]);
 
-  const selectReactionsProperty = useCallback(
-    (selector: keyof Reaction) => {
-      return Object.entries(reactions).reduce(
-        (prev, [key, value]) => ({ ...prev, [key]: value[selector] }),
-        {}
-      );
-    },
-    [reactions]
-  );
-
   const timeoutId = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleReactions = useCallback(
     (reactions: Record<ReactionsKeys, Reaction>) => {
       setReactions(reactions);
+
+      const selectReactionsProperty = (selector: keyof Reaction) => {
+        return Object.entries(reactions).reduce(
+          (prev, [key, value]) => ({ ...prev, [key]: value[selector] }),
+          {}
+        );
+      };
 
       const reactionsSelection = selectReactionsProperty('hasBeenSelected');
       localStorage.setItem(slug, JSON.stringify(reactionsSelection));
@@ -92,13 +89,14 @@ export const PostProvider = ({
 
       timeoutId.current = setTimeout(() => {
         const reactionsCount = selectReactionsProperty('count');
+        console.log(reactionsCount, reactions);
         fetch(`/api/posts/${slug}`, {
           method: 'PUT',
           body: JSON.stringify(reactionsCount),
         });
-      }, 3000);
+      }, 1000);
     },
-    [slug, selectReactionsProperty]
+    [slug]
   );
 
   return (
