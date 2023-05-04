@@ -88,7 +88,7 @@ const Reactions = () => {
   };
   return (
     <ul className="relative flex flex-wrap items-center gap-2 sm:flex-nowrap">
-      {(Object.entries(REACTIONS_LIST) as [ReactionsKeys, StaticImageData][])
+      {(Object.entries(REACTIONS_LIST) as [ReactionsKeys, string][])
         .sort(([a], [b]) => REACTIONS_PRIORITIES[a] - REACTIONS_PRIORITIES[b])
         .map(([key, icon]) => (
           <Tooltip key={key} content={key} size="sm" tabIndex={-1}>
